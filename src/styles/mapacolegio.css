@@ -1,0 +1,49 @@
+.boxcontent{
+    background-color: #18042c;
+    width: 80em;   
+    height: 37em;
+    position: absolute;
+    top: 29em;
+    left: 60em;
+    transform: translate(-57.5em, -27em);
+    border-radius: 2em;
+} 
+
+.boxinfocontent{
+    position: absolute;
+    top: 50%;
+    transform: translate(-0%, -50%);
+}
+
+#ListaUser{
+    text-decoration: none;
+    list-style: none;
+    letter-spacing: 0.1em;
+    font-size: 0.6em;
+    padding: 1em;
+    color: white;
+}
+.Linea{
+    height: 25em;
+    margin-top:1em;
+    width: 0.2em;
+    background-color: rgb(163, 162, 162);
+    position: absolute;
+    top: 50%;
+    left: 110%;
+    transform: translate(-0%, -50%);
+}
+
+.Mapcontent{
+    position: absolute;
+    height: 25em;
+    width: 59em;
+    margin-left: 3em;
+    margin-top: em;
+    border-radius: 1.5em;
+}
+
+.TextProbi{
+    text-align: center;
+    margin-top: 10em ;
+}

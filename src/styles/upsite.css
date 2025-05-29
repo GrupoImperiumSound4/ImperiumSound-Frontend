@@ -1,0 +1,36 @@
+.upsite {
+  margin: 1em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid;
+  border-color: #402484;
+}
+
+.upsiteInt {
+  margin: 1em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media( min-width: 1600px){
+  .upsite {
+    margin: 2em 4em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 4px solid;
+    border-color: #402484;
+  }
+  
+  .upsiteInt {
+    margin: 2em 4em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.ImagenSalir{
+  max-width:4em;
+}

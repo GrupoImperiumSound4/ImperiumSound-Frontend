@@ -1,0 +1,79 @@
+.formulario {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    -45deg,
+    rgba(64, 28, 124, 1) 0%,
+    rgba(24, 12, 52, 1) 100%
+  );
+  width: 20rem;
+  padding: 1em 0;
+}
+
+input[text] .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formulario-google {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario-titulo {
+  font-size: 2.3em;
+}
+
+.formulario-texto {
+  font-size: 1em;
+}
+.formulario-texto-2 {
+  font-size: 0.8rem;
+}
+
+.inputRqd {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  padding: 0.5em;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.txt-f {
+  margin: 0 0.3em 0em 0em;
+}
+.boton-Registrarte1 {
+  background: linear-gradient(90deg, #1a093e, #4b238c); /* Gradiente similar al de la imagen */
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 2em;
+  padding: 0.8em 2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  transition:  0.3s ease;
+  box-shadow: 0px 2px 8px #ffffff5e;
+}
+
+.boton-Registrarte1:hover {
+  background: linear-gradient(90deg, #4b238c, #1a093e); /* Cambia el gradiente al hacer hover */
+}

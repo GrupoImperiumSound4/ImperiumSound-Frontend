@@ -1,0 +1,14 @@
+.titulo1{
+text-align: center;
+margin-top: 1em;
+font-size: 2em;
+margin-bottom: 1em;
+}
+@media( min-width: 1600px){
+    .titulo1{
+        text-align: center;
+        margin-top: 2em;
+        font-size: 3em;
+        margin-bottom: 3em;
+        }
+}

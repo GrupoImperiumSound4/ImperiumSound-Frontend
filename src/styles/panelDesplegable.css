@@ -1,0 +1,51 @@
+
+#btnUser{
+    padding: 5px 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: transparent; 
+    color: #ffffff; 
+    border: none; 
+    outline: none; 
+    border-radius: 5px; 
+    text-decoration: none; 
+    transition:  0.3s ease, color 0.3s ease; 
+
+}
+#btnUser:hover{
+    background-color: #1c0a38; 
+    color: white;
+}
+.menu-desplegable {
+    position: absolute; /* Posiciona el menú absolutamente dentro del contenedor relativo */
+    top: 100%; /* Muestra el menú justo debajo del botón */
+    right: 0; /* Alinea el menú al lado derecho */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Asegura que el menú esté frente a otros elementos */
+    width: 14em; /* Ajusta el ancho del menú */
+    color: rgba(82, 82, 82, 0.76);
+    text-align: center;
+}
+
+.menu-desplegable ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-desplegable li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.menu-desplegable li:hover {
+    background-color: #f0f0f0;
+}
+#UserBienvenida{
+    margin-bottom: -0.0001em;
+    border-bottom: 1px solid #b4b1b1;
+}

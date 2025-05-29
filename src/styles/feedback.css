@@ -1,0 +1,122 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:110%;
+  width:100%;
+  margin-top: -5em;
+}
+#Mensaje{
+  font-size: 1em;
+  font-family: "Poppins", sans-serif;
+}
+/* Estilos del formulario */
+.contact-form {
+  width: 20em;
+  height: 26em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 3em;
+  border-radius: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 16em;
+}
+
+/* Estilos de los campos de entrada */
+.input-field {
+  padding: 1em;
+  border: none;
+  border-radius: 2em;
+  font-size: 1em;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Estilos del campo de texto */
+.textarea-field {
+  resize: none; /* Evita que el usuario cambie el tamaño de la caja de texto */
+  height: 6em;
+}
+
+/* Estilos del botón de envío */
+.submit-button {
+  padding: 0.75em;
+  border: none;
+  border-radius: 2em;
+  font-size: 1em;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(90deg, #6A40E6, #1e0036); /* Gradiente púrpura */
+  cursor: pointer;
+  transition:     0.3s ease;
+  margin-top: 4em;
+}
+
+.submit-button:hover {
+  background: linear-gradient(90deg, #1e0036, #6A40E6); /* Cambio de color al pasar el ratón */
+}
+
+
+@media (min-width: 1600px) {
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:100%;
+    margin-top: -5em;
+  }
+#Mensaje{
+    font-size: 1em;
+    font-family: "Poppins", sans-serif;
+}
+  /* Estilos del formulario */
+  .contact-form {
+    width: 20em;
+    height: 26em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 3em;
+    border-radius: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 16em;
+  }
+  
+  /* Estilos de los campos de entrada */
+  .input-field {
+    padding: 1em;
+    border: none;
+    border-radius: 2em;
+    font-size: 1em;
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  /* Estilos del campo de texto */
+  .textarea-field {
+    resize: none; /* Evita que el usuario cambie el tamaño de la caja de texto */
+    height: 6em;
+  }
+  
+  /* Estilos del botón de envío */
+  .submit-button {
+    padding: 0.75em;
+    border: none;
+    border-radius: 2em;
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(90deg, #6A40E6, #1e0036); /* Gradiente púrpura */
+    cursor: pointer;
+    transition:     0.3s ease;
+    margin-top: 4em;
+  }
+  
+  .submit-button:hover {
+    background: linear-gradient(90deg, #1e0036, #6A40E6); /* Cambio de color al pasar el ratón */
+  }
+}

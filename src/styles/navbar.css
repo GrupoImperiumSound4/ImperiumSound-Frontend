@@ -1,0 +1,15 @@
+.txt-navbar {
+  font-size: 1.1em;
+  margin-right: 3em;
+}
+
+a:hover {
+  color: #d98df0;
+}
+
+@media (min-width: 1600) {
+  .txt-navbar {
+    font-size: 2em;
+    margin-right: 3em;
+  }
+}

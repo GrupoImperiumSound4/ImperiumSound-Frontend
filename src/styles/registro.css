@@ -1,0 +1,14 @@
+
+.titulo1{
+border: 10px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 40px;
+    position: relative; /* Asegura que estos elementos se muestren encima de la imagen */
+    z-index: 1
+}
+
+
+.a{
+    width: 400px;
+}

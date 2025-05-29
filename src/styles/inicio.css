@@ -1,0 +1,53 @@
+.TituloPagInicio{
+    font-size: 2em;
+    margin-left: 1.5em;
+}
+.inicioTxt{
+    font-size: 1.3em;
+    margin-left: 2em;
+    text-align: justify;
+    margin-top: -1em;
+}
+* {
+    height: auto;
+  }
+  #textInicioMargen{
+    margin-top: -12em;
+  }
+  .senor1 {
+    width: 160%;
+    height: 38em;
+    background-image: url("../images/bafle.png");
+    background-size: cover;
+  
+    background-repeat: no-repeat;
+    background-color: transparent;
+  }
+  @media (min-width: 1600px) {
+    .TituloPagInicio{
+        font-size: 3em;
+        margin-left: 1em;
+    }
+    .inicioTxt{
+        font-size: 1.6em;
+        margin-left: 2em;
+        text-align: justify;
+    
+    }
+    * {
+        height: auto;
+      }
+      #textInicioMargen{
+        margin-top: -17em;
+      }
+      .senor1 {
+        width: 160%;
+    height: 55em;
+    background-image: url("../images/bafle.png");
+    background-size: cover;
+  
+    background-repeat: no-repeat;
+    background-color: transparent;
+      }
+  }
+ 

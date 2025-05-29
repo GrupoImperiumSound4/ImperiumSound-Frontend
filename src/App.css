@@ -1,0 +1,36 @@
+
+.MyUser{
+
+  width: 50px;
+  height: 50px;
+}
+
+
+.contenido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.mrg-general {
+  margin: 0 0 0 3rem;
+}
+
+p {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+

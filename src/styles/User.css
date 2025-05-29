@@ -1,0 +1,195 @@
+.ContainerUser{
+    background-color: #18042c;
+    width: 80em;   
+    height: 37em;
+    position: absolute;
+    top: 29em;
+    left: 60em;
+    transform: translate(-57.5em, -27em);
+    border-radius: 2em;
+}
+#ListaUser{
+    text-decoration: none;
+    list-style: none;
+    letter-spacing: 0.1em;
+    font-size: 0.6em;
+    padding: 1em;
+    color: white;
+}
+#ListaUser:hover{
+    color: #d98df0;
+}
+.ContenedorListaUser{
+    position: absolute;
+    top: 50%;
+    transform: translate(-0%, -50%);
+}
+.Linea{
+    height: 20em;
+    margin-top:1em;
+    width: 0.2em;
+    background-color: rgb(163, 162, 162);
+    position: absolute;
+    top: 50%;
+    left: 110%;
+    transform: translate(-0%, -50%);
+}
+.ContenedorTxtUser{
+    width: 50em;
+    position: absolute;
+    top: 50%;
+    left: 130%;
+    transform: translate(-0%, -50%);
+    
+}
+#InputContUser{
+    margin-top: 1em;
+    background-color: white;
+    width: 15em;
+    height: 2em;
+}
+#BtnUserPass{
+    background-color: #402484;
+    border: 0.2em solid #402484;
+    border-radius: 0.5em;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 1em;
+    margin-right: 1em;
+}
+#BtnUserPass:hover{
+    color: #d98df0;
+    cursor: pointer;
+}
+.ContenedorUserFoto{
+    position: absolute;
+    z-index: 100;
+    top: 80%;
+    left: 70%;
+    width: 20em;
+    height: 20em;
+    transform: translate(-0%, -80%);
+}
+#ImagenUser{
+    width: 18em;
+    border: 1px;
+    border-radius: 3em;
+}
+.ProfileInfo{
+    position: absolute;
+    top: 100%;
+    left: 33%;
+    text-align: center;
+    width: 14em;
+    transform: translate(-30%, -0%);
+}
+#TitUser{
+    font-size: 1.4em;
+    margin-top: -0.5em;
+}
+#TxtUser{
+    font-size: 1em;
+    margin-top: -0.5em;
+}
+.ContainerTxtMic{
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-0%, -50%);
+
+}
+#txtMicUp{
+    margin-top: 1em;
+}
+#BtnMicP{
+    background-color: #402484;
+    border: 0.2em solid #402484;
+    border-radius: 0.5em;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 1em;
+    margin-right: 1em;
+}
+#BtnMicP:hover{
+    color: #d98df0;
+    cursor: pointer;
+}
+@media (min-width: 1600px){
+
+.Linea{
+    height: 35em;
+    margin-top:1em;
+    width: 0.2em;
+    background-color: rgb(163, 162, 162);
+    position: absolute;
+    top: 50%;
+    left: 110%;
+    transform: translate(-0%, -50%);
+}
+#ListaUser{
+    text-decoration: none;
+    list-style: none;
+    letter-spacing: 0.1em;
+    font-size: 0.9em;
+    padding: 1em;
+    color: white;
+}
+.ProfileInfo{
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    text-align: center;
+    width: 14em;
+    transform: translate(-30%, -0%);
+}
+.ContenedorUserFoto{
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 80%;
+    width: 20em;
+    height: 20em;
+    transform: translate(-0%, -80%);
+}
+#ImagenUser{
+    width: 25em;
+    border: 1px;
+    border-radius: 3em;
+}
+.ContenedorTxtUser{
+    width: 60em;
+    position: absolute;
+    top: 50%;
+    left: 130%;
+    transform: translate(-0%, -50%);
+    
+}
+#InputContUser{
+    margin-top: 2em;
+    background-color: white;
+    width: 20em;
+    height: 3em;
+}
+#BtnUserPass{
+    background-color: #402484;
+    border: 0.2em solid #402484;
+    border-radius: 0.5em;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    margin-top: 1em;
+    margin-right: 1em;
+}
+#BtnUserPass:hover{
+    color: #d98df0;
+    cursor: pointer;
+}
+#TitUser{
+    font-size: 2.5em;
+}
+#TxtUser{
+    font-size: 1.4em;
+}
+}

@@ -1,0 +1,15 @@
+
+
+.tituloCarac{
+    font-size: 1.5em;
+    text-align:center;
+   
+}
+@media( min-width: 1600px){
+    
+.tituloCarac{
+    font-size: 2em;
+    text-align:center;
+   
+}
+}

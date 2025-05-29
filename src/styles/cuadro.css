@@ -1,0 +1,196 @@
+.contenedor-principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 50em;
+    margin: auto;
+    
+}
+
+.recuadro {
+   justify-content: center;
+    display: flex;
+    align-items: center;
+    
+    background:linear-gradient(90deg,#140c34,#381c74);
+    color: #E6D9FF;
+    border-radius: 3em;
+    padding:1em;
+    max-width: 8em;
+    height: 18em;
+    min-width: calc(100% - 2em); /* Ajusta el ancho del cuadro según el espacio de la separación */
+    box-sizing: border-box;
+    margin-right: 2em;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Para la animación de desplazamiento */
+    gap: 1em;
+}
+ 
+.icono {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: solid white,2em;
+    background-color: #7C4DFF;
+    padding: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.texto {
+    flex: 1;
+}
+
+.texto h2 {
+    margin-top: -0.6em;
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: 2.4em;
+    font-weight: bolder;
+}
+
+.texto p {
+    text-align: center;
+    margin-left:5em;
+    margin-right: 5em;
+    font-size: 1.2em;
+}
+
+.boton {
+    display: inline-block;
+    width: 6em;
+    height: 6em;
+    background-color: #7C4DFF; /* Color de fondo púrpura */
+    border-radius: 50%; /* Hace el botón circular */
+    text-align: center;
+    line-height: 5.9em; /* Centra el icono verticalmente */
+    cursor: pointer;
+    position: absolute;
+    right: -250px; /* Posiciona el botón fuera del recuadro */
+}
+
+
+.boton::before {
+    content: '➜'; /* Icono de flecha */
+    font-size: 3.5em;
+    color: #140A3B; 
+}
+
+.boton:hover {
+    background-color: #6A40E6; 
+}
+.boton-derecha {
+    right: -300px;
+    border:solid 0.4em #000000;
+}
+
+.boton-izquierda {
+    left: -300px; 
+    transform: scaleX(-1);
+    border:solid 0.4em #000000;
+}
+.imagenC {
+    width: 16em;
+  }     
+
+
+@media( min-width: 1600px){
+
+    .contenedor-principal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        max-width: 85em;
+        margin: auto;
+        
+    }
+    
+    .recuadro {
+       justify-content: center;
+       
+        display: flex;
+        align-items: center;
+        background:linear-gradient(90deg,#140c34,#381c74);
+        color: #E6D9FF;
+        border-radius: 3em;
+        padding:1em;
+        max-width: 13em;
+        height: 20em;
+        min-width: calc(100% - 2em); /* Ajusta el ancho del cuadro según el espacio de la separación */
+        box-sizing: border-box;
+        margin-right: 2em;
+    }
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out; /* Para la animación de desplazamiento */
+        gap: 1em;
+    }
+    .icono {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: solid white,2em;
+        background-color: #7C4DFF;
+        padding: 3.5em;
+    }
+    
+    .texto {
+        flex: 1;
+    }
+    
+    .texto h2 {
+        margin-top: -0.6em;
+        margin-bottom: 1em;
+        text-align: center;
+        font-size: 2.4em;
+        font-weight: bolder;
+    }
+    
+    .texto p {
+        text-align: center;
+        margin-left:5em;
+        margin-right: 5em;
+        font-size: 1.2em;
+    }
+    
+    .boton {
+        display: inline-block;
+        width: 6em;
+        height: 6em;
+        background-color: #7C4DFF; /* Color de fondo púrpura */
+        border-radius: 50%; /* Hace el botón circular */
+        text-align: center;
+        line-height: 5.9em; /* Centra el icono verticalmente */
+        cursor: pointer;
+        position: absolute;
+        right: -250px; /* Posiciona el botón fuera del recuadro */
+    }
+    
+    .boton::before {
+        content: '➜'; /* Icono de flecha */
+        font-size: 3.5em;
+        color: #140A3B; 
+    }
+    
+    .boton:hover {
+        background-color: #6A40E6; 
+    }
+    .boton-derecha {
+        right: -250px;
+        border:solid 0.4em #000000;
+    }
+    
+    .boton-izquierda {
+        left: -250px; 
+        transform: scaleX(-1);
+        border:solid 0.4em #000000;
+    }
+    .imagenC {
+        width: 19em;
+      }     
+}
