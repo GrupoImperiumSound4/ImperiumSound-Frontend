@@ -1,7 +1,60 @@
 .boxcontent{
     background-color: #18042c;
-    width: 80em;   
+    width: 115em;   
+    height: 58em;
+    position: absolute;
+    top: 29em;
+    left: 60em;
+    transform: translate(-57.5em, -27em);
+    border-radius: 2em;
+} 
+
+.boxinfocontent{
+    position: absolute;
+    top: 50%;
+    transform: translate(-0%, -50%);
+}
+
+#ListaUser{
+    text-decoration: none;
+    list-style: none;
+    letter-spacing: 0.1em;
+    font-size: 0.8em;
+    padding: 1em;
+    color: white;
+}
+.Linea{
+    height: 40em;
+    margin-top:1em;
+    width: 0.2em;
+    background-color: rgb(163, 162, 162);
+    position: absolute;
+    top: 50%;
+    left: 110%;
+    transform: translate(-0%, -50%);
+}
+
+.Mapcontent{
+    position: absolute;
     height: 37em;
+    width: 70em;
+    margin-left: 14em;
+    border-radius: 1.5em;
+
+}
+
+.TextProbi{
+    font-size: 1.7em;
+    text-align: center;
+    margin-top: 10em ;
+}
+
+@media(max-width: 1366px){
+
+    .boxcontent{
+    background-color: #18042c;
+    width: 80em;   
+    height: 39em;
     position: absolute;
     top: 29em;
     left: 60em;
@@ -39,11 +92,14 @@
     height: 25em;
     width: 59em;
     margin-left: 3em;
-    margin-top: em;
     border-radius: 1.5em;
 }
 
 .TextProbi{
+    font-size: 1.5em;
     text-align: center;
-    margin-top: 10em ;
+    margin-top: 7em ;
+}
+
+
 }

@@ -1,0 +1,30 @@
+.PQRcont{
+    position: absolute;
+    height: 37em;
+    width: 70em;
+    margin-left: 14em;
+    border-radius: 1.5em;
+}
+
+.TextProbiPQR{
+    font-size: 1.7em;
+    text-align: center;
+    margin-top: 10em ;
+}
+@media(max-width: 1366px){
+
+    .PQRcont{
+    position: absolute;
+    height: 25em;
+    width: 59em;
+    margin-left: 3em;
+    border-radius: 1.5em;
+}
+
+.TextProbiPQR{
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 7em ;
+}
+
+}
