@@ -1,10 +1,10 @@
-import "../styles/soporteup.css";
+import "../../styles/pregunta1.css";
 import { useNavigate } from 'react-router-dom'
-import UpsiteUser from "../componetes/Nav-UpsiteComp/Upsite_User";
+import UpsiteUser from "../../componetes/Nav-UpsiteComp/Upsite_User";
 
 
 
-const SoporteUP =() =>{
+const Pregunta1 =() =>{
     const navegar  = useNavigate();
     const Microfono = "/microConfig";
     const Soporte = "/soporte";
@@ -44,16 +44,7 @@ const SoporteUP =() =>{
         </ul>
         <div className='Linea'>
           <div className='PQRcont'>
-                <div className='divtit'>
-                  <h1 className='TituloSop'>¿Necesitas ayuda?</h1>
-                </div>
-                <section className="mb-6">
-                  <h2 className="text-xl font-semibold">Preguntas Frecuentes</h2>
-                  <ul className="list-disc pl-5">
-                    <li className='linktop'><a href="#">¿Cómo restablezco mi contraseña?</a></li>
-                    <li className='links'><a href="#">¿Cómo contacto con soporte?</a></li>
-                  </ul>
-                </section>
+                
           </div>
         </div>
      </div>
@@ -62,4 +53,4 @@ const SoporteUP =() =>{
     )
 }
 
-export default SoporteUP;
+export default Pregunta1;

@@ -6,10 +6,16 @@
     border-radius: 1.5em;
 }
 
-.TextProbiPQR{
-    font-size: 1.7em;
+.divtit{
     text-align: center;
-    margin-top: 10em ;
+    margin-top: 0.4em ;
+}
+.Titulosop{
+    color: aqua;
+}
+.linktop{
+    margin-top: 2em;
+    text-decoration: none;
 }
 @media(max-width: 1366px){
 
