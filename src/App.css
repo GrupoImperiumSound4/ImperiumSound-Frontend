@@ -1,0 +1,12 @@
+* {
+  background: #0c041c;
+}
+.contenido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+}

@@ -1,0 +1,24 @@
+* {
+  height: auto;
+}
+
+p {
+  margin-left: 15px !important;
+  font-size: 1.4em;
+}
+.senor {
+  width: 100%;
+  height: 500px;
+  background-image: url("/Users/Sesega/Documents/ImperiumSound-frontend/images/image-removebg.png");
+  background-size: cover;
+
+  background-repeat: no-repeat;
+}
+
+.container {
+  display: flex;
+}
+
+conteo {
+  font-size: 20em;
+}
