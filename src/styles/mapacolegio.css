@@ -1,5 +1,28 @@
+.zonas-container {
+  display: flex;
+  margin-left: 10em;
+  flex-direction: column; 
+  gap: 10px;
+}
+
+.zona {
+  
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.zona-aguamarina {
+  background-color: aqua;
+}
+
+.zona-azul {
+  background-color: blue;
+  color: white;
+}
+
 .boxcontent{
-    background-color: #18042c;
+    /*background-color: #18042c;*/
+    background-color: rgb(255, 145, 0);
     width: 115em;   
     height: 58em;
     position: absolute;
@@ -8,7 +31,10 @@
     transform: translate(-57.5em, -27em);
     border-radius: 2em;
 } 
+.ContenedorListaUser{
+    display: flex;
 
+}
 .boxinfocontent{
     position: absolute;
     top: 50%;
@@ -33,14 +59,30 @@
     left: 110%;
     transform: translate(-0%, -50%);
 }
-
+.pisos{
+    background-color: aqua;
+    
+}
+.zona-lista{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(47, 0, 255);
+}
 .Mapcontent{
+
     position: absolute;
     height: 37em;
     width: 70em;
     margin-left: 14em;
     border-radius: 1.5em;
 
+}
+
+.col{
+    
+    height: 10em;
+    width: 3em;
 }
 
 .TextProbi{

@@ -42,12 +42,17 @@ export function NavbarLog() {
   const sevicios = "/servicios";
   const caracteristicas = "/caracteristicas";
   const contactanos = "/contactanos";
+  const didactico = "/didactico";
 
   return (
     <>
       <div className="container">
         <a className="txt-navbar" onClick={() => navegar(inicio)}>
           Inicio{" "}
+        </a>
+        <a className="txt-navbar" onClick={() => navegar(didactico)}>
+          {" "}
+          ¿?
         </a>
         <a className="txt-navbar" onClick={() => navegar(nosotros)}>
           {" "}

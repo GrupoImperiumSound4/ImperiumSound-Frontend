@@ -45,15 +45,8 @@ const SoporteUP =() =>{
         <div className='Linea'>
           <div className='PQRcont'>
                 <div className='divtit'>
-                  <h1 className='TituloSop'>¿Necesitas ayuda?</h1>
+                  <h1 className='TituloSop'>Estamos en proceso de elaboracion, muchas gracias por su comprension😊👍</h1>
                 </div>
-                <section className="mb-6">
-                  <h2 className="text-xl font-semibold">Preguntas Frecuentes</h2>
-                  <ul className="list-disc pl-5">
-                    <li className='linktop'><a href="#">¿Cómo restablezco mi contraseña?</a></li>
-                    <li className='links'><a href="#">¿Cómo contacto con soporte?</a></li>
-                  </ul>
-                </section>
           </div>
         </div>
      </div>
