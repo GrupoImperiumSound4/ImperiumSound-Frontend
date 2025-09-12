@@ -45,7 +45,7 @@ export function Registrarse() {
       navegar(inicioSesionURL);
     } catch (error) {
       console.error("Error en la solicitud:", error);
-      setError("Hubo un problema con el registro. Inténtalo de nuevo.");
+      setError("Ingrese todos los campos correctamente.");
     }
   };
 
@@ -86,17 +86,7 @@ export function Registrarse() {
           />
         </div>
 
-        <div id="a">
-          <p className="formulario-texto">Usuario</p>
-          <label htmlFor="usuario"></label>
-          <input
-            className="inputRqd"
-            id="usuario"
-            type="text"
-            value={usuario}
-            onChange={(e) => setUsuario(e.target.value)}
-          />
-        </div>
+        
 
         <div id="a">
           <label htmlFor="contrasena"></label>

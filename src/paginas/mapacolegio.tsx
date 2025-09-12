@@ -1,6 +1,6 @@
-import "../../../styles/mapacolegio.css";
+import "../styles/mapacolegio.css";
+import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import { useNavigate } from "react-router-dom";
-import UpsiteUser from "../../Nav-UpsiteComp/Upsite_User";
 import { useState } from "react";
 import Modal from "react-modal";
 
@@ -26,10 +26,6 @@ const zonasColegio: Record<string, { nombre: string; imagen: string }[]> = {
 
 const MapaColegio = () => {
   const navegar = useNavigate();
-  const Microfono = "/microConfig";
-  const Soporte = "/soporte";
-  const Info = "/cuenta";
-  const Colegio = "/mapacolegio";
 
   const [piso, setPiso] = useState<keyof typeof zonasColegio>("piso1");
   const [zona, setZona] = useState<string | null>(null);
@@ -78,17 +74,10 @@ const MapaColegio = () => {
   };
 
   return (
-    <div className='boxcontent'>
-      <UpsiteUser />
-    <div className="ano"></div>
-      <div className='ContenedorListaUser'>
-        <ul>
-          <a onClick={() => navegar(Info)}><li id="ListaUser"><h1>INFORMACION</h1></li></a>
-          <a onClick={() => navegar(Microfono)}><li id="ListaUser"><h1>MICROFONO</h1></li></a>
-          <a onClick={() => navegar(Colegio)}><li id="ListaUser"><h1>COLEGIO</h1></li></a>
-          <a onClick={() => navegar(Soporte)}><li id="ListaUser"><h1>SOPORTE</h1></li></a>
-        </ul>
-        
+    
+      
+    <div className="ano">
+        <UpsiteLog></UpsiteLog>
         {/* Contenedor vertical */}
         <div className="zonas-container">
           <p className="txt"> 👋 Bienvenido Querido Profes@r a el lugar donde van a poder registrar el sonido 🔊 </p>
@@ -146,8 +135,7 @@ const MapaColegio = () => {
             </div>
           )}
         </Modal>
-      </div>
-    </div>
+        </div> 
   );
 };
 

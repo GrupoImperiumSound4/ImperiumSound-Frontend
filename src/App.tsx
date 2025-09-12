@@ -16,6 +16,7 @@ import SoporteUp from "./paginas/SoporteUP";
 import Foro from "./paginas/Foro";
 import MapaColegio from "./componetes/UserComp/MapaComp/MapaColegio"; 
 import Didactico from "./paginas/didactico";
+import Colegio from "./paginas/mapacolegio"
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/foro" element={<Foro/>}></Route>
           <Route path="/mapacolegio" element= {<MapaColegio/>}></Route>
           <Route path="/didactico" element= {<Didactico/>}></Route>
+          <Route path="/colegio" element= {<Colegio/>}></Route>
         </Routes>
       </Router>
     </>

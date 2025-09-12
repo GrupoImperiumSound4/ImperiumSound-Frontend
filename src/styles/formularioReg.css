@@ -23,7 +23,7 @@ p {
   font-family:"Poppins", sans-serif ;
   border: white solid 1px;
   border-radius: 0.3em;
-  width: 15em;
+  width: 23em;
 }
 #a {
   background-color:none;
@@ -55,7 +55,7 @@ input[type="text"],
   font-weight: bold;
   border: none;
   border-radius: 2em;
-  padding: 0.8em 2em;
+  padding: 0.9em 2em;
   text-transform: uppercase;
   cursor: pointer;
   outline: none;
@@ -67,6 +67,8 @@ input[type="text"],
   background: linear-gradient(90deg, #4b238c, #1a093e); /* Cambia el gradiente al hacer hover */
 }
 .formulario{
-  width: 25em;
+  margin-top: 5em;
+  width: 24em;
  
 }
+

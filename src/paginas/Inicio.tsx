@@ -10,7 +10,7 @@ function PagInicio() {
       <div className="container">
 
       <div id="textInicioMargen" className="txtPrincipal">
-      <div className="TituloPagInicio"><h1>IMPERIUM <br/>SOUND</h1></div>
+      <div className="TituloPagInicio"><br/></div>
     <br />
     <br />
         <p className="inicioTxt">

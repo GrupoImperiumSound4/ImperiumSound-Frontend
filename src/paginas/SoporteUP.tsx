@@ -9,7 +9,7 @@ const SoporteUP =() =>{
     const Microfono = "/microConfig";
     const Soporte = "/soporte";
     const Info = "/cuenta";
-    const Colegio= "/mapacolegio"
+
     
     return(
         <>
@@ -28,13 +28,7 @@ const SoporteUP =() =>{
             <li id="ListaUser">
               <h1>MICROFONO</h1>
             </li>
-          </a>
-           <a onClick={() => navegar(Colegio)}>
-            {" "}
-            <li id ="ListaUser">
-              <h1>COLEGIO</h1>
-            </li>
-          </a>
+          </a>   
           <a onClick={() => navegar(Soporte)}>
             {" "}
             <li id="ListaUser">

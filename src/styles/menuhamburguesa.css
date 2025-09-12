@@ -1,0 +1,19 @@
+.hamburguesa{
+    display: none;
+}
+
+@media (min-width: 1600) {
+  
+
+  .hamburguesa{
+    display: none;
+  }
+ 
+}
+
+@media (max-width: 576px) {
+    .hamburguesa{
+        display: block;
+    }
+
+}

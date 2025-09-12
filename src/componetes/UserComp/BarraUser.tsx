@@ -52,12 +52,6 @@ function BarraUser() {
               <h1>MICROFONO</h1>
             </li>
           </a>
-           <a onClick={() => navegar(Colegio)}>
-            {" "}
-            <li id ="ListaUser">
-              <h1>COLEGIO</h1>
-            </li>
-          </a>
           <a onClick={() => navegar(Soporte)}>
             {" "}
             <li id="ListaUser">

@@ -1,9 +1,20 @@
 .txt-navbar {
   font-size: 1.1em;
-  margin-right: 3em;
+  margin-right: 0.9em;
+  cursor: pointer;
 }
 
+.hamburguesa{
+  display: hidden;
+}
+
+
 a:hover {
+  color: #d98df0;
+ 
+}
+
+a::target{
   color: #d98df0;
 }
 
@@ -12,4 +23,19 @@ a:hover {
     font-size: 2em;
     margin-right: 3em;
   }
+ 
 }
+
+@media (max-width: 576px) {
+  .txt-navbar{
+    display: none;
+  }
+
+  .hamburguesa{
+    margin-right: 1vh;
+  }
+
+  
+
+}
+

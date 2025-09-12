@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { User } from "../UserComp/User";
 import { ValidToken } from "../ValidToken/ValidToken";
 import { useEffect } from "react";
+import MenuHamburguesa from "./MenuHamburguesa";
 export function UpsiteLog() {
 const navigate = useNavigate()
 const isLogin = async () =>{
@@ -43,16 +44,24 @@ export function NavbarLog() {
   const caracteristicas = "/caracteristicas";
   const contactanos = "/contactanos";
   const didactico = "/didactico";
+  const colegio = "/colegio"
+
 
   return (
-    <>
+  <>
+
+    <div className='relative'>    
       <div className="container">
         <a className="txt-navbar" onClick={() => navegar(inicio)}>
           Inicio{" "}
         </a>
         <a className="txt-navbar" onClick={() => navegar(didactico)}>
           {" "}
-          ¿?
+          Conoce
+        </a>
+        <a className="txt-navbar" onClick={() => navegar(colegio)}>
+          {" "}
+          Colegio
         </a>
         <a className="txt-navbar" onClick={() => navegar(nosotros)}>
           {" "}
@@ -75,6 +84,9 @@ export function NavbarLog() {
           Contactanos
         </a>
       </div>
-    </>
+    </div>  
+
+    <MenuHamburguesa/>
+  </>
   );
 }
