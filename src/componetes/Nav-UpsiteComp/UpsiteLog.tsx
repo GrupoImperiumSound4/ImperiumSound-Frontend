@@ -51,7 +51,7 @@ export function NavbarLog() {
   <>
 
     <div className='relative'>    
-      <div className="container">
+      <div className="container-navbar">
         <a className="txt-navbar" onClick={() => navegar(inicio)}>
           Inicio{" "}
         </a>

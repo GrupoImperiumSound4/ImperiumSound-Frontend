@@ -27,12 +27,17 @@ a::target{
 }
 
 @media (max-width: 576px) {
-  .txt-navbar{
+  .container-navbar{
     display: none;
   }
 
   .hamburguesa{
     margin-right: 1vh;
+  }
+
+  .txt-navbar{
+    margin-left: 2em;  
+
   }
 
   
