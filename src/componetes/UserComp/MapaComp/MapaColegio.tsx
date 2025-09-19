@@ -4,6 +4,12 @@ import UpsiteUser from "../../Nav-UpsiteComp/Upsite_User";
 import { useState } from "react";
 import Modal from "react-modal";
 
+// 👇 Si quieres compatibilidad con TS para MediaRecorder:
+//declare const MediaRecorder: {
+  //prototype: MediaRecorder;
+  //new (stream: MediaStream): MediaRecorder;
+//};
+
 Modal.setAppElement("#root");
 
 const zonasColegio: Record<string, { nombre: string; imagen: string }[]> = {
@@ -39,7 +45,7 @@ const MapaColegio = () => {
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
   const [audioURL, setAudioURL] = useState<string | null>(null);
   const [isRecording, setIsRecording] = useState(false);
-  const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
+  const [audioChunks, setAudioChunks] = useState<Blob[]>([]); // ✅ ahora sí lo usaremos
 
   const seleccionarZona = (zonaSeleccionada: { nombre: string; imagen: string }) => {
     setZona(zonaSeleccionada.nombre);
@@ -52,20 +58,20 @@ const MapaColegio = () => {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const recorder = new MediaRecorder(stream);
       setMediaRecorder(recorder);
-      const chunks: Blob[] = [];
+
+
+      setAudioChunks([]);
 
       recorder.ondataavailable = (event) => {
-        chunks.push(event.data);
+        setAudioChunks((prev) => [...prev, event.data]);
       };
 
       recorder.onstop = () => {
-        const blob = new Blob(chunks, { type: "audio/wav" });
-        setAudioChunks([]);
+        const blob = new Blob(audioChunks, { type: "audio/wav" });
         setAudioURL(URL.createObjectURL(blob));
       };
 
       recorder.start();
-      setAudioChunks(chunks);
       setIsRecording(true);
     } catch (err) {
       console.error("Error al iniciar grabación:", err);
@@ -78,28 +84,26 @@ const MapaColegio = () => {
   };
 
   return (
-    <div className='boxcontent'>
+    <div className="boxcontent">
       <UpsiteUser />
-    <div className="ano"></div>
-      <div className='ContenedorListaUser'>
+      <div className="ano"></div>
+      <div className="ContenedorListaUser">
         <ul>
           <a onClick={() => navegar(Info)}><li id="ListaUser"><h1>INFORMACION</h1></li></a>
           <a onClick={() => navegar(Microfono)}><li id="ListaUser"><h1>MICROFONO</h1></li></a>
           <a onClick={() => navegar(Colegio)}><li id="ListaUser"><h1>COLEGIO</h1></li></a>
           <a onClick={() => navegar(Soporte)}><li id="ListaUser"><h1>SOPORTE</h1></li></a>
         </ul>
-        
-        {/* Contenedor vertical */}
+
         <div className="zonas-container">
           <p className="txt"> 👋 Bienvenido Querido Profes@r a el lugar donde van a poder registrar el sonido 🔊 </p>
-          {/* Aguamarina - Selector de piso */}
+
           <div className="pisos_picados">
             <button onClick={() => setPiso("piso1")}>Piso 1</button>
             <button onClick={() => setPiso("piso2")}>Piso 2</button>
             <button onClick={() => setPiso("piso3")}>Piso 3</button>
           </div>
 
-          {/* Azul - Lista de zonas */}
           <div className="zona zona-azul">
             {zonasColegio[piso].map((z) => (
               <button key={z.nombre} onClick={() => seleccionarZona(z)}>
@@ -108,9 +112,7 @@ const MapaColegio = () => {
             ))}
           </div>
         </div>
-        
 
-        {/* Modal */}
         <Modal
           isOpen={modalOpen}
           onRequestClose={() => setModalOpen(false)}

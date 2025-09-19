@@ -7,25 +7,30 @@ export function Registrarse() {
   const inicioSesionURL = "/inicio-sesion";
 
   const [nombre, setNombre] = useState<string>("");
-  const [contrasena, setContrasena] = useState<string>("");
+  const [usuario, setUsuario] = useState<string>("");          // ← estado de usuario
   const [correo, setCorreo] = useState<string>("");
-  const [usuario, setUsuario] = useState<string>("");
+  const [contrasena, setContrasena] = useState<string>("");
   const [confirmarContrasena, setConfirmarContrasena] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
-
-  const apiUrl = import.meta.env.VITE_API_URL ?? "https://imperiumsound-backend-production.up.railway.app";
+  const apiUrl =
+    import.meta.env.VITE_API_URL ??
+    "https://imperiumsound-backend-production.up.railway.app";
 
   const manejarSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (contrasena !== confirmarContrasena) {
-      console.log("La contraseña no coincide");
       setError("Las contraseñas no coinciden");
       return;
     }
 
-    const data = { userName: usuario, nombre, email: correo, passw: contrasena };
+    const data = {
+      userName: usuario,
+      nombre,
+      email: correo,
+      passw: contrasena,
+    };
     const apiURL = `${apiUrl}/users`;
 
     try {
@@ -43,8 +48,8 @@ export function Registrarse() {
       const json = await response.json();
       console.log("Registro exitoso:", json);
       navegar(inicioSesionURL);
-    } catch (error) {
-      console.error("Error en la solicitud:", error);
+    } catch (err) {
+      console.error("Error en la solicitud:", err);
       setError("Ingrese todos los campos correctamente.");
     }
   };
@@ -53,18 +58,21 @@ export function Registrarse() {
     <>
       <form className="formulario" onSubmit={manejarSubmit}>
         <div className="flexp">
-          <h1 className="formulario-titulo">Registrate</h1>
+          <h1 className="formulario-titulo">Regístrate</h1>
           <div className="flex">
             <p className="formulario-texto-2 txt-f">¿Ya tienes cuenta?</p>
-            <a className="formulario-texto-2" onClick={() => navegar(inicioSesionURL)}>
-              Inicia sesion
+            <a
+              className="formulario-texto-2"
+              onClick={() => navegar(inicioSesionURL)}
+            >
+              Inicia sesión
             </a>
           </div>
         </div>
 
+        {/* Campo nombre completo */}
         <div id="a">
           <p className="formulario-texto">Nombre Completo</p>
-          <label htmlFor="nombre"></label>
           <input
             className="inputRqd"
             id="nombre"
@@ -74,11 +82,23 @@ export function Registrarse() {
           />
         </div>
 
+        {/* Nuevo campo usuario */}
         <div id="a">
-          <p className="formulario-texto">Correo Electronico</p>
-          <label htmlFor="correo"></label>
+          <p className="formulario-texto">Nombre de Usuario</p>
           <input
-            className="imputRqd"
+            className="inputRqd"
+            id="usuario"
+            type="text"
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+          />
+        </div>
+
+        {/* Campo correo */}
+        <div id="a">
+          <p className="formulario-texto">Correo Electrónico</p>
+          <input
+            className="inputRqd"
             id="correo"
             type="email"
             value={correo}
@@ -86,10 +106,8 @@ export function Registrarse() {
           />
         </div>
 
-        
-
+        {/* Campo contraseña */}
         <div id="a">
-          <label htmlFor="contrasena"></label>
           <p className="formulario-texto">Contraseña</p>
           <input
             className="inputRqd"
@@ -100,8 +118,8 @@ export function Registrarse() {
           />
         </div>
 
+        {/* Confirmar contraseña */}
         <div id="a">
-          <label htmlFor="Ccontrasena"></label>
           <p className="formulario-texto">Confirmar Contraseña</p>
           <input
             className="inputRqd"
@@ -113,10 +131,13 @@ export function Registrarse() {
         </div>
 
         <div id="a">
-          <button type="submit" className="boton-Registrarte">Registrarse</button>
+          <button type="submit" className="boton-Registrarte">
+            Registrarse
+          </button>
         </div>
         {error && <p className="error-message">{error}</p>}
       </form>
     </>
   );
 }
+

@@ -15,7 +15,6 @@ function BarraUser() {
   const Microfono = "/microConfig";
   const Soporte = "/soporte";
   const Info = "/cuenta";
-  const Colegio= "/mapacolegio"
 
   const loginEffect = async () => {
     const result = await ValidToken();

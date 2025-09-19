@@ -17,9 +17,9 @@ const MenuHamburguesa = () => {
         width={32}
         height={32}
         className="hamburguesa"
+        onClick={toggleMenu}
       />
     </div>
-    
   );
 };
 

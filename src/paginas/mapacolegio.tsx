@@ -25,7 +25,6 @@ const zonasColegio: Record<string, { nombre: string; imagen: string }[]> = {
 };
 
 const MapaColegio = () => {
-  const navegar = useNavigate();
 
   const [piso, setPiso] = useState<keyof typeof zonasColegio>("piso1");
   const [zona, setZona] = useState<string | null>(null);
@@ -35,7 +34,6 @@ const MapaColegio = () => {
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
   const [audioURL, setAudioURL] = useState<string | null>(null);
   const [isRecording, setIsRecording] = useState(false);
-  const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
 
   const seleccionarZona = (zonaSeleccionada: { nombre: string; imagen: string }) => {
     setZona(zonaSeleccionada.nombre);
@@ -56,12 +54,10 @@ const MapaColegio = () => {
 
       recorder.onstop = () => {
         const blob = new Blob(chunks, { type: "audio/wav" });
-        setAudioChunks([]);
         setAudioURL(URL.createObjectURL(blob));
       };
 
       recorder.start();
-      setAudioChunks(chunks);
       setIsRecording(true);
     } catch (err) {
       console.error("Error al iniciar grabación:", err);
