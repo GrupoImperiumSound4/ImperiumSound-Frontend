@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 function Index() {
 
 const navegar = useNavigate();
-const registroURL = "/registro"
+const registroURL = "/inicio"
+
 
 
   return (
