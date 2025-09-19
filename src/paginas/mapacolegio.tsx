@@ -1,6 +1,5 @@
 import "../styles/mapacolegio.css";
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Modal from "react-modal";
 
