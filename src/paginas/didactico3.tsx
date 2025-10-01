@@ -5,6 +5,7 @@ function Didactico3(){
     return(
         <>
         <UpsiteLog></UpsiteLog> 
+        <h1>hola</h1>
 
         </>
     )
