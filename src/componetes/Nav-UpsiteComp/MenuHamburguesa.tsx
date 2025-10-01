@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import menuIcon from "../../../public/menu.svg";
 import "../../styles/menuhamburguesa.css";
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> andres
 const MenuHamburguesa = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navegar = useNavigate();

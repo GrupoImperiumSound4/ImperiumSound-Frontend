@@ -28,7 +28,7 @@ useEffect(()=>{
         <Logo />
         <div className="contenido">
           <NavbarLog />
-          <User />
+          <User/>
         </div>
       </div>
     </>
@@ -99,4 +99,4 @@ export function NavbarLog() {
     <MenuHamburguesa/>
   </>
   );
-}
+} 

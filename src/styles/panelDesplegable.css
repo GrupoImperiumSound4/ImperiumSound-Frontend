@@ -16,7 +16,7 @@
     background-color: #1c0a38; 
     color: white;
 }
-.menu-desplegable {
+.menu-desplegable-xd {
     position: absolute; /* Posiciona el menú absolutamente dentro del contenedor relativo */
     top: 100%; /* Muestra el menú justo debajo del botón */
     right: 0; /* Alinea el menú al lado derecho */
@@ -30,19 +30,19 @@
     text-align: center;
 }
 
-.menu-desplegable ul {
+.menu-desplegable-xd ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.menu-desplegable li {
+.menu-desplegable-xd li {
     padding: 8px;
-    border-bottom: 1px solid #ddd;
+     
     cursor: pointer;
 }
 
-.menu-desplegable li:hover {
+.menu-desplegable-xd li:hover {
     background-color: #f0f0f0;
 }
 #UserBienvenida{
