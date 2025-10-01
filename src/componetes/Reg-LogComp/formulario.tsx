@@ -1,20 +1,20 @@
 // Formulario.tsx
-import  { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import "../../styles/formulario.css";
 import { useNavigate } from "react-router-dom";
 
 interface FormData {
-  userName: string;
-  passw: string;
+  email: string;
+  password: string;
 }
 
 export function Formulario() {
   const navigate = useNavigate();
-  const registroURL = "/registro";
+  const registroURL = "/inicio";
   
   const [formData, setFormData] = useState<FormData>({
-    userName: "",
-    passw: "",
+    email: "",
+    password: "",
   });
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -27,8 +27,8 @@ export function Formulario() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (formData.userName === "" || formData.passw === "") {
-      setError("Porfavor llene todos los campos.");
+    if (formData.email === "" || formData.password === "") {
+      setError("Por favor llene todos los campos.");
       return;
     }
 
@@ -36,25 +36,34 @@ export function Formulario() {
     setError("");
 
     try {
-      const response = await fetch(`https://imperiumsound-backend-production.up.railway.app/login`, {
+      console.log("Intentando conectar a:", "http://localhost:8000/login");
+      console.log("Datos enviados:", formData);
+      
+      const response = await fetch("http://localhost:8000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
         body: JSON.stringify(formData),
       });
 
+      console.log("Respuesta recibida:", response.status);
+
+      const data = await response.json();
+      console.log("Datos de respuesta:", data);
+
       if (!response.ok) {
-        const errorData = await response.json();
-         await console.log(errorData);
-        throw new Error(errorData.error || "Error al Iniciar Sesion");
-        
+        throw new Error(data.detail || "Error al iniciar sesión");
       }
-      await console.log(response);
       navigate("/inicio");
+      
     } catch (error) {
-      setError((error as Error).message);
+      console.error('Error completo:', error);
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        setError("No se puede conectar al servidor. Verifica que el backend esté corriendo en http://localhost:8000");
+      } else {
+        setError((error as Error).message);
+      }
     } finally {
       setLoading(false);
     }
@@ -70,41 +79,51 @@ export function Formulario() {
             <a
               className="formulario-texto-2"
               onClick={() => navigate(registroURL)}
+              style={{ cursor: 'pointer' }}
             >
-              Registrate
+              Regístrate
             </a>
           </div>
         </div>
+        
         <div>
-          <p className="formulario-texto">Usuario</p>
-          <label htmlFor="userName"></label>
+          <p className="formulario-texto">Correo Electrónico</p>
+          <label htmlFor="email"></label>
           <input
             className="inputRqd"
-            id="userName"
-            type="text"
-            name="userName"
-            value={formData.userName}
+            id="email"
+            type="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
+            required
           />
         </div>
+      
         <div>
-          <label htmlFor="passw"></label>
+          <label htmlFor="password"></label>
           <p className="formulario-texto">Contraseña</p>
           <input
             className="inputRqd"
-            id="passw"
+            id="password"
             type="password"
-            name="passw"
-            value={formData.passw}
+            name="password"
+            value={formData.password}
             onChange={handleChange}
+            required
           />
           <p className="formulario-texto-2 hover">¿Olvidaste la contraseña?</p>
         </div>
-        <button type="submit" className="boton-Registrarte1">
-          Iniciar Sesion
+        
+        <button 
+          type="submit" 
+          className="boton-Registrarte1"
+          disabled={loading}
+        >
+          {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
         </button>
+        
         {error && <p className="error-message">{error}</p>}
-        {loading && <p className="loading-message">Cargando...</p>}
       </form>
     </>
   );
