@@ -4,17 +4,7 @@ import menuIcon from "../../../public/menu.svg";
 import "../../styles/menuhamburguesa.css";
 
 
-export function NavbarLog() {
-  const navegar = useNavigate();
-  const inicio = "/inicio";
-  const nosotros = "/nosotros";
-  const objetivos = "/objetivos";
-  const sevicios = "/servicios";
-  const caracteristicas = "/caracteristicas";
-  const contactanos = "/contactanos";
-  const didactico = "/didactico";
-  const colegio = "/colegio"
-}
+
 
 const MenuHamburguesa = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +23,6 @@ const MenuHamburguesa = () => {
         height={32}
         onClick={toggleMenu}
         className="hamburguesa"
-        onClick={toggleMenu}
       />
 
       {isOpen && (

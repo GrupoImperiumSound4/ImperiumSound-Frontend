@@ -36,7 +36,7 @@ export function User() {
         </button>
 
         {isMenuOpen && (
-          <div className="menu-desplegable">
+          <div className="menu-desplegable-xd">
             <ul>
             <p id='UserBienvenida'>¡Hola!</p>
               <a onClick={() => navegar(cuenta)}><li> Cuenta{" "}</li></a>
