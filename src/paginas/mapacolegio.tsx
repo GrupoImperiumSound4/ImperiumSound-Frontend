@@ -9,17 +9,17 @@ const zonasColegio: Record<string, { nombre: string; imagen: string }[]> = {
   piso1: [
     { nombre: "Porteria", imagen: "/img/entrada.png" },
     { nombre: "Papeleria", imagen: "/img/....jpg" },
-    { nombre: "restaurante", imagen: "/img/....jpg" }
+    { nombre: "Restaurante", imagen: "/img/....jpg" }
   ],
   piso2: [
     { nombre: "Zona de informatica", imagen: "/img/laboratorio.jpg" },
-    { nombre: "a", imagen: "/img/aula201.jpg" },
-    { nombre: "b", imagen: "/img/pasillo.jpg" }
+    { nombre: "Algun sito", imagen: "/img/aula201.jpg" },
+    { nombre: "Algun sitio", imagen: "/img/pasillo.jpg" }
   ],
   piso3: [
     { nombre: "Aulas Pacho", imagen: "/img/musica.jpg" },
     { nombre: "Baños zoilo", imagen: "/img/aula301.jpg" },
-    { nombre: "salon catalina", imagen: "/img/oficinas.jpg" }
+    { nombre: "Salon catalina", imagen: "/img/oficinas.jpg" }
   ]
 };
 
@@ -72,29 +72,35 @@ const MapaColegio = () => {
     
       
     <div className="ano">
-        <UpsiteLog></UpsiteLog>
-        {/* Contenedor vertical */}
+        <UpsiteLog/>
         <div className="zonas-container">
-          <p className="txt"> 👋 Bienvenido Querido Profes@r a el lugar donde van a poder registrar el sonido 🔊 </p>
-          {/* Aguamarina - Selector de piso */}
-          <div className="pisos_picados">
-            <button onClick={() => setPiso("piso1")}>Piso 1</button>
-            <button onClick={() => setPiso("piso2")}>Piso 2</button>
-            <button onClick={() => setPiso("piso3")}>Piso 3</button>
-          </div>
+                 
+          <div className="pisos">
+              <div className={`piso1 ${piso === "piso1" ? "activo" : ""}`}>
+              <button onClick={() => setPiso("piso1")}>Piso 1</button></div>
+                                                          
+          <div className={`piso2 ${piso === "piso2" ? "activo" : ""}`}>
+            <button onClick={() => setPiso("piso2")}>Piso 2</button></div>
+ 
+          <div className={`piso3 ${piso === "piso3" ? "activo" : ""}`}>
+              <button onClick={() => setPiso("piso3")}>Piso 3</button></div>
+            
+    </div>
 
-          {/* Azul - Lista de zonas */}
-          <div className="zona zona-azul">
-            {zonasColegio[piso].map((z) => (
-              <button key={z.nombre} onClick={() => seleccionarZona(z)}>
-                {z.nombre}
-              </button>
-            ))}
-          </div>
-        </div>
+      <div className="location">
+        {zonasColegio[piso].map((z) => (
+          <button
+            key={z.nombre}
+            className={`zona-btn ${zona === z.nombre ? "activa" : ""}`}
+            onClick={() => seleccionarZona(z)}
+          >
+            {z.nombre}
+          </button>
+        ))}
+      </div>
+      </div>
         
 
-        {/* Modal */}
         <Modal
           isOpen={modalOpen}
           onRequestClose={() => setModalOpen(false)}

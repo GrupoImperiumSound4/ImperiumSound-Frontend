@@ -182,7 +182,7 @@ function Didactico() {
           <div className="main-meter">
             <div className="meter-header">
               <Volume2 size={40} className="meter-icon" />
-              <h3 className="meter-title">Medidor en Tiempo Real</h3>
+              <h3 className="meter-title">Medidor en Tiempo Real.</h3>
             </div>
 
             <div>

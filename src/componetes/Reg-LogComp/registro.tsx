@@ -4,140 +4,125 @@ import { useNavigate } from "react-router-dom";
 
 export function Registrarse() {
   const navegar = useNavigate();
-  const inicioSesionURL = "/inicio-sesion";
+  const loginURL = "/inicio";
 
-  const [nombre, setNombre] = useState<string>("");
-  const [usuario, setUsuario] = useState<string>("");          // ← estado de usuario
+  const [usuario, setUsuario] = useState<string>("");
   const [correo, setCorreo] = useState<string>("");
   const [contrasena, setContrasena] = useState<string>("");
-  const [confirmarContrasena, setConfirmarContrasena] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const apiUrl =
-    import.meta.env.VITE_API_URL ??
-    "https://imperiumsound-backend-production.up.railway.app";
+  const apiUrl = 'http://localhost:8000';
 
   const manejarSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (contrasena !== confirmarContrasena) {
-      setError("Las contraseñas no coinciden");
+    if (!usuario || !correo || !contrasena) {
+      setError("Por favor llene todos los campos.");
       return;
     }
 
+    setLoading(true);
+    setError("");
+
     const data = {
-      userName: usuario,
-      nombre,
+      name: usuario,
       email: correo,
-      passw: contrasena,
+      password: contrasena,
     };
-    const apiURL = `${apiUrl}/users`;
 
     try {
-      const response = await fetch(apiURL, {
+      const response = await fetch(`${apiUrl}/crear_usuario`, {
         method: "POST",
-        body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
+      const jsonData = await response.json();
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || `Error de red: ${response.status}`);
+        throw new Error(jsonData.detail || `Error: ${response.status}`);
       }
 
-      const json = await response.json();
-      console.log("Registro exitoso:", json);
-      navegar(inicioSesionURL);
+      console.log("Registro exitoso:", jsonData);
+      
+      navegar(loginURL);
+      
     } catch (err) {
       console.error("Error en la solicitud:", err);
-      setError("Ingrese todos los campos correctamente.");
+      setError((err as Error).message || "No se pudo completar el registro.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <>
-      <form className="formulario" onSubmit={manejarSubmit}>
-        <div className="flexp">
-          <h1 className="formulario-titulo">Regístrate</h1>
-          <div className="flex">
-            <p className="formulario-texto-2 txt-f">¿Ya tienes cuenta?</p>
-            <a
-              className="formulario-texto-2"
-              onClick={() => navegar(inicioSesionURL)}
-            >
-              Inicia sesión
-            </a>
-          </div>
+    <form className="formulario" onSubmit={manejarSubmit}>
+      <div className="flexp">
+        <h1 className="formulario-titulo">Regístrate</h1>
+        <div className="flex">
+          <p className="formulario-texto-2 txt-f">¿Ya tienes cuenta?</p>
+          <a
+            className="formulario-texto-2"
+            onClick={() => navegar(loginURL)}
+            style={{ cursor: 'pointer' }}
+          >
+            Inicia sesión
+          </a>
         </div>
+      </div>
 
-        {/* Campo nombre completo */}
-        <div id="a">
-          <p className="formulario-texto">Nombre Completo</p>
-          <input
-            className="inputRqd"
-            id="nombre"
-            type="text"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-          />
-        </div>
+      <div id="a">
+        <p className="formulario-texto">Nombre de Usuario</p>
+        <input
+          className="inputRqd"
+          id="name"
+          type="text"
+          value={usuario}
+          onChange={(e) => setUsuario(e.target.value)}
+          required
+          disabled={loading}
+        />
+      </div>
 
-        {/* Nuevo campo usuario */}
-        <div id="a">
-          <p className="formulario-texto">Nombre de Usuario</p>
-          <input
-            className="inputRqd"
-            id="usuario"
-            type="text"
-            value={usuario}
-            onChange={(e) => setUsuario(e.target.value)}
-          />
-        </div>
+      <div id="a">
+        <p className="formulario-texto">Correo Electrónico</p>
+        <input
+          className="inputRqd"
+          id="email"
+          type="email"
+          value={correo}
+          onChange={(e) => setCorreo(e.target.value)}
+          required
+          disabled={loading}
+        />
+      </div>
 
-        {/* Campo correo */}
-        <div id="a">
-          <p className="formulario-texto">Correo Electrónico</p>
-          <input
-            className="inputRqd"
-            id="correo"
-            type="email"
-            value={correo}
-            onChange={(e) => setCorreo(e.target.value)}
-          />
-        </div>
+      <div id="a">
+        <p className="formulario-texto">Contraseña</p>
+        <input
+          className="inputRqd"
+          id="password"
+          type="password"
+          value={contrasena}
+          onChange={(e) => setContrasena(e.target.value)}
+          required
+          minLength={6}
+          disabled={loading}
+        />
+      </div>
 
-        {/* Campo contraseña */}
-        <div id="a">
-          <p className="formulario-texto">Contraseña</p>
-          <input
-            className="inputRqd"
-            id="contrasena"
-            type="password"
-            value={contrasena}
-            onChange={(e) => setContrasena(e.target.value)}
-          />
-        </div>
-
-        {/* Confirmar contraseña */}
-        <div id="a">
-          <p className="formulario-texto">Confirmar Contraseña</p>
-          <input
-            className="inputRqd"
-            id="Ccontrasena"
-            type="password"
-            value={confirmarContrasena}
-            onChange={(e) => setConfirmarContrasena(e.target.value)}
-          />
-        </div>
-
-        <div id="a">
-          <button type="submit" className="boton-Registrarte">
-            Registrarse
-          </button>
-        </div>
-        {error && <p className="error-message">{error}</p>}
-      </form>
-    </>
+      <div id="a">
+        <button 
+          type="submit" 
+          className="boton-Registrarte"
+          disabled={loading}
+        >
+          {loading ? 'Registrando...' : 'Registrarse'}
+        </button>
+      </div>
+      
+      {error && <p className="error-message">{error}</p>}
+    </form>
   );
 }
-
