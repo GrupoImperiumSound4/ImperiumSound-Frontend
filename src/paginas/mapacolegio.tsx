@@ -7,34 +7,56 @@ Modal.setAppElement("#root");
 
 // Mapeo de zonas a IDs de la base de datos
 const zonasToPointId: Record<string, number> = {
+  "Cafeteria": 11,
+  "Patio salon": 12,
+  "Mesas": 13,
   "Porteria": 1,
   "Papeleria": 2,
-  "restaurante": 3,
-  "Zona de informatica": 4,
-  "a": 5,
-  "b": 6,
-  "Aulas Pacho": 7,
-  "Baños zoilo": 8,
-  "salon catalina": 9,
-  "Salon primo": 10
+  "Restaurante": 3,
+  "Tienda": 14,
+  "Baños Sexto": 15,
+  "Aulas de informatica": 4,
+  "Pasillo docentes de español": 16,  
+  "Baños Septimo": 17,
+  "Pasillo Artistica":18,
+  "Pasillo de Sugey": 19,
+  "Pasillo de pacho": 7,
+  "Pasillo Zoilo": 8,
+  "Pasillo de catalina": 9,
+  "Pasillo de Mónica": 10,
+  "Pasillo Santa": 20,
+  "Auditorio":21
 };
 
 const zonasColegio: Record<string, { nombre: string; imagen: string }[]> = {
+  sotano: [
+    { nombre: "Cafeteria", imagen: "/img/entrada.png" },
+    { nombre: "Patio salon", imagen: "/img/entrada.png" },
+    { nombre: "Mesas", imagen: "/img/entrada.png" }
+  ],
   piso1: [
     { nombre: "Porteria", imagen: "/img/entrada.png" },
     { nombre: "Papeleria", imagen: "/img/....jpg" },
-    { nombre: "restaurante", imagen: "/img/....jpg" }
+    { nombre: "Restaurante", imagen: "/img/....jpg" },
+    { nombre: "Tienda", imagen: "/img/....jpg" },
+    { nombre: "Baños Sexto", imagen: "/img/....jpg" }
   ],
   piso2: [
-    { nombre: "Zona de informatica", imagen: "/img/laboratorio.jpg" },
-    { nombre: "a", imagen: "/img/aula201.jpg" },
-    { nombre: "b", imagen: "/img/pasillo.jpg" }
+    { nombre: "Aulas de informatica", imagen: "/img/laboratorio.jpg" },
+    { nombre: "Pasillo docentes de español", imagen: "/img/aula201.jpg" },
+    { nombre: "Baños Septimo", imagen: "/img/pasillo.jpg" },
+    { nombre: "Pasillo Artistica", imagen: "/img/pasillo.jpg" },
+    { nombre: "Pasillo de Sugey", imagen: "/img/pasillo.jpg" }
   ],
   piso3: [
-    { nombre: "Aulas Pacho", imagen: "/img/musica.jpg" },
-    { nombre: "Baños zoilo", imagen: "/img/aula301.jpg" },
-    { nombre: "salon catalina", imagen: "/img/oficinas.jpg" },
-    { nombre: "Salon primo", imagen: "/img/mate.jpg"}
+    { nombre: "Pasillo de pacho", imagen: "/img/musica.jpg" },
+    { nombre: "Pasillo Zoilo", imagen: "/img/aula301.jpg" },
+    { nombre: "Pasillo de catalina", imagen: "/img/oficinas.jpg" },
+    { nombre: "Pasillo de Mónica", imagen: "/img/mate.jpg"},
+    { nombre: "Pasillo de Santa", imagen: "/img/mate.jpg"}
+  ],
+  piso4: [
+    { nombre: "Auditorio", imagen: "/img/entrada.png" }
   ]
 };
 
@@ -275,9 +297,11 @@ const MapaColegio = () => {
         <p className="txt"> 👋 Bienvenido Querido Profes@r a el lugar donde van a poder registrar el sonido 📊 </p>
         
         <div className="pisos_picados">
+          <button onClick={() => setPiso("sotano")}>Sotano</button>
           <button onClick={() => setPiso("piso1")}>Piso 1</button>
           <button onClick={() => setPiso("piso2")}>Piso 2</button>
           <button onClick={() => setPiso("piso3")}>Piso 3</button>
+          <button onClick={() => setPiso("piso4")}>Piso 4</button>
         </div>
 
         <div className="zona zona-azul">
@@ -357,7 +381,7 @@ const MapaColegio = () => {
             <div style={{ 
               margin: "10px 0", 
               padding: "8px", 
-              background: "#e8f5e9", 
+              background: "#ff4646ff", 
               borderRadius: "5px" 
             }}>
               <strong>Decibeles máximos registrados: {highestDb.toFixed(1)} dB</strong>
