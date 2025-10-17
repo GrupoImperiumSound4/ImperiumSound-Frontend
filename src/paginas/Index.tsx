@@ -27,7 +27,10 @@ const registroURL = "/Registro"
           La contaminación auditiva afecta nuestra salud más de lo que creemos. Aquí encontrarás información clara, actividades interactivas y recursos útiles para aprender a proteger tu audición de manera didáctica y entretenida.
         </div>
         <a onClick={() => navegar(registroURL)}><button className="boton-registrarme">
+          
         <div className="bolita"></div>REGISTRARME</button></a>
+        
+
 
        
         
