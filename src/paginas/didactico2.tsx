@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import VoiceFlappy from "../componetes/FlappyVoice/VoiceFlappy";
 

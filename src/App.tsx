@@ -14,7 +14,7 @@ import Cuenta from "./paginas/PanelUsuario";
 import MicroUP from "./paginas/MicroUP";
 import SoporteUp from "./paginas/SoporteUP";
 import Foro from "./paginas/Foro";
-import MapaColegio from "./componetes/UserComp/MapaComp/MapaColegio"; 
+import MapaColegio from "./paginas/mapacolegio"; 
 import Didactico from "./paginas/didactico";
 import Didactico2 from "./paginas/didactico2";
 import Didactico3 from "./paginas/didactico3";

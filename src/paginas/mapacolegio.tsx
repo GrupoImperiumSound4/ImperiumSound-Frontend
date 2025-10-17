@@ -74,7 +74,6 @@ const MapaColegio = () => {
     <div className="ano">
         <UpsiteLog/>
         <div className="zonas-container">
-                 
           <div className="pisos">
               <div className={`piso1 ${piso === "piso1" ? "activo" : ""}`}>
               <button onClick={() => setPiso("piso1")}>Piso 1</button></div>
