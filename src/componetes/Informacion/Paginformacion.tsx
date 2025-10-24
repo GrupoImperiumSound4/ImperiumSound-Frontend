@@ -1,9 +1,5 @@
 import { useState } from "react";
 import "../../styles/PagInfo.css";
-import oido from "public/img/oido.jpg"
-import propiedadessonido from "public/img/propiedades-sonido.png"
-import frecuenciabaja from "public/img/baja-frecuencia.png"
-import frecuenciaalta from "public/img/alta-frecuencia.png"
 
 export const PagInfo = () => {
   const [modalAbierto, setModalAbierto] = useState(false);
@@ -92,7 +88,7 @@ export const PagInfo = () => {
             </button>
           </div>
           <div className="contenido-imagen">
-            <img src={oido} alt="Aplicaciones" className="imagen"/>
+            <img src="/img/oido.jpg" alt="Aplicaciones" className="imagen"/>
           </div>
         </section>
 
@@ -167,7 +163,7 @@ export const PagInfo = () => {
             </p>
           </div>
           <div className="contenido-imagen">
-            <img src={propiedadessonido} alt="Propiedades" className="imagen"/>
+            <img src="/img/propiedades-sonido.png" alt="Propiedades" className="imagen"/>
           </div>
         </section>
 
@@ -175,11 +171,11 @@ export const PagInfo = () => {
 
         <section className="seccion-dos-imagenes">
           <div className="imagen-dual">
-            <img src={frecuenciabaja} alt="Frecuencia baja" />
+            <img src="/img/baja-frecuencia.png" alt="Frecuencia baja" />
             <div className="caption">Baja frecuencia</div>
           </div>
           <div className="imagen-dual">
-            <img src={frecuenciaalta} alt="Frecuencia alta" />
+            <img src="/img/alta-frecuencia.png" alt="Frecuencia alta" />
             <div className="caption">Alta frecuencia</div>
           </div>
         </section>
