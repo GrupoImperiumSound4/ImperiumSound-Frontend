@@ -1,5 +1,10 @@
 import { useState } from "react";
 import "../../styles/PagInfo.css";
+import decibeles from "public/img/decibeles.png" 
+import oido from "public/img/oido.jpg"
+import propiedadessonido from "public/img/propiedades-sonido.png"
+import frecuenciabaja from "public/img/baja-frecuencia.png"
+import frecuenciaalta from "public/img/alta-frecuencia.png"
 
 export const PagInfo = () => {
   const [modalAbierto, setModalAbierto] = useState(false);
@@ -56,7 +61,7 @@ export const PagInfo = () => {
 
         <section className="seccion-contenido">
           <div className="contenido-imagen">
-            <img src="public/img/decibeles.png" alt="Ondas" className="imagen"/>
+            <img src={decibeles} alt="Ondas" className="imagen"/>
           </div>
           <div className="contenido-texto">
             <h2>¿Sabes que son los decibeles?</h2>
@@ -88,7 +93,7 @@ export const PagInfo = () => {
             </button>
           </div>
           <div className="contenido-imagen">
-            <img src="public/img/oido.jpg" alt="Aplicaciones" className="imagen"/>
+            <img src={oido} alt="Aplicaciones" className="imagen"/>
           </div>
         </section>
 
@@ -111,6 +116,11 @@ export const PagInfo = () => {
             </p>
           </div>
         </section>
+
+                {/* CAMBIARRRRRRRRRRRRRRRRRRR */}
+                                {/* CAMBIARRRRRRRRRRRRRRRRRRR */}
+                                                {/* CAMBIARRRRRRRRRRRRRRRRRRR */}
+                                                                {/* CAMBIARRRRRRRRRRRRRRRRRRR */}
 
 
         <section className="seccion-galeria">
@@ -158,7 +168,7 @@ export const PagInfo = () => {
             </p>
           </div>
           <div className="contenido-imagen">
-            <img src="public/img/propiedades-sonido.png" alt="Propiedades" className="imagen"/>
+            <img src={propiedadessonido} alt="Propiedades" className="imagen"/>
           </div>
         </section>
 
@@ -166,11 +176,11 @@ export const PagInfo = () => {
 
         <section className="seccion-dos-imagenes">
           <div className="imagen-dual">
-            <img src="public/img/baja-frecuencia.png" alt="Frecuencia baja" />
+            <img src={frecuenciabaja} alt="Frecuencia baja" />
             <div className="caption">Baja frecuencia</div>
           </div>
           <div className="imagen-dual">
-            <img src="public/img/alta-frecuencia.png" alt="Frecuencia alta" />
+            <img src={frecuenciaalta} alt="Frecuencia alta" />
             <div className="caption">Alta frecuencia</div>
           </div>
         </section>
