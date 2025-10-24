@@ -1,6 +1,8 @@
 import "../styles/DecibelEducationalPage.css";
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import React, { useEffect, useState, useRef } from "react";
+import AcceInf from "../componetes/InfoComp/info"
+
 
 interface SoundExample {
   name: string;
@@ -17,7 +19,7 @@ interface Category {
   icon: string;
 }
 
-// Props para los iconos
+
 interface IconProps {
   size?: number;
   className?: string;
@@ -326,6 +328,7 @@ function Didactico() {
             </div>
           )}
         </div>
+        <AcceInf/>
       </div>
     </>
   );

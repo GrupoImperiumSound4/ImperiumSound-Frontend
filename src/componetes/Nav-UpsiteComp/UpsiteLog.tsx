@@ -4,6 +4,8 @@ import { User } from "../UserComp/User";
 import { ValidToken } from "../ValidToken/ValidToken";
 import { useEffect } from "react";
 import MenuHamburguesa from "./MenuHamburguesa";
+import { IconGame } from "./Game";
+
 export function UpsiteLog() {
 const navigate = useNavigate()
 const isLogin = async () =>{
@@ -28,6 +30,7 @@ useEffect(()=>{
         <Logo />
         <div className="contenido">
           <NavbarLog />
+          <IconGame />
           <User/>
         </div>
       </div>
@@ -38,14 +41,7 @@ useEffect(()=>{
 export function NavbarLog() {
   const navegar = useNavigate();
   const inicio = "/inicio";
-  const nosotros = "/nosotros";
-  const objetivos = "/objetivos";
-  const sevicios = "/servicios";
-  const caracteristicas = "/caracteristicas";
-  const contactanos = "/contactanos";
   const didactico = "/didactico";
-  const didactico2 = "/didactico2";
-  const didactico3 = "/didactico3";
   const colegio = "/colegio"
 
 
@@ -61,37 +57,10 @@ export function NavbarLog() {
           {" "}
           Conoce
         </a>
-        <a className="txt-navbar" onClick={() => navegar(didactico2)}>
-          {" "}
-          Conoce2
-        </a>
-        <a className="txt-navbar" onClick={() => navegar(didactico3)}>
-          {" "}
-          Conoce3
-        </a>
+        
         <a className="txt-navbar" onClick={() => navegar(colegio)}>
           {" "}
           Colegio
-        </a>
-        <a className="txt-navbar" onClick={() => navegar(nosotros)}>
-          {" "}
-          Nosotros
-        </a>
-        <a className="txt-navbar" onClick={() => navegar(objetivos)}>
-          {" "}
-          Objetivos
-        </a>
-        <a className="txt-navbar" onClick={() => navegar(sevicios)}>
-          {" "}
-          Servicios
-        </a>
-        <a className="txt-navbar" onClick={() => navegar(caracteristicas)}>
-          {" "}
-          Caracteristicas
-        </a>
-        <a className="txt-navbar" onClick={() => navegar(contactanos)}>
-          {" "}
-          Contactanos
         </a>
       </div>
     </div>  

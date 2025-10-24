@@ -1,6 +1,7 @@
 
 import "../styles/inicio.css";
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
+import  Info from "../componetes/InfoComp/info"
 
 
 function PagInicio() {
@@ -23,7 +24,9 @@ function PagInicio() {
         </p>
       </div>
       <div className="senor1" />
+      <Info />
       </div>
+      
       
       
     </>

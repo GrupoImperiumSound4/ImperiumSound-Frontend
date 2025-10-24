@@ -1,36 +1,17 @@
-.PQRcont{
+.ContainerUser-sp{
+    background-color: #18042c;
+    width: 115em;   
+    height: 56em;
     position: absolute;
-    height: 37em;
-    width: 70em;
-    margin-left: 14em;
-    border-radius: 1.5em;
+    top: 29em;
+    left: 60em;
+    transform: translate(-57.5em, -27em);
+    border-radius: 2em;
 }
 
-.divtit{
-    text-align: center;
-    margin-top: 8em ;
-}
-.Titulosop{
-    color: aqua;
-}
-.linktop{
-    margin-top: 2em;
-    text-decoration: none;
-}
-@media(max-width: 1366px){
-
-    .PQRcont{
-    position: absolute;
-    height: 25em;
-    width: 59em;
-    margin-left: 3em;
-    border-radius: 1.5em;
-}
-
-.TextProbiPQR{
-    font-size: 1.5em;
-    text-align: center;
-    margin-top: 7em ;
-}
-
+.txt-provicional{
+    display: flex;
+    margin-left : 35%;
+    margin-right: 20%;
+    margin-top: 15%;
 }

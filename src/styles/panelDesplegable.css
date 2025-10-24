@@ -17,35 +17,46 @@
     color: white;
 }
 .menu-desplegable-xd {
-    position: absolute; /* Posiciona el menú absolutamente dentro del contenedor relativo */
-    top: 100%; /* Muestra el menú justo debajo del botón */
-    right: 0; /* Alinea el menú al lado derecho */
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Asegura que el menú esté frente a otros elementos */
-    width: 14em; /* Ajusta el ancho del menú */
-    color: rgba(82, 82, 82, 0.76);
-    text-align: center;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 14em;
+  color: rgba(82, 82, 82, 0.76);
+  text-align: center;
+  opacity: 0;
+  transform: translateX(50px);
+  pointer-events: none;
+  transition: all 0.8s ease;
 }
 
+.menu-desplegable-xd.activo {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* Estilo del texto y hover */
 .menu-desplegable-xd ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .menu-desplegable-xd li {
-    padding: 8px;
-     
-    cursor: pointer;
+  padding: 8px;
+  cursor: pointer;
 }
 
 .menu-desplegable-xd li:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
-#UserBienvenida{
-    margin-bottom: -0.0001em;
-    border-bottom: 1px solid #b4b1b1;
+
+#UserBienvenida {
+  margin-bottom: 0.3em;
+  border-bottom: 1px solid #b4b1b1;
 }

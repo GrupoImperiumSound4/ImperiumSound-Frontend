@@ -28,19 +28,16 @@ const MenuHamburguesa = () => {
         {isOpen && (
           <motion.div
             className="menu-desplegable"
-            initial={{ opacity: 0, x: 10 }} 
+            initial={{ opacity: 0, x: 50 }} 
             animate={{ opacity: 1, x: 0 }}       
-            exit={{ opacity: 0, x: 10 }}       
+            exit={{ opacity: 0, x: 50 }}       
             transition={{ duration: 0.5 }}       
           >
             <a className="txt-navbar-mv" onClick={() => navegar("/inicio")}>Inicio</a>
             <a className="txt-navbar-mv" onClick={() => navegar("/didactico")}>Conoce</a>
+            <a className="txt-navbar-mv" onClick={() => navegar("/didadctio2")}>JaviBlock</a>
             <a className="txt-navbar-mv" onClick={() => navegar("/colegio")}>Colegio</a>
-            <a className="txt-navbar-mv" onClick={() => navegar("/nosotros")}>Nosotros</a>
-            <a className="txt-navbar-mv" onClick={() => navegar("/objetivos")}>Objetivos</a>
-            <a className="txt-navbar-mv" onClick={() => navegar("/servicios")}>Servicios</a>
-            <a className="txt-navbar-mv" onClick={() => navegar("/caracteristicas")}>Características</a>
-            <a className="txt-navbar-mv" onClick={() => navegar("/contactanos")}>Contáctanos</a>
+        
           </motion.div>
         )}
       </AnimatePresence>
