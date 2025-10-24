@@ -4,10 +4,12 @@ import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import NosotrosLog from "../componetes/NosotrosComp/Nosotros1";
 import NosotrosLog2 from "../componetes/NosotrosComp/Nosotros2";
 import NosotrosLog3 from "../componetes/NosotrosComp/Nosotros3";
+import AcceInf from "../componetes/InfoComp/info"
 function Nosotros() {
   return (
     <>
     <UpsiteLog></UpsiteLog>
+    <AcceInf/>
     <div className="tituloObje"><h1>NOSOTROS</h1></div>
     <div className="contenedor1">
         <div className="tarjeta1">

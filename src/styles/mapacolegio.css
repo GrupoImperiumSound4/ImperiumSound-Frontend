@@ -1,6 +1,6 @@
 
 .zonas-container{
-    background-color: #2b0e47;
+  background-color: #2b0e47;
   border-radius: 1rem;
   padding: 2rem;
   margin-bottom: 2rem;
@@ -8,42 +8,124 @@
   margin-left: 6em;
   height: 44em;
   width: 104em;
-  border: 1px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   text-align: center;
   
   display: flex;
-  
   flex-direction:column;
         
 }
+
+.mensaje-animacion{
+  margin: 0 auto;
+  margin-top: 9em;
+  margin-bottom: 9em;
+  border-radius: 5px;
+  text-align: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s ease;
+  
+}
+
+
+
+.mensaje-animacion.oculto {
+  opacity: 0;
+  transform: translateY(-50px);
+  pointer-events: none;
+  
+}
+
+
+
+
 .pisos {
-  display: flex;  
-  gap: 5px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  transition: transform 0.8s ease,
+  opacity 0.8s ease;
+  
+}
+
+.pisos.arriba {
+  transform: translateY(-320px);
+}
+
+
+.sotano{
+    height: 20em;
+    width: 20em;
+    display: flex;
+    
 }
 .piso1{
     height: 20em;
-    width: 40em;
+    width: 20em;
+    padding-left: 10px;
     display: flex;
     
-    
-    
 
+}  
+
+.piso2{
+    height: 20em;
+    width: 20em;
+    padding-left: 10px;
+    display: flex;
+    
 }
+  .piso3{
+    height: 20em;
+    width: 20em;
+    padding-left: 10px;
+    display: flex;
+    
+}
+    .piso4{
+    height: 20em;
+    width: 20em;
+    padding-left: 10px;
+    display: flex;
+    
+}
+     
+    .sotano button,
     .piso1 button,
     .piso2 button,
-    .piso3 button { 
+    .piso3 button,
+    .piso4 button {
+        width:  100%;
+        height: 100%;
+        font-size: 1rem;
+        cursor: pointer;
+        background-color: #661ec4;
+        border-color: transparent;
+        border-radius: 5px;   
         transition: background-color 0.3s ease, transform 0.3s ease;
-         transform-origin: bottom;
+        transform-origin: bottom;
+       
         
     }
-
+    .sotano :hover,
     .piso1 :hover,
     .piso2 :hover,
-    .piso3 :hover {
+    .piso3 :hover,
+    .piso4 :hover {
         background-color:#4c0ca0;
         box-shadow: 0 0 25px rgba(44, 5, 80, 0.6); 
-        transform: scale(1.09);
+        transform: scale(1.05);
+    }
+    
+    .sotano.activo button,
+    .piso1.activo button,
+    .piso2.activo button,
+    .piso3.activo button,
+    .piso4.activo button {
+        transform: scale(1.05);
+        background-color:#4c0ca0;
+        box-shadow: 0 0 25px rgba(44, 5, 80, 0.6); 
     }
 
     .piso1.activo button,
@@ -61,209 +143,338 @@
     
     
 
-  .piso2{
-    height: 20em;
-    width: 40em;
-    padding-left: 7px;
-    display: flex;
-    
-}
-  .piso3{
-    height: 20em;
-    width: 40em;
-    padding-left: 7px;
-    display: flex;
-    
-  }
-        
+     
 
 
   .location{
     cursor: pointer color;
-    height: 20em;
+    min-height: 20em;
+    width: auto;
     display: flex;
-    margin-top: auto;
     margin-left: -6px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: all 0.6s ease;
+    pointer-events: none;
+    gap: 10px;
+
     
 }
+
+    .location.mostrar{
+      opacity: 1;
+      transform: translateY(-250px);
+      pointer-events: all;
+    }
+
     .location button{
-        width:  100%;
-        height: 100%;
+            
+        height: 20em;
+        width: 100%;
+        max-width: 100em;
+        gap: 5px;
         font-size: 1rem;
         cursor: pointer;
         margin-left: 10px;
         border-color: transparent;
         border-radius: 5px;
-        transform-origin: bottom ;
+        transform-origin: top ;
         background-color: royalblue;
         
     }
     .location button:hover{
     background-color:rgb(38, 85, 228); 
     transition: all 0.3s ease;
-    box-shadow: 0 0 25px rgba(147, 51, 234, 0.6); 
+    box-shadow: 0 0 25px rgba(44, 5, 80, 0.6); 
     transform: scale(1.05);
     
     }
-
-    .location button.activa{
-         background-color: royalblue;
-        box-shadow: 0 0 25px rgba(44, 5, 80, 0.6); 
+    .location button.activa {
+        transform: scale(1.05);
+        background-color:rgb(38, 85, 228); 
+        transition: all 0.3s ease;
+        box-shadow: 0 0 25px rgba(44, 5, 80, 0.6);  
     }
-.txt{
-    margin-top: 4em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+
+    .location:has(button:only-child) {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .location:has(button:only-child) button {
+      width: 90%;              
+      height: 12em;            
+     font-size: 1.3rem;       
+     background-color: rgb(65, 105, 225);
+      transition: all 0.3s ease;
+    }
     
-}
+    .location:has(button:nth-child(3):last-child){
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
 
+    }
 
-.zona-azul {
-    text-align: center;
+    .barra-db{
+      width: 100%;
+      height: 2em;
+    }
+
+    .info-db{
+      background-color: darkgray;
+      height: 2em;
+      padding: 8px;
+      
+    }
+
+    .iniciar-loro{
+      height: 3em;
+      border-radius: 5px;
+      background-color: royalblue;
+    }
+
+    .iniciar-loro button :hover{
+      background-color: aqua;
+     
+    }
+
+    .txt-iniciar{
+      font-size: 1.5em;
+      
+    }
     
-    display: flex;
-    position:absolute;
-    background-color: blue;
-    
-}
-
-.zona {
-    display: flex;
-  padding: 1em;
-  
-}
-
-.boxcontent{
-    background-color: #18042c;
-    width: 115em;   
-    height: 58em;
-    position: absolute;
-    top: 29em;
-    left: 60em;
-    transform: translate(-57.5em, -27em);
-    border-radius: 2em;
-} 
-.ContenedorListaUser{
-    display: flex;
-
-}
-.boxinfocontent{
-    position: absolute;
-    top: 50%;
-    transform: translate(-0%, -50%);
-}
-
-#ListaUser{
-    text-decoration: none;
-    list-style: none;
-    letter-spacing: 0.1em;
-    font-size: 0.8em;
-    padding: 1em;
-    color: white;
-}
 
 
-.Mapcontent{
 
-    position: absolute;
-    height: 37em;
-    width: 70em;
-    margin-left: 14em;
-    border-radius: 1.5em;
-
-}
-
-.col{
-    
-    height: 10em;
-    width: 3em;
-}
-
-.TextProbi{
-    font-size: 1.7em;
-    text-align: center;
-    margin-top: 10em ;
-}
 
 @media(max-width: 1366px){
-    .zonas-container{
-    background-color: #2b0e47;
+  .zonas-container{
+  background-color: #2b0e47;
   border-radius: 1rem;
   padding: 2rem;
   margin-bottom: 2rem;
-  margin-top: 3em;
-  margin-left: 6em;
-  height: 26em;
-  width: 70em;
-  border: 1px;
+  margin-top: 1em;
+  margin-left: 1em;
+  height: 29.5em;
+  width: 79.5em;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   text-align: center;
-  box-shadow: 0 0 6px rgba(147, 51, 234, 0.6); 
   display: flex;
-  
   flex-direction:column;
         
 }
+
+.mensaje-animacion{
+  margin: 0 auto;
+  margin-top: 6em;
+  margin-bottom: 6em;
+  border-radius: 5px;
+  text-align: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s ease;
+  
+}
+
+
+
+.mensaje-animacion.oculto {
+  opacity: 0;
+  transform: translateY(-100px);
+  pointer-events: none;
+  
+}
+
+
+
+
 .pisos {
-  display: flex;  
-  gap: 5px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  transition: transform 0.8s ease,
+  opacity 0.8s ease;
+  
+}
+
+.pisos.arriba {
+  transform: translateY(-240px);
+}
+
+
+.sotano{
+    height: 15em;
+    width: 20em;
+    display: flex;
+    
 }
 .piso1{
-    height: 20em;
-    width: 40em;
+    height: 15em;
+    width: 20em;
+    padding-left: 10px;
     display: flex;
+    
 
+}  
+
+.piso2{
+    height: 15em;
+    width: 20em;
+    padding-left: 10px;
+    display: flex;
+    
 }
+  .piso3{
+    height: 15em;
+    width: 20em;
+    padding-left: 10px;
+    display: flex;
+    
+}
+    .piso4{
+    height: 15em;
+    width: 20em;
+    padding-left: 10px;
+    display: flex;
+    
+}
+     
+    .sotano button,
     .piso1 button,
     .piso2 button,
-    .piso3 button {
+    .piso3 button,
+    .piso4 button {
         width:  100%;
         height: 100%;
         font-size: 1rem;
         cursor: pointer;
         background-color: #661ec4;
         border-color: transparent;
-        border-radius: 5px;
+        border-radius: 5px;   
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        transform-origin: bottom;
+       
         
     }
-
-  .piso2{
-    height: 20em;
-    width: 40em;
-    padding-left: 7px;
-    display: flex;
+    .sotano :hover,
+    .piso1 :hover,
+    .piso2 :hover,
+    .piso3 :hover,
+    .piso4 :hover {
+        background-color:#4c0ca0;
+        box-shadow: 0 0 25px rgba(44, 5, 80, 0.6); 
+        transform: scale(1.05);
+    }
     
-}
-  .piso3{
-    height: 20em;
-    width: 40em;
-    padding-left: 7px;
-    display: flex;
+    .sotano.activo button,
+    .piso1.activo button,
+    .piso2.activo button,
+    .piso3.activo button,
+    .piso4.activo button {
+        transform: scale(1.05);
+        background-color:#4c0ca0;
+        box-shadow: 0 0 25px rgba(44, 5, 80, 0.6); 
+    }
+    
 
-  }
+     
+
 
   .location{
     cursor: pointer color;
-    height: 10em;
+    min-height: 15em;
+    width: 80em;
     display: flex;
-    margin-top: auto;
+    margin-left: -6px;
+    transition: all 0.6s ease;
+    pointer-events: none;
+    gap: 10px;
+
     
 }
+
+    .location.mostrar{
+      opacity: 1;
+      transform: translateY(-230px);
+      pointer-events: all;
+    }
+
     .location button{
-        width:  100%;
-        height: 100%;
+        background-color: #2b0e47;
+        height: 15em;
+        width: 100%;
+        max-width: 100em;
+        gap: 5px;
         font-size: 1rem;
         cursor: pointer;
         margin-left: 10px;
         border-color: transparent;
         border-radius: 5px;
+        transform-origin: top ;
+        background-color: royalblue;
         
     }
+    .location button:hover{
+    background-color:rgb(38, 85, 228); 
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(44, 5, 80, 0.6); 
+    transform: scale(1.05);
+    
+    }
+
+    .location button.activa {
+        transform: scale(1.05);
+        background-color:rgb(38, 85, 228); 
+        transition: all 0.3s ease;
+        box-shadow: 0 0 25px rgba(44, 5, 80, 0.6);  
+    }
+
+    .location:has(button:only-child) {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .location:has(button:only-child) button {
+      width: 90%;              
+      height: 12em;            
+     font-size: 1.3rem;       
+     background-color: rgb(65, 105, 225);
+     
+      transition: all 0.3s ease;
+    }
+    
+    .location:has(button:nth-child(3):last-child){
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      
+
+    }
+
+    .barra-db{
+      width: 100%;
+      height: 2em;
+    }
+
+    .info-db{
+      background-color: darkgray;
+      height: 2em;
+      padding: 8px;
+      
+    }
+
+    .iniciar-loro{
+      height: 3em;
+      border-radius: 5px;
+      background-color: royalblue;
+    }
+
+    .iniciar-loro button :hover{
+      background-color: aqua;
+     
+    }
+
+    .txt-iniciar{
+      font-size: 1.5em;
+      
+    }
 }
-
-
-

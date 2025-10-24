@@ -22,8 +22,8 @@
       
       background-color: white;
       color: rgba(82, 82, 82, 0.76);
-      width: 12.3em;
-      height: 16.5em;
+      width: 12.2em;
+      height: 8em;
       position: absolute;
       right: 0;
       margin-right: 2em;
@@ -38,14 +38,17 @@
       border: 1px solid #ddd;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       
+      
 
       }
       
 
     .txt-navbar-mv{
-      border-bottom: 1px solid #ddd;
+
       padding: 1px
     }  
+
+    
   
 
 }

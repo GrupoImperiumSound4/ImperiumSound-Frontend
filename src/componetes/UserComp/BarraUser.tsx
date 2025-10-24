@@ -33,7 +33,7 @@ function BarraUser() {
   }, []);
 
   const nombre = user?.nombre;
-  const email = "lola@gmail.com";
+  const email = "";
 
   return (
     <>
@@ -67,8 +67,7 @@ function BarraUser() {
           <br />
           <p id="TxtUser">Correo: {email}</p>
           <br />
-          <p id="TxtUser">Se unió en Noviembre 8 del 2024</p>
-
+          
           <div className="ContenedorUserFoto">
             <img
               id="ImagenUser"

@@ -1,0 +1,55 @@
+.cont-mayor{
+    
+ position: fixed;     
+  bottom: 20px;        
+  right: 20px;       
+  
+  padding: 10px;
+  border-radius: 9px;
+}
+
+.menu-desplegable-info{
+  position: fixed;             
+  top: 720px;                   
+  right: 40px;
+  width: 15em;
+  text-align: center; 
+  color: black;                  
+  background-color: #402484;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  z-index: 999999;              
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 1em;
+}
+
+.sexiones{
+  padding: 2px;
+}
+
+.menu-desplegable-info :hover{
+  color: #d98df0;
+}
+
+@media(max-width: 1366px){
+  .menu-desplegable-info{
+  position: fixed;             
+  top: 436px;                   
+  right: 40px;
+  width: 15em;
+  text-align: center; 
+  color: black;                  
+  background-color: #661ec4;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  z-index: 999999;              
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+}
