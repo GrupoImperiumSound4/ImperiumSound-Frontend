@@ -1,0 +1,28 @@
+.jarra{
+  position: absolute;             
+  top: 99px;                   
+  right: 40px;
+  width: 12em;
+  text-align: center; 
+  color: rgba(82, 82, 82, 0.76);                  
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+              
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  margin-right: 1.5em;
+  font-size: 1em;
+}
+
+.icon-jugo{
+    margin-right: 1em;
+    margin-left: 10px;
+}
+
+.icon-jugo :hover{
+    background-color: #1c0a38; 
+}

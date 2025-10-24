@@ -1,7 +1,7 @@
 .ContainerUser{
     background-color: #18042c;
     width: 115em;   
-    height: 58em;
+    height: 56em;
     position: absolute;
     top: 29em;
     left: 60em;
@@ -12,7 +12,7 @@
     text-decoration: none;
     list-style: none;
     letter-spacing: 0.1em;
-    font-size: 4em;
+    font-size: 1em;
     padding: 1em;
     color: white;
 }

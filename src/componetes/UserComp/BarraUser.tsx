@@ -53,6 +53,7 @@ function BarraUser() {
     obtenerDatosUsuario();
   }, []);
 
+
   const cerrarSesion = async () => {
     try {
       const response = await fetch(`${API_URL}/logout`, {

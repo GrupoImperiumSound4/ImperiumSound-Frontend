@@ -1,12 +1,13 @@
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import "../styles/servicios.css";
 import Cuadro from "../componetes/ServicesComp/cuadro";
+import AcceInf from "../componetes/InfoComp/info";
 function Servicios() {
   return (
     <>
     
       <UpsiteLog/>
-        
+      <AcceInf/>
       <div className="body">
       <div>
       <div className="titulo1">

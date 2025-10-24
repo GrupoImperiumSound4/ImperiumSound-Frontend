@@ -2,6 +2,7 @@ import "../styles/mapacolegio.css";
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import { useState, useRef, useEffect } from "react";
 import Modal from "react-modal";
+import AcceInf from "../componetes/InfoComp/info"
 
 Modal.setAppElement("#root");
 
@@ -61,7 +62,7 @@ const zonasColegio: Record<string, { nombre: string; imagen: string }[]> = {
 };
 
 const MapaColegio = () => {
-  const [piso, setPiso] = useState<keyof typeof zonasColegio>("piso1");
+  const [piso, setPiso] = useState<keyof typeof zonasColegio | null>(null);
   const [zona, setZona] = useState<string | null>(null);
   const [imagenZona, setImagenZona] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -70,13 +71,11 @@ const MapaColegio = () => {
   const [audioURL, setAudioURL] = useState<string | null>(null);
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [isRecording, setIsRecording] = useState(false);
-
-  // Estados para decibeles
+  
   const [currentDb, setCurrentDb] = useState(0);
   const [highestDb, setHighestDb] = useState(0);
   const lastUpdateTime = useRef(0);
 
-  // Referencias para el análisis de audio
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const microphoneRef = useRef<MediaStreamAudioSourceNode | null>(null);
@@ -292,30 +291,42 @@ const MapaColegio = () => {
   return (
     <div className="ano">
         <UpsiteLog/>
-        <div className="zonas-container">
-          <div className="pisos">
-              <div className={`sotano ${piso === "sotano" ? "activo" : ""}`}>
-              <button onClick={() => setPiso("sotano")}>Sotano </button></div>
-
-              <div className={`piso1 ${piso === "piso1" ? "activo" : ""}`}>
-              <button onClick={() => setPiso("piso1")}>Piso 1</button></div>
-                                                          
-              <div className={`piso2 ${piso === "piso2" ? "activo" : ""}`}>
-              <button onClick={() => setPiso("piso2")}>Piso 2</button></div>
- 
-              <div className={`piso3 ${piso === "piso3" ? "activo" : ""}`}>
-              <button onClick={() => setPiso("piso3")}>Piso 3</button></div>
-
-              <div className={`piso4 ${piso === "piso4" ? "activo" : ""}`}>
-              <button onClick={() => setPiso("piso4")}>Piso 4</button></div>
+          <div className="zonas-container">
+        <div className={`mensaje-animacion ${piso ? "oculto" : ""}`}>
+            <h1 className="p">SELECCIONE UN PISO PARA SUS VER ZONAS</h1>
         </div>
 
-      <div className="location">
-        {zonasColegio[piso].map((z) => (
+        <div className={`pisos ${piso ? "arriba" : ""}`}>
+          <div className={`sotano ${piso === "sotano" ? "activo" : ""}`}>
+          <button onClick={() => setPiso("sotano")}>Sótano</button>
+        </div>
+
+      <div className={`piso1 ${piso === "piso1" ? "activo" : ""}`}>
+        <button onClick={() => setPiso("piso1")}>Piso 1</button>
+        </div>
+
+      <div className={`piso2 ${piso === "piso2" ? "activo" : ""}`}>
+        <button onClick={() => setPiso("piso2")}>Piso 2</button>
+      </div>
+
+      <div className={`piso3 ${piso === "piso3" ? "activo" : ""}`}>
+        <button onClick={() => setPiso("piso3")}>Piso 3</button>
+      </div>
+
+      <div className={`piso4 ${piso === "piso4" ? "activo" : ""}`}>
+        <button onClick={() => setPiso("piso4")}>Piso 4</button>
+      </div>
+    </div>
+    
+    
+
+      <div className={`location ${piso ? "mostrar" : ""}`}>
+        {piso &&
+          zonasColegio[piso]?.map((z) => (
           <button
-            key={z.nombre}
-            className={`zona-btn ${zona === z.nombre ? "activa" : ""}`}
-            onClick={() => seleccionarZona(z)}
+          key={z.nombre}
+          className={`zona-btn ${zona === z.nombre ? "activa" : ""}`}
+          onClick={() => seleccionarZona(z)}
           >
             {z.nombre}
           </button>
@@ -328,7 +339,8 @@ const MapaColegio = () => {
         onRequestClose={() => setModalOpen(false)}
         style={{
           content: {
-            width: "400px",
+            height:"900px",
+            width: "800px",
             margin: "auto",
             borderRadius: "10px",
             padding: "20px",
@@ -340,9 +352,10 @@ const MapaColegio = () => {
 
         {imagenZona && (
           <img
+            
             src={imagenZona}
             alt={zona || ""}
-            style={{ width: "100%", borderRadius: "10px", marginBottom: "15px" }}
+            style={{ width: "50%", borderRadius: "10px", marginBottom: "15px" }}
           />
         )}
 
@@ -356,18 +369,12 @@ const MapaColegio = () => {
             <p style={{ margin: "5px 0", fontWeight: "bold", fontSize: "18px" }}>
               🔊 {currentDb.toFixed(1)} dB
             </p>
-            <div style={{
-              width: "100%",
-              height: "20px",
-              background: "#ddd",
-              borderRadius: "10px",
-              overflow: "hidden"
-            }}>
+            <div className="barra-db">
               <div style={{
                 width: `${Math.min((currentDb / 120) * 100, 100)}%`,
                 height: "100%",
                 background: `linear-gradient(to right, green, yellow, red)`,
-                transition: "width 0.1s"
+                transition: "width 0.5s"
               }} />
             </div>
             <p style={{ margin: "5px 0", fontSize: "12px", color: "#666" }}>
@@ -377,22 +384,17 @@ const MapaColegio = () => {
         )}
 
         {!isRecording ? (
-          <button onClick={startRecording}>🎤 Iniciar grabación</button>
+          <button className="iniciar-loro" onClick={startRecording}><p className="txt-iniciar">🎤 Iniciar grabación</p></button>
         ) : (
-          <button onClick={stopRecording}>⏹ Detener grabación</button>
+          <button className="callar-loro" onClick={stopRecording}><p className="txt-callar">⏹ Detener grabación</p></button>
         )}
 
         {audioURL && (
           <div style={{ marginTop: "10px" }}>
             <audio controls src={audioURL}></audio>
             
-            <div style={{ 
-              margin: "10px 0", 
-              padding: "8px", 
-              background: "#ff4d4dff", 
-              borderRadius: "5px" 
-            }}>
-              <strong>Decibeles máximos registrados: {highestDb.toFixed(1)} dB</strong>
+            <div className="info-db">
+              <strong className="txt-info-db">Decibeles máximos registrados: {highestDb.toFixed(1)} dB</strong>
             </div>
 
             <button
@@ -424,6 +426,7 @@ const MapaColegio = () => {
           </div>
         )}
       </Modal>
+      <AcceInf/>
     </div>
   );
 };

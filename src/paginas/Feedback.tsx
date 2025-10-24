@@ -1,10 +1,11 @@
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import "../styles/feedback.css"
 import ContactCard from "../componetes/ContactanosComp/cuadrocontac";
+import AcceInf from "../componetes/InfoComp/info";
 function Feedback(){
    return(<>
    <UpsiteLog></UpsiteLog>
-  
+   <AcceInf/>
    <div className="form-container">
       <form className="contact-form">
         <input type="text" placeholder="Nombre" className="input-field" />
@@ -15,7 +16,9 @@ function Feedback(){
       <div className="contc1">
       <ContactCard></ContactCard>
       </div>
+      v
     </div>
+    
    </>) 
 }
 export default Feedback;

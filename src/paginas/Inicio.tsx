@@ -2,6 +2,7 @@
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import "../styles/index.css";
 
+
 function PagInicio() {
   return (
     <>
@@ -25,10 +26,12 @@ function PagInicio() {
 
        
         
+
       </div>
       <div className="senor" />
       
       </div>
+      
       
     </>
   ); 

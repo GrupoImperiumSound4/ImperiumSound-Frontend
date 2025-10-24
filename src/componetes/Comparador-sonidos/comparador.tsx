@@ -2,6 +2,8 @@
 import "../../styles/Comparador.css";
 import React, { useEffect, useState, useRef } from "react";
 
+
+
 interface SoundExample {
   name: string;
   db: number;

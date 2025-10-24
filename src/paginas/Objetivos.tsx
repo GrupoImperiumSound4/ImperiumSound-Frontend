@@ -4,10 +4,12 @@ import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import ObjetivosLog from "../componetes/ObjetivosComp/Objetivos1";
 import ObjetivosLog2 from "../componetes/ObjetivosComp/Objetivos2";
 import ObjetivosLog3 from "../componetes/ObjetivosComp/Objetivos3";
+import AcceInf from "../componetes/InfoComp/info";
 function Objetivos() {
   return (
     <>
     <UpsiteLog></UpsiteLog>
+    <AcceInf/>
     <div className="tituloObjea"><h1>OBJETIVOS</h1></div>
     <div className="contenedor2">
         <div className="tarjeta1a">
