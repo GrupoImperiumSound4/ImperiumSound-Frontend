@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import "../../styles/JaviBlock.css";
 
 interface Obstacle {
@@ -28,7 +28,7 @@ export default function JaviBlock() {
   const audioProcessorRef = useRef<ScriptProcessorNode | null>(null);
   const lastObstacleTimeRef = useRef(0);
 
-  const [volume, setVolume] = useState(0);
+  const [_volume, setVolume] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
