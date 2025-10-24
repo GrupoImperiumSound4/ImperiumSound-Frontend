@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import "./App.css";
-import Index from "./paginas/Index";
 import InicioSesion from "./paginas/InicioSesion";
 import Registro from "./paginas/Registro";
 import Fondo from "./componetes/Fondo/Fondo";
@@ -27,7 +26,7 @@ function App() {
     <Fondo/>
       <Router>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<PagInicio />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/inicio-sesion" element={<InicioSesion />} />
           <Route path="/servicios" element={<Servicios />} />

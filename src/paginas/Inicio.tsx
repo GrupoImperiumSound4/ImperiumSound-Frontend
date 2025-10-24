@@ -1,33 +1,37 @@
 
-import "../styles/inicio.css";
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
-
+import "../styles/index.css";
 
 function PagInicio() {
   return (
     <>
-      <UpsiteLog></UpsiteLog>
+      <UpsiteLog />
       <div className="container">
 
-      <div id="textInicioMargen" className="txtPrincipal">
-      <div className="TituloPagInicio"><br/></div>
+      <div className="txtPrincipal">
+        <div className="conteo"></div>
     <br />
     <br />
-        <p className="inicioTxt">
+   
+        <div className="mrg-general">
+         <h1> Imperium Sound </h1>
+         <h2>Aprende, Diviertete y cuida tu audición.</h2>
           <br />
           <br />
-          Mide el ruido de tu entorno en tiempo real con nuestra
-          herramienta en línea. Con unos clics, descubre la intensidad
-          del sonido y mejora tu bienestar acústico. ¡Registrate y disfruta
-          de un entorno más tranquilo hoy mismo!
-        </p>
+          La contaminación auditiva afecta nuestra salud más de lo que creemos. Aquí encontrarás información clara, actividades interactivas y recursos útiles para aprender a proteger tu audición de manera didáctica y entretenida.
+        </div>
+        
+
+
+       
+        
       </div>
-      <div className="senor1" />
-      </div>
+      <div className="senor" />
       
+      </div>
       
     </>
-  );
+  ); 
 }
 
 export default PagInicio;

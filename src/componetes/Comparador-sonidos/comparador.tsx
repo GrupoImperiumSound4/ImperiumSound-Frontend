@@ -1,5 +1,5 @@
 
-import "../../styles/DecibelEducationalPage.css";
+import "../../styles/Comparador.css";
 import React, { useEffect, useState, useRef } from "react";
 
 interface SoundExample {
