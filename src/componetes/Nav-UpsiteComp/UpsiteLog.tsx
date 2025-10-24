@@ -43,10 +43,11 @@ export function NavbarLog() {
   const sevicios = "/servicios";
   const caracteristicas = "/caracteristicas";
   const contactanos = "/contactanos";
-  const didactico = "/didactico";
-  const didactico2 = "/didactico2";
-  const didactico3 = "/didactico3";
+  const Comparadorsonidos = "/comparador-sonido";
+  const Info = "/Informacion";
+  const javiblock = "/JaviBlock";
   const colegio = "/colegio"
+
 
 
   return (
@@ -57,17 +58,17 @@ export function NavbarLog() {
         <a className="txt-navbar" onClick={() => navegar(inicio)}>
           Inicio{" "}
         </a>
-        <a className="txt-navbar" onClick={() => navegar(didactico)}>
+        <a className="txt-navbar" onClick={() => navegar(Info)}>
           {" "}
           Conoce
         </a>
-        <a className="txt-navbar" onClick={() => navegar(didactico2)}>
+        <a className="txt-navbar" onClick={() => navegar(Comparadorsonidos)}>
           {" "}
-          Conoce2
+          Comparación
         </a>
-        <a className="txt-navbar" onClick={() => navegar(didactico3)}>
+        <a className="txt-navbar" onClick={() => navegar(javiblock)}>
           {" "}
-          Conoce3
+          JaviBlock
         </a>
         <a className="txt-navbar" onClick={() => navegar(colegio)}>
           {" "}

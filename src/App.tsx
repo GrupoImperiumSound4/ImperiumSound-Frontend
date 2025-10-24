@@ -15,11 +15,11 @@ import MicroUP from "./paginas/MicroUP";
 import SoporteUp from "./paginas/SoporteUP";
 import Foro from "./paginas/Foro";
 import MapaColegio from "./paginas/mapacolegio"; 
-import Didactico from "./paginas/didactico";
-import Didactico2 from "./paginas/didactico2";
-import Didactico3 from "./paginas/didactico3";
-
+import Comparadorsonidos from "./paginas/comparador";
+import Info from "./paginas/Info";
+import JaviBlock from "./paginas/JaviBlock";
 import Colegio from "./paginas/mapacolegio"
+
 
 function App() {
   return (
@@ -41,9 +41,9 @@ function App() {
           <Route path="/soporte" element={<SoporteUp/>}></Route>
           <Route path="/foro" element={<Foro/>}></Route>
           <Route path="/mapacolegio" element= {<MapaColegio/>}></Route>
-          <Route path="/didactico" element= {<Didactico/>}></Route>
-          <Route path="/didactico2" element= {<Didactico2/>}></Route>
-          <Route path="/didactico3" element= {<Didactico3/>}></Route>
+          <Route path="/comparador-sonido" element= {<Comparadorsonidos/>}></Route>
+          <Route path="/informacion" element= {<Info/>}></Route>
+          <Route path="/javiblock" element= {<JaviBlock/>}></Route>
           <Route path="/colegio" element= {<Colegio/>}></Route>
         </Routes>
       </Router>

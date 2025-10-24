@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import "../../styles/MissionNinja.css";
+import "../../styles/JaviBlock.css";
 
 interface Obstacle {
   x: number;
@@ -10,7 +10,7 @@ interface Obstacle {
   type: string;
   passed: boolean;
 }
-export default function ScreamGoHero() {
+export default function JaviBlock() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const volumeRef = useRef(0);
   const playerYRef = useRef(320); // Empieza en el suelo (GROUND_Y - PLAYER_SIZE)
@@ -345,7 +345,7 @@ export default function ScreamGoHero() {
     <div className="game-page">
       <div className="game-card">
         <div className="game-header">
-          <h1 className="game-title">🎤 Scream Go Hero</h1>
+          <h1 className="game-title">🎤 JaviBlock</h1>
           <div className="game-score">Score: {score}</div>
         </div>
 

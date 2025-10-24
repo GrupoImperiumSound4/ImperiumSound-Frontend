@@ -1,5 +1,5 @@
-import "../styles/DecibelEducationalPage.css";
-import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
+
+import "../../styles/DecibelEducationalPage.css";
 import React, { useEffect, useState, useRef } from "react";
 
 interface SoundExample {
@@ -17,7 +17,6 @@ interface Category {
   icon: string;
 }
 
-// Props para los iconos
 interface IconProps {
   size?: number;
   className?: string;
@@ -36,7 +35,7 @@ const Info = ({ size = 16, className }: IconProps) =>
 const BarChart3 = ({ size = 16, className, style }: IconProps) =>
   <span className={className} style={{ ...style, fontSize: `${size}px` }}>📊</span>;
 
-function Didactico() {
+export const Comparador = () => {
   const [currentDb, setCurrentDb] = useState(0);
   const [highestDb, setHighestDb] = useState(0);
   const [isMeasuring, setIsMeasuring] = useState(false);
@@ -44,7 +43,6 @@ function Didactico() {
   const [alertMessage, setAlertMessage] = useState("");
   const lastUpdateTime = useRef(0);
 
-  // Tipados explícitos con SoundExample y Category
   const soundExamples: SoundExample[] = [
     { name: "Susurro", db: 20, icon: "🤫", category: "humanos", description: "Conversación muy suave", danger: "safe" },
     { name: "Conversación Normal", db: 60, icon: "👥", category: "humanos", description: "Habla cotidiana", danger: "safe" },
@@ -168,167 +166,162 @@ function Didactico() {
   }, [isMeasuring, highestDb]);
 
   return (
-    <>
-      <UpsiteLog />
-      <div className="page-wrapper">
-        <div className="hero-container">
-          <p className="hero-description">
-            Descubre cómo suena el mundo comparando tu entorno con humanos, animales y la ciudad
-          </p>
-        </div>
+    <div className="page-wrapper">
+      <div className="hero-container">
+        <p className="hero-description">
+          Descubre cómo suena el mundo comparando tu entorno con humanos, animales y la ciudad
+        </p>
+      </div>
 
-        <div className="main-container">
-          {/* Medidor principal */}
-          <div className="main-meter">
-            <div className="meter-header">
-              <Volume2 size={40} className="meter-icon" />
-              <h3 className="meter-title">Medidor en Tiempo Real.</h3>
+      <div className="main-container">
+        {/* Medidor principal */}
+        <div className="main-meter">
+          <div className="meter-header">
+            <Volume2 size={40} className="meter-icon" />
+            <h3 className="meter-title">Medidor en Tiempo Real.</h3>
+          </div>
+
+          <div>
+            <div className={`db-display ${getDbColorClass(currentDb)}`}>
+              {currentDb.toFixed(1)}
+              <span className="db-unit">dB</span>
             </div>
 
-            <div>
-              <div className={`db-display ${getDbColorClass(currentDb)}`}>
-                {currentDb.toFixed(1)}
-                <span className="db-unit">dB</span>
-              </div>
-
-              {currentComparison && isMeasuring && (
-                <div className="current-comparison">
-                  <div className="comparison-icon">{currentComparison.icon}</div>
-                  <div className="comparison-title">Suena como: {currentComparison.name}</div>
-                  <div className="comparison-description">{currentComparison.description}</div>
-                </div>
-              )}
-            </div>
-
-            <button
-              onClick={toggleMeasuring}
-              className={`measure-button ${isMeasuring ? "measuring" : "not-measuring"}`}
-            >
-              {isMeasuring ? (
-                <>
-                  <Pause className="inline" size={20} style={{ marginRight: "0.5rem" }} />
-                  Detener Medición
-                </>
-              ) : (
-                <>
-                  <Mic className="inline" size={20} style={{ marginRight: "0.5rem" }} />
-                  Comenzar a Medir
-                </>
-              )}
-            </button>
-
-            {highestDb > 0 && (
-              <div className="stats-display">
-                <BarChart3 className="inline" size={16} style={{ marginRight: "0.5rem" }} />
-                <span>Pico máximo registrado: </span>
-                <span className={`peak-value ${getDbColorClass(highestDb)}`}>
-                  {highestDb.toFixed(1)} dB
-                </span>
-              </div>
-            )}
-
-            {alertMessage && (
-              <div className="alert-message">
-                <div className="alert-content">
-                  <Info className="alert-icon" size={20} />
-                  <span className="alert-text">{alertMessage}</span>
-                </div>
+            {currentComparison && isMeasuring && (
+              <div className="current-comparison">
+                <div className="comparison-icon">{currentComparison.icon}</div>
+                <div className="comparison-title">Suena como: {currentComparison.name}</div>
+                <div className="comparison-description">{currentComparison.description}</div>
               </div>
             )}
           </div>
 
-          {/* Filtros por categorías */}
-          <div className="categories-section">
-            <h3 className="categories-title">Explora por Categorías</h3>
-            <div className="categories-container">
-              {categories.map((category) => (
-                <button
-                  key={category.value}
-                  onClick={() => setSelectedCategory(category.value)}
-                  className={`category-button ${selectedCategory === category.value ? "active" : "inactive"}`}
-                >
-                  <span className="category-icon">{category.icon}</span>
-                  {category.label}
-                </button>
-              ))}
+          <button
+            onClick={toggleMeasuring}
+            className={`measure-button ${isMeasuring ? "measuring" : "not-measuring"}`}
+          >
+            {isMeasuring ? (
+              <>
+                <Pause className="inline" size={20} style={{ marginRight: "0.5rem" }} />
+                Detener Medición
+              </>
+            ) : (
+              <>
+                <Mic className="inline" size={20} style={{ marginRight: "0.5rem" }} />
+                Comenzar a Medir
+              </>
+            )}
+          </button>
+
+          {highestDb > 0 && (
+            <div className="stats-display">
+              <BarChart3 className="inline" size={16} style={{ marginRight: "0.5rem" }} />
+              <span>Pico máximo registrado: </span>
+              <span className={`peak-value ${getDbColorClass(highestDb)}`}>
+                {highestDb.toFixed(1)} dB
+              </span>
             </div>
-          </div>
+          )}
 
-          {/*comparaciones */}
-          <div className="examples-grid">
-            {filteredExamples.map((example) => (
-              <div
-                key={example.name}
-                className={`example-card ${
-                  Math.abs(example.db - currentDb) <= 10 && isMeasuring ? "highlighted" : ""
-                }`}
-              >
-                <div className="example-icon">{example.icon}</div>
-                <h4 className="example-name">{example.name}</h4>
-                <div className={`example-db ${getDbColorClass(example.db)}`}>{example.db} dB</div>
-                <p className="example-description">{example.description}</p>
-
-                <div className="level-bar-container">
-                  <div
-                    className={getLevelBarClass(example.danger)}
-                    style={{ width: `${Math.min((example.db / 150) * 100, 100)}%` }}
-                  />
-                </div>
-
-                <div className={`danger-label ${getDangerClass(example.danger)}`}>
-                  {example.danger === "safe" && "✅ SEGURO"}
-                  {example.danger === "moderate" && "⚠️ MODERADO"}
-                  {example.danger === "warning" && "🔶 CUIDADO"}
-                  {example.danger === "danger" && "🔴 PELIGROSO"}
-                  {example.danger === "extreme" && "☢️ EXTREMO"}
-                </div>
+          {alertMessage && (
+            <div className="alert-message">
+              <div className="alert-content">
+                <Info className="alert-icon" size={20} />
+                <span className="alert-text">{alertMessage}</span>
               </div>
-            ))}
-          </div>
-
-          {/* Escala visual */}
-          {isMeasuring && (
-            <div className="visual-scale">
-              <h3 className="scale-title">📊 Tu Entorno en la Escala Global</h3>
-              <div className="scale-container">
-                <div className="scale-labels">
-                  <span>Silencio</span>
-                  <span>Límite Humano</span>
-                </div>
-                <div className="scale-bar">
-                  <div
-                    className={`current-indicator ${isMeasuring ? "measuring" : ""}`}
-                    style={{ left: `calc(${Math.min((currentDb / 150) * 100, 100)}% - 4px)` }}
-                  >
-                    <div className="current-label">
-                      TÚ AHORA: {currentDb.toFixed(1)} dB
-                    </div>
-                  </div>
-                  {[30, 60, 85, 120].map((db) => (
-                    <div key={db} className="scale-marker" style={{ left: `${(db / 150) * 100}%` }}>
-                      <div className="marker-label">{db}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {currentComparison && (
-                <div className="current-comparison-highlight">
-                  <div className="comparison-highlight-icon">{currentComparison.icon}</div>
-                  <div className="comparison-highlight-title">
-                    ¡Tu entorno suena como {currentComparison.name}!
-                  </div>
-                  <div className="comparison-highlight-desc">
-                    {currentComparison.description}
-                  </div>
-                </div>
-              )}
             </div>
           )}
         </div>
-      </div>
-    </>
-  );
-}
 
-export default Didactico;
+        {/* Filtros por categorías */}
+        <div className="categories-section">
+          <h3 className="categories-title">Explora por Categorías</h3>
+          <div className="categories-container">
+            {categories.map((category) => (
+              <button
+                key={category.value}
+                onClick={() => setSelectedCategory(category.value)}
+                className={`category-button ${selectedCategory === category.value ? "active" : "inactive"}`}
+              >
+                <span className="category-icon">{category.icon}</span>
+                {category.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Comparaciones */}
+        <div className="examples-grid">
+          {filteredExamples.map((example) => (
+            <div
+              key={example.name}
+              className={`example-card ${
+                Math.abs(example.db - currentDb) <= 10 && isMeasuring ? "highlighted" : ""
+              }`}
+            >
+              <div className="example-icon">{example.icon}</div>
+              <h4 className="example-name">{example.name}</h4>
+              <div className={`example-db ${getDbColorClass(example.db)}`}>{example.db} dB</div>
+              <p className="example-description">{example.description}</p>
+
+              <div className="level-bar-container">
+                <div
+                  className={getLevelBarClass(example.danger)}
+                  style={{ width: `${Math.min((example.db / 150) * 100, 100)}%` }}
+                />
+              </div>
+
+              <div className={`danger-label ${getDangerClass(example.danger)}`}>
+                {example.danger === "safe" && "✅ SEGURO"}
+                {example.danger === "moderate" && "⚠️ MODERADO"}
+                {example.danger === "warning" && "🔶 CUIDADO"}
+                {example.danger === "danger" && "🔴 PELIGROSO"}
+                {example.danger === "extreme" && "☢️ EXTREMO"}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Escala visual */}
+        {isMeasuring && (
+          <div className="visual-scale">
+            <h3 className="scale-title">📊 Tu Entorno en la Escala Global</h3>
+            <div className="scale-container">
+              <div className="scale-labels">
+                <span>Silencio</span>
+                <span>Límite Humano</span>
+              </div>
+              <div className="scale-bar">
+                <div
+                  className={`current-indicator ${isMeasuring ? "measuring" : ""}`}
+                  style={{ left: `calc(${Math.min((currentDb / 150) * 100, 100)}% - 4px)` }}
+                >
+                  <div className="current-label">
+                    TÚ AHORA: {currentDb.toFixed(1)} dB
+                  </div>
+                </div>
+                {[30, 60, 85, 120].map((db) => (
+                  <div key={db} className="scale-marker" style={{ left: `${(db / 150) * 100}%` }}>
+                    <div className="marker-label">{db}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {currentComparison && (
+              <div className="current-comparison-highlight">
+                <div className="comparison-highlight-icon">{currentComparison.icon}</div>
+                <div className="comparison-highlight-title">
+                  ¡Tu entorno suena como {currentComparison.name}!
+                </div>
+                <div className="comparison-highlight-desc">
+                  {currentComparison.description}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
