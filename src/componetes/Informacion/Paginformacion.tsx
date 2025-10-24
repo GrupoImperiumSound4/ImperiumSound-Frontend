@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../styles/info.css";
+import "../../styles/PagInfo.css";
 
 export const PagInfo = () => {
   const [modalAbierto, setModalAbierto] = useState(false);

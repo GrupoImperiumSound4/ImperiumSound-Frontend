@@ -41,18 +41,9 @@ useEffect(()=>{
 export function NavbarLog() {
   const navegar = useNavigate();
   const inicio = "/inicio";
-<<<<<<< HEAD
-  const nosotros = "/nosotros";
-  const objetivos = "/objetivos";
-  const sevicios = "/servicios";
-  const caracteristicas = "/caracteristicas";
-  const contactanos = "/contactanos";
   const Comparadorsonidos = "/comparador-sonido";
   const Info = "/Informacion";
   const javiblock = "/JaviBlock";
-=======
-  const didactico = "/didactico";
->>>>>>> andres
   const colegio = "/colegio"
 
 
@@ -69,7 +60,6 @@ export function NavbarLog() {
           {" "}
           Conoce
         </a>
-<<<<<<< HEAD
         <a className="txt-navbar" onClick={() => navegar(Comparadorsonidos)}>
           {" "}
           Comparación
@@ -78,9 +68,6 @@ export function NavbarLog() {
           {" "}
           JaviBlock
         </a>
-=======
-        
->>>>>>> andres
         <a className="txt-navbar" onClick={() => navegar(colegio)}>
           {" "}
           Colegio
