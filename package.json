@@ -14,7 +14,9 @@
   "dependencies": {
     "axios": "^1.7.7",
     "bootstrap": "^5.2.3",
+    "framer-motion": "^12.23.22",
     "lucide-react": "^0.539.0",
+    "ml5": "^0.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.3",
@@ -24,6 +26,7 @@
     "styled-components": "^6.1.12"
   },
   "devDependencies": {
+    "@types/node": "^24.6.1",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/react-modal": "^3.16.3",

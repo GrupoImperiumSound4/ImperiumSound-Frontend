@@ -28,7 +28,7 @@ useEffect(()=>{
         <Logo />
         <div className="contenido">
           <NavbarLog />
-          <User />
+          <User/>
         </div>
       </div>
     </>
@@ -44,6 +44,8 @@ export function NavbarLog() {
   const caracteristicas = "/caracteristicas";
   const contactanos = "/contactanos";
   const didactico = "/didactico";
+  const didactico2 = "/didactico2";
+  const didactico3 = "/didactico3";
   const colegio = "/colegio"
 
 
@@ -58,6 +60,14 @@ export function NavbarLog() {
         <a className="txt-navbar" onClick={() => navegar(didactico)}>
           {" "}
           Conoce
+        </a>
+        <a className="txt-navbar" onClick={() => navegar(didactico2)}>
+          {" "}
+          Conoce2
+        </a>
+        <a className="txt-navbar" onClick={() => navegar(didactico3)}>
+          {" "}
+          Conoce3
         </a>
         <a className="txt-navbar" onClick={() => navegar(colegio)}>
           {" "}
@@ -89,4 +99,4 @@ export function NavbarLog() {
     <MenuHamburguesa/>
   </>
   );
-}
+} 

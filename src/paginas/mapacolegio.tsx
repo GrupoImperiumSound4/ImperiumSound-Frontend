@@ -291,29 +291,38 @@ const MapaColegio = () => {
 
   return (
     <div className="ano">
-      <UpsiteLog></UpsiteLog>
-      
-      <div className="zonas-container">
-        <p className="txt"> 👋 Bienvenido Querido Profes@r a el lugar donde van a poder registrar el sonido 📊 </p>
-        
-        <div className="pisos_picados">
-          <button onClick={() => setPiso("sotano")}>Sotano</button>
-          <button onClick={() => setPiso("piso1")}>Piso 1</button>
-          <button onClick={() => setPiso("piso2")}>Piso 2</button>
-          <button onClick={() => setPiso("piso3")}>Piso 3</button>
-          <button onClick={() => setPiso("piso4")}>Piso 4</button>
+        <UpsiteLog/>
+        <div className="zonas-container">
+          <div className="pisos">
+              <div className={`sotano ${piso === "sotano" ? "activo" : ""}`}>
+              <button onClick={() => setPiso("sotano")}>Sotano </button></div>
+
+              <div className={`piso1 ${piso === "piso1" ? "activo" : ""}`}>
+              <button onClick={() => setPiso("piso1")}>Piso 1</button></div>
+                                                          
+              <div className={`piso2 ${piso === "piso2" ? "activo" : ""}`}>
+              <button onClick={() => setPiso("piso2")}>Piso 2</button></div>
+ 
+              <div className={`piso3 ${piso === "piso3" ? "activo" : ""}`}>
+              <button onClick={() => setPiso("piso3")}>Piso 3</button></div>
+
+              <div className={`piso4 ${piso === "piso4" ? "activo" : ""}`}>
+              <button onClick={() => setPiso("piso4")}>Piso 4</button></div>
         </div>
 
-        <div className="zona zona-azul">
-          {zonasColegio[piso].map((z) => (
-            <button key={z.nombre} onClick={() => seleccionarZona(z)}>
-              {z.nombre}
-            </button>
-          ))}
-        </div>
+      <div className="location">
+        {zonasColegio[piso].map((z) => (
+          <button
+            key={z.nombre}
+            className={`zona-btn ${zona === z.nombre ? "activa" : ""}`}
+            onClick={() => seleccionarZona(z)}
+          >
+            {z.nombre}
+          </button>
+        ))}
+      </div>
       </div>
 
-      {/* Modal */}
       <Modal
         isOpen={modalOpen}
         onRequestClose={() => setModalOpen(false)}
@@ -337,7 +346,6 @@ const MapaColegio = () => {
           />
         )}
 
-        {/* Medidor de decibeles */}
         {isRecording && (
           <div style={{ 
             margin: "15px 0", 
@@ -381,7 +389,7 @@ const MapaColegio = () => {
             <div style={{ 
               margin: "10px 0", 
               padding: "8px", 
-              background: "#ff4646ff", 
+              background: "#ff4d4dff", 
               borderRadius: "5px" 
             }}>
               <strong>Decibeles máximos registrados: {highestDb.toFixed(1)} dB</strong>

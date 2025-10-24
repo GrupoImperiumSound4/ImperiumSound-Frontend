@@ -1,7 +1,7 @@
 // Formulario.tsx
 import { useState, ChangeEvent, FormEvent } from "react";
 import "../../styles/formulario.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface FormData {
   email: string;
@@ -10,7 +10,11 @@ interface FormData {
 
 export function Formulario() {
   const navigate = useNavigate();
-  const registroURL = "/inicio";
+  const location = useLocation();
+  const registroURL = "/Registro";
+
+  const from = (location.state as any)?.from || "/" 
+  console.log(from);
   
   const [formData, setFormData] = useState<FormData>({
     email: "",
@@ -18,6 +22,8 @@ export function Formulario() {
   });
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+
+  const ApiURL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -36,14 +42,15 @@ export function Formulario() {
     setError("");
 
     try {
-      console.log("Intentando conectar a:", "http://localhost:8000/login");
+      console.log("Intentando conectar a:", "login");
       console.log("Datos enviados:", formData);
       
-      const response = await fetch("http://localhost:8000/login", {
+      const response = await fetch(`${ApiURL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(formData),
       });
 
@@ -55,12 +62,13 @@ export function Formulario() {
       if (!response.ok) {
         throw new Error(data.detail || "Error al iniciar sesión");
       }
-      navigate("/inicio");
+      console.log(from);
+      navigate(from,{replace: true} );
       
     } catch (error) {
       console.error('Error completo:', error);
       if (error instanceof TypeError && error.message.includes('fetch')) {
-        setError("No se puede conectar al servidor. Verifica que el backend esté corriendo en http://localhost:8000");
+        setError("No se puede conectar al servidor.");
       } else {
         setError((error as Error).message);
       }
