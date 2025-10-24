@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../../styles/PagInfo.css";
-import decibeles from "public/img/decibeles.png" 
 import oido from "public/img/oido.jpg"
 import propiedadessonido from "public/img/propiedades-sonido.png"
 import frecuenciabaja from "public/img/baja-frecuencia.png"
@@ -61,7 +60,7 @@ export const PagInfo = () => {
 
         <section className="seccion-contenido">
           <div className="contenido-imagen">
-            <img src={decibeles} alt="Ondas" className="imagen"/>
+            <img src="/img/decibeles.png" alt="Ondas" className="imagen"/>
           </div>
           <div className="contenido-texto">
             <h2>¿Sabes que son los decibeles?</h2>
