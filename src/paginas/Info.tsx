@@ -1,6 +1,7 @@
 
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import { PagInfo } from "../componetes/Informacion/Paginformacion";
+import AcceInf from "../componetes/InfoComp/info"
 
 
 function Info(){
@@ -8,7 +9,7 @@ function Info(){
     <>
       <UpsiteLog/>
       <PagInfo/>
-
+      <AcceInf/>
     </>
   );
 }

@@ -1,6 +1,7 @@
 
 import { UpsiteLog } from "../componetes/Nav-UpsiteComp/UpsiteLog";
 import "../styles/index.css";
+import AcceInf from "../componetes/InfoComp/info"
 
 
 function PagInicio() {
@@ -31,6 +32,8 @@ function PagInicio() {
       <div className="senor" />
       
       </div>
+
+      <AcceInf/>
       
       
     </>

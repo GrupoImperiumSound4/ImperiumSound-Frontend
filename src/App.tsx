@@ -14,7 +14,6 @@ import Cuenta from "./paginas/PanelUsuario";
 import MicroUP from "./paginas/MicroUP";
 import SoporteUp from "./paginas/SoporteUP";
 import Foro from "./paginas/Foro";
-import MapaColegio from "./paginas/mapacolegio"; 
 import Comparadorsonidos from "./paginas/comparador";
 import Info from "./paginas/Info";
 import JaviBlock from "./paginas/JaviBlock";
@@ -40,11 +39,10 @@ function App() {
           <Route path="/microConfig" element={<MicroUP/>}></Route>
           <Route path="/soporte" element={<SoporteUp/>}></Route>
           <Route path="/foro" element={<Foro/>}></Route>
-          <Route path="/mapacolegio" element= {<MapaColegio/>}></Route>
           <Route path="/comparador-sonido" element= {<Comparadorsonidos/>}></Route>
           <Route path="/informacion" element= {<Info/>}></Route>
           <Route path="/javiblock" element= {<JaviBlock/>}></Route>
-          <Route path="/colegio" element= {<Colegio/>}></Route>
+          <Route path="/colegio" element= {<ProtectedRoute><Colegio/></ProtectedRoute>}></Route>
         </Routes>
       </Router>
     </>

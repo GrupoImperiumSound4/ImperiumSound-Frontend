@@ -5,6 +5,7 @@ import { ValidToken } from "../ValidToken/ValidToken";
 import { useEffect } from "react";
 import MenuHamburguesa from "./MenuHamburguesa";
 import { IconGame } from "./Game";
+import "../../styles/navbar.css";
 
 export function UpsiteLog() {
 const navigate = useNavigate()
@@ -43,7 +44,6 @@ export function NavbarLog() {
   const inicio = "/inicio";
   const Comparadorsonidos = "/comparador-sonido";
   const Info = "/Informacion";
-  const javiblock = "/JaviBlock";
   const colegio = "/colegio"
 
 
@@ -63,10 +63,6 @@ export function NavbarLog() {
         <a className="txt-navbar" onClick={() => navegar(Comparadorsonidos)}>
           {" "}
           Comparación
-        </a>
-        <a className="txt-navbar" onClick={() => navegar(javiblock)}>
-          {" "}
-          JaviBlock
         </a>
         <a className="txt-navbar" onClick={() => navegar(colegio)}>
           {" "}

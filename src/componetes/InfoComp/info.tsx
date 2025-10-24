@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../../styles/info.css"
 import {  motion ,AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-
+import info from "../../../public/info.svg"
 
 
 export default function AcceInfo() {
@@ -33,7 +33,7 @@ export default function AcceInfo() {
         >
             
             <img
-            src="../../../public/info.svg"
+            src={info}
             style={{
                 width: "100%",
                 height: "100%",

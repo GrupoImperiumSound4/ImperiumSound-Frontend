@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../../styles/iconojugo.css"
 import {  motion ,AnimatePresence } from "framer-motion";
+import foto from "../../../public/iconojugo.svg"
 
 export function IconGame () {
 
@@ -32,13 +33,12 @@ export function IconGame () {
         >
             
             <img
-            src="../../../public/iconojugo.svg"
+            src={foto}
             style={{
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",     
-                    
-
+                
             }}
             />
             
@@ -54,7 +54,7 @@ export function IconGame () {
          exit={{ opacity: 0, x: 50 }}       
          transition={{ duration: 0.5 }}       
         >
-         <a className="jugos" onClick={() => navegar ("/didactico3")}>JaviBlock</a>
+         <a className="jugos" onClick={() => navegar ("/JaviBlock")}>JaviBlock</a>
          
 
     </motion.div>
