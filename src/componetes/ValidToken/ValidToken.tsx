@@ -1,8 +1,6 @@
-
-
 export const ValidToken = async () => {
-    const apiUrl = import.meta.env.VITE_API_URL ?? "https://imperiumsound-backend-production.up.railway.app";
- 
+  const apiUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+
   try {
     const response = await fetch(`${apiUrl}/valid`, {
       method: "GET",
@@ -13,26 +11,16 @@ export const ValidToken = async () => {
     });
 
     if (!response.ok) {
-      let errorMessage = "Error desconocido";
-
-      try {
-        const errorData = await response.json();
-        errorMessage = errorData.message || errorMessage;
-       
-        return null;
-      } catch (e) {
-        console.log(e)
-      }
-
-      throw new Error(`Error de validación del token: ${errorMessage}`);
+      console.log(`❌ Token inválido. Status: ${response.status}`);
+      return null;
     }
 
-    const data = await response.json(); 
-    console.log(data)
-    return { ...data }; 
-  } catch (e) {
+    const data = await response.json();
+    console.log("✅ Token válido. Datos del usuario:", data);
+    return { ...data };
     
-    return { error: e }; 
+  } catch (error) {
+    console.error("❌ Error validando token:", error);
+    return { error };
   }
-  
 };

@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { ProtectedRoute } from "./componetes/Proteccion/protec_rutas";
 import "./App.css";
 import InicioSesion from "./paginas/InicioSesion";
 import Registro from "./paginas/Registro";
@@ -35,7 +36,7 @@ function App() {
           <Route path="/contactanos" element={<Feedback />} />
           <Route path="/caracteristicas" element={<Caracteristicas/>} />
           <Route path="/inicio" element={<PagInicio/>} />
-          <Route path="/cuenta" element={<Cuenta/>}></Route>
+          <Route path="/cuenta" element={<ProtectedRoute><Cuenta/></ProtectedRoute>}></Route>
           <Route path="/microConfig" element={<MicroUP/>}></Route>
           <Route path="/soporte" element={<SoporteUp/>}></Route>
           <Route path="/foro" element={<Foro/>}></Route>
