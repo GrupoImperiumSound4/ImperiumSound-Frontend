@@ -1,58 +1,120 @@
 import { useEffect, useState } from "react";
 import "../../styles/User.css";
 import { useNavigate } from "react-router-dom";
-import { ValidToken } from "../ValidToken/ValidToken";
 
 interface UserType {
-  idUser: string;
-  userName: string;
-  nombre: string;
+  id: number;
+  name: string;
   email: string;
 }
+
 function BarraUser() {
   const navegar = useNavigate();
   const [user, setUser] = useState<UserType | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const Microfono = "/microConfig";
   const Soporte = "/soporte";
   const Info = "/cuenta";
+  const API_URL = "http://localhost:8000";
 
-  const loginEffect = async () => {
-    const result = await ValidToken();
+  const obtenerDatosUsuario = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${API_URL}/me`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    if (result != null) {
-      setUser(result);
-      console.log(result);
-      return;
+      if (!response.ok) {
+        if (response.status === 401) {
+          navegar("/");
+          return;
+        }
+        throw new Error('Error al obtener datos del usuario');
+      }
+
+      const userData = await response.json();
+      setUser(userData);
+      setError(null);
+    } catch (err) {
+      console.error('Error:', err);
+      setError('Error al cargar los datos del usuario');
+      navegar("/");
+    } finally {
+      setLoading(false);
     }
-
-    navegar("/");
   };
 
   useEffect(() => {
-    loginEffect();
+    obtenerDatosUsuario();
   }, []);
 
-  const nombre = user?.nombre;
-  const email = "lola@gmail.com";
+  const cerrarSesion = async () => {
+    try {
+      const response = await fetch(`${API_URL}/logout`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        navegar("/");
+      }
+    } catch (err) {
+      console.error('Error al cerrar sesión:', err);
+    }
+  };
+
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word.charAt(0))
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  if (loading) {
+    return (
+      <div className="ContenedorListaUser">
+        <div className="cargar">
+          Cargando...
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !user) {
+    return (
+      <div className="ContenedorListaUser">
+        <div className="nsfw">
+          {error || 'No se pudieron cargar los datos'}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
       <div className="ContenedorListaUser">
         <ul>
           <a onClick={() => navegar(Info)}>
-            {" "}
             <li id="ListaUser">
               <h1>INFORMACION</h1>
             </li>
           </a>
           <a onClick={() => navegar(Microfono)}>
-            {" "}
             <li id="ListaUser">
               <h1>MICROFONO</h1>
             </li>
           </a>
           <a onClick={() => navegar(Soporte)}>
-            {" "}
             <li id="ListaUser">
               <h1>SOPORTE</h1>
             </li>
@@ -63,21 +125,28 @@ function BarraUser() {
           <h1 id="TitUser">INFORMACION PERSONAL</h1>
           <br />
           <br />
-          <p id="TxtUser">Nombre: {nombre}</p>
+          <p id="TxtUser">Nombre: {user.name}</p>
           <br />
-          <p id="TxtUser">Correo: {email}</p>
+          <p id="TxtUser">Correo: {user.email}</p>
           <br />
-          <p id="TxtUser">Se unió en Noviembre 8 del 2024</p>
+          <br />
+          <br />
+          <button 
+            onClick={cerrarSesion}
+            className="Csesion"
+            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#c0392b'}
+            onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#e74c3c'}
+          >
+            Cerrar Sesión
+          </button>
 
           <div className="ContenedorUserFoto">
-            <img
-              id="ImagenUser"
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-              alt=""
-            ></img>
+            <div className="Perfil">
+              {getInitials(user.name)}
+            </div>
             <div className="ProfileInfo">
-              <p>Estudiante</p>
-              <p>Nombre de Usuario</p>
+              <p>{user.name}</p>
+              <p>{user.email}</p>
             </div>
           </div>
         </div>
@@ -85,4 +154,5 @@ function BarraUser() {
     </>
   );
 }
+
 export default BarraUser;

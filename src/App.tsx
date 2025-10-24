@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { ProtectedRoute } from "./componetes/Proteccion/protec_rutas";
 import "./App.css";
-import Index from "./paginas/Index";
 import InicioSesion from "./paginas/InicioSesion";
 import Registro from "./paginas/Registro";
 import Fondo from "./componetes/Fondo/Fondo";
@@ -14,7 +14,6 @@ import Cuenta from "./paginas/PanelUsuario";
 import MicroUP from "./paginas/MicroUP";
 import SoporteUp from "./paginas/SoporteUP";
 import Foro from "./paginas/Foro";
-import MapaColegio from "./paginas/mapacolegio"; 
 import Didactico from "./paginas/didactico";
 import Didactico2 from "./paginas/didactico2";
 import Didactico3 from "./paginas/didactico3";
@@ -27,7 +26,7 @@ function App() {
     <Fondo/>
       <Router>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<PagInicio/>} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/inicio-sesion" element={<InicioSesion />} />
           <Route path="/servicios" element={<Servicios />} />
@@ -36,15 +35,14 @@ function App() {
           <Route path="/contactanos" element={<Feedback />} />
           <Route path="/caracteristicas" element={<Caracteristicas/>} />
           <Route path="/inicio" element={<PagInicio/>} />
-          <Route path="/cuenta" element={<Cuenta/>}></Route>
+          <Route path="/cuenta" element={<ProtectedRoute><Cuenta/></ProtectedRoute>}></Route>
           <Route path="/microConfig" element={<MicroUP/>}></Route>
           <Route path="/soporte" element={<SoporteUp/>}></Route>
           <Route path="/foro" element={<Foro/>}></Route>
-          <Route path="/mapacolegio" element= {<MapaColegio/>}></Route>
           <Route path="/didactico" element= {<Didactico/>}></Route>
           <Route path="/didactico2" element= {<Didactico2/>}></Route>
           <Route path="/didactico3" element= {<Didactico3/>}></Route>
-          <Route path="/colegio" element= {<Colegio/>}></Route>
+          <Route path="/colegio" element= {<ProtectedRoute><Colegio/></ProtectedRoute>}></Route>
         </Routes>
       </Router>
     </>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export function Registrarse() {
   const navegar = useNavigate();
-  const loginURL = "/inicio";
+  const loginURL = "/inicio-sesion";
 
   const [usuario, setUsuario] = useState<string>("");
   const [correo, setCorreo] = useState<string>("");
