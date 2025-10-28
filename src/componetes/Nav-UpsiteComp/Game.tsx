@@ -55,6 +55,7 @@ export function IconGame () {
          transition={{ duration: 0.5 }}       
         >
          <a className="jugos" onClick={() => navegar ("/JaviBlock")}>JaviBlock</a>
+         <a className="jugos" onClick={() => navegar ("/Juegodb")}>Adivina Los Decibeles</a>
          
 
     </motion.div>

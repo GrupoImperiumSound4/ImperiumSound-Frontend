@@ -9,16 +9,16 @@ export const PagInfo = () => {
   });
 
   const informacionOndas = {
-    longitudinales: {
-      titulo: "Ondas Longitudinales",
-      descripcion: "Las ondas longitudinales son aquellas en las que las partículas del medio se mueven en la misma dirección que la propagación de la onda. El sonido es un ejemplo perfecto de este tipo de onda. Cuando el sonido viaja por el aire, las moléculas se comprimen y expanden en la dirección del movimiento de la onda, creando zonas de alta y baja presión."
+    sonido: {
+      titulo: "Intensidad o nivel sonoro",
+      descripcion: "La intensidad o nivel sonoro es la cantidad de energía que transporta una onda sonora y determina qué tan fuerte o débil percibimos un sonido. Se mide en decibelios (dB), una unidad que indica la potencia del sonido en relación con el umbral de audición humana. Cuanto mayor es el nivel sonoro, más alto y fuerte se percibe el ruido."
     },
-    transversales: {
-      titulo: "Ondas Transversales",
-      descripcion: "En las ondas transversales, las partículas del medio oscilan perpendicular a la dirección de propagación de la onda. Aunque el sonido no puede propagarse como onda transversal en gases, este tipo de ondas son fundamentales para entender fenómenos como las ondas electromagnéticas y las vibraciones en cuerdas de instrumentos musicales."
+    frecuencia: {
+      titulo: "Frecuencia",
+      descripcion: "La frecuencia o tono es la propiedad del sonido que indica qué tan agudo o grave lo percibimos. Depende de la cantidad de vibraciones por segundo que produce una fuente sonora, medida en hercios (Hz). Un sonido con mayor frecuencia tiene un tono agudo, mientras que uno con menor frecuencia suena grave."
     },
     interferencia: {
-      titulo: "Interferencia de Ondas",
+      titulo: "Interferencia",
       descripcion: "La interferencia ocurre cuando dos o más ondas sonoras se encuentran en el mismo punto del espacio. Puede ser constructiva (las ondas se suman y el sonido es más fuerte) o destructiva (las ondas se cancelan parcial o totalmente). Este fenómeno es crucial en acústica arquitectónica y en la cancelación activa de ruido."
     }
   };
@@ -119,21 +119,20 @@ export const PagInfo = () => {
 
 
         <section className="seccion-galeria">
-          <h2 className="titulo-seccion">Tipos de ondas sonoras</h2>
           <p className="subtitulo-galeria">Haz click en cada imagen para más información</p>
           <div className="galeria-grid">
-            <div className="galeria-item" onClick={() => abrirModal('longitudinales')}>
-              <img src="public/img/entrada.png" alt="Ondas longitudinales" />
-              <p>Ondas Longitudinales</p>
+            <div className="galeria-item" onClick={() => abrirModal('sonido')}>
+              <img src="public/img/nivel-sonoro.jpg" alt="Nivel Sonoro" />
+              <p>Nivel Sonoro</p>
               <div className="click-indicator">👆 Click para más info</div>
             </div>
-            <div className="galeria-item" onClick={() => abrirModal('transversales')}>
-              <img src="public/img/entrada.png" alt="Ondas transversales" />
-              <p>Ondas Transversales</p>
+            <div className="galeria-item" onClick={() => abrirModal('frecuencia')}>
+              <img src="public/img/frecuencia.jpg" alt="Ondas transversales" />
+              <p>Frecuencia</p>
               <div className="click-indicator">👆 Click para más info</div>
             </div>
             <div className="galeria-item" onClick={() => abrirModal('interferencia')}>
-              <img src="public/img/entrada.png" alt="Interferencia" />
+              <img src="public/img/interferencia.jpg" alt="Interferencia" />
               <p>Interferencia</p>
               <div className="click-indicator">👆 Click para más info</div>
             </div>

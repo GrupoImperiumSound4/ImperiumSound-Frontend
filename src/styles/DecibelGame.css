@@ -1,0 +1,628 @@
+.page-wrapper {
+  height: 100vh;
+  margin-top: -20px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+
+.page-wrapper::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.page-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.page-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #9333ea); 
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(147, 51, 234, 0.6); 
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #7e22ce);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+}
+
+.page-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #9333ea transparent; 
+}
+
+.juego-decibeles {
+  min-height: 100vh;
+  padding: 2rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Cabecera */
+.cabecera-juego {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  padding: 1.5rem;
+  background: rgba(45, 27, 78, 0.6);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+}
+
+.tablero-puntos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.etiqueta-puntos {
+  font-size: 0.9rem;
+  color: #00d4ff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.valor-puntos {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00d4ff, #00ff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contador-rondas {
+  font-size: 1.2rem;
+  color: #a78bfa;
+  padding: 0.75rem 1.5rem;
+  background: rgba(167, 139, 250, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+/* Contenido del Juego */
+.contenido-juego {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tarjeta de Escenario */
+.tarjeta-escenario {
+  text-align: center;
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(45, 27, 78, 0.8), rgba(26, 11, 46, 0.9));
+  border-radius: 30px;
+  border: 3px solid;
+  border-image: linear-gradient(135deg, #00d4ff, #a78bfa, #00ff88) 1;
+  margin-bottom: 3rem;
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+  animation: entradaTarjeta 0.6s ease-out;
+}
+
+@keyframes entradaTarjeta {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icono-escenario {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+  animation: flotarIcono 3s ease-in-out infinite;
+}
+
+@keyframes flotarIcono {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.nombre-escenario {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.descripcion-escenario {
+  font-size: 1.2rem;
+  color: #a0a0a0;
+}
+
+/* Sección Adivinar */
+.seccion-adivinar {
+  background: rgba(45, 27, 78, 0.6);
+  padding: 3rem;
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+}
+
+.seccion-adivinar h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #00d4ff;
+  margin-bottom: 2.5rem;
+}
+
+.contenedor-slider {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.slider-decibeles {
+  width: 100%;
+  height: 12px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, 
+    #00ff88 0%, 
+    #ffd700 40%, 
+    #ff6b35 70%, 
+    #ff0055 100%);
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+.slider-decibeles::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff, #a78bfa);
+  cursor: pointer;
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+  transition: transform 0.2s;
+}
+
+.slider-decibeles::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.slider-decibeles::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff, #a78bfa);
+  cursor: pointer;
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+}
+
+.display-adivinanza {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.valor-adivinanza {
+  font-size: 4rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00d4ff, #00ff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.unidad-medida {
+  font-size: 2rem;
+  color: #a78bfa;
+  margin-left: 0.5rem;
+}
+
+.etiquetas-slider {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.boton-confirmar {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00d4ff, #a78bfa);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+}
+
+.boton-confirmar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6);
+}
+
+.boton-confirmar:active {
+  transform: translateY(0);
+}
+
+/* Sección Resultado */
+.seccion-resultado {
+  background: rgba(45, 27, 78, 0.6);
+  padding: 3rem;
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  animation: entradaResultado 0.5s ease-out;
+}
+
+@keyframes entradaResultado {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.retroalimentacion {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #00ff88;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  animation: popRetro 0.6s ease-out;
+}
+
+@keyframes popRetro {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.revelar-respuesta {
+  margin-bottom: 2rem;
+}
+
+.comparacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.caja-adivinanza, .caja-correcta {
+  flex: 1;
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.caja-adivinanza {
+  background: rgba(255, 107, 53, 0.2);
+  border: 2px solid #ff6b35;
+}
+
+.caja-correcta {
+  background: rgba(0, 255, 136, 0.2);
+  border: 2px solid #00ff88;
+}
+
+.comparacion .etiqueta {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.comparacion .valor {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.flecha {
+  font-size: 3rem;
+  color: #00d4ff;
+}
+
+.nivel-peligro {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.info-educativa {
+  background: rgba(0, 212, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid #00d4ff;
+}
+
+.texto-info {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.boton-siguiente {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00ff88, #00d4ff);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+}
+
+.boton-siguiente:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6);
+}
+
+/* Escala de Decibeles */
+.escala-decibeles {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(45, 27, 78, 0.4);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.barra-escala {
+  display: flex;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.segmento-escala {
+  flex: 1;
+}
+
+.segmento-escala.seguro {
+  background: linear-gradient(90deg, #00ff88, #50ff88);
+}
+
+.segmento-escala.precaucion {
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+}
+
+.segmento-escala.peligro {
+  background: linear-gradient(90deg, #ff6b35, #ff8c5a);
+}
+
+.segmento-escala.extremo {
+  background: linear-gradient(90deg, #ff0055, #ff3377);
+}
+
+.etiquetas-escala {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.etiquetas-escala span {
+  color: #a0a0a0;
+  line-height: 1.4;
+}
+
+/* Pantalla Final */
+.pantalla-final {
+  max-width: 700px;
+  margin: 5rem auto;
+  text-align: center;
+  padding: 4rem;
+  background: linear-gradient(135deg, rgba(45, 27, 78, 0.9), rgba(26, 11, 46, 0.95));
+  border-radius: 30px;
+  border: 3px solid;
+  border-image: linear-gradient(135deg, #00d4ff, #a78bfa, #00ff88) 1;
+  box-shadow: 0 30px 80px rgba(0, 212, 255, 0.4);
+  animation: entradaFinal 0.8s ease-out;
+}
+
+@keyframes entradaFinal {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pantalla-final h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #00d4ff, #00ff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.puntuacion-final {
+  margin: 3rem 0;
+}
+
+.puntuacion-final .etiqueta-puntos {
+  font-size: 1.2rem;
+  color: #a78bfa;
+  margin-bottom: 1rem;
+}
+
+.puntuacion-final .valor-puntos {
+  font-size: 5rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00d4ff, #00ff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin: 1rem 0;
+}
+
+.maximo-puntos {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.rendimiento {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 15px;
+  border: 2px solid rgba(0, 212, 255, 0.3);
+}
+
+.rendimiento p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.rendimiento .excelente {
+  color: #00ff88;
+}
+
+.rendimiento .bueno {
+  color: #00d4ff;
+}
+
+.rendimiento .promedio {
+  color: #ffd700;
+}
+
+.rendimiento .necesita-practica {
+  color: #ff6b35;
+}
+
+.boton-reiniciar {
+  margin-top: 2rem;
+  padding: 1.5rem 3rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #a78bfa, #00d4ff);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.4);
+}
+
+.boton-reiniciar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(167, 139, 250, 0.6);
+}
+
+/* Cargando */
+.cargando {
+  text-align: center;
+  font-size: 2rem;
+  color: #00d4ff;
+  padding: 5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .juego-decibeles {
+    padding: 1rem;
+  }
+
+  .cabecera-juego {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tarjeta-escenario {
+    padding: 2rem 1.5rem;
+  }
+
+  .nombre-escenario {
+    font-size: 2rem;
+  }
+
+  .icono-escenario {
+    font-size: 4rem;
+  }
+
+  .seccion-adivinar, .seccion-resultado {
+    padding: 2rem 1.5rem;
+  }
+
+  .comparacion {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .flecha {
+    transform: rotate(90deg);
+  }
+
+  .valor-adivinanza {
+    font-size: 3rem;
+  }
+
+  .pantalla-final {
+    padding: 2rem 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .pantalla-final h1 {
+    font-size: 2rem;
+  }
+
+  .puntuacion-final .valor-puntos {
+    font-size: 3.5rem;
+  }
+
+  .etiquetas-escala {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

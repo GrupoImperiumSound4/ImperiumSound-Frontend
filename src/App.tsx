@@ -18,6 +18,7 @@ import Comparadorsonidos from "./paginas/comparador";
 import Info from "./paginas/Info";
 import JaviBlock from "./paginas/JaviBlock";
 import Colegio from "./paginas/mapacolegio"
+import DecibelGame from "./paginas/Juegoadivinardb";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path="/informacion" element= {<Info/>}></Route>
           <Route path="/javiblock" element= {<JaviBlock/>}></Route>
           <Route path="/colegio" element= {<ProtectedRoute><Colegio/></ProtectedRoute>}></Route>
+          <Route path="/Juegodb" element= {<DecibelGame/>}></Route>
         </Routes>
       </Router>
     </>
