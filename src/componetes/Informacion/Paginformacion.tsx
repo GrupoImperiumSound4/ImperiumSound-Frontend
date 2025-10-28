@@ -122,17 +122,17 @@ export const PagInfo = () => {
           <p className="subtitulo-galeria">Haz click en cada imagen para más información</p>
           <div className="galeria-grid">
             <div className="galeria-item" onClick={() => abrirModal('sonido')}>
-              <img src="public/img/nivel-sonoro.jpg" alt="Nivel Sonoro" />
+              <img src="/img/nivel-sonoro.jpg" alt="Nivel Sonoro" />
               <p>Nivel Sonoro</p>
               <div className="click-indicator">👆 Click para más info</div>
             </div>
             <div className="galeria-item" onClick={() => abrirModal('frecuencia')}>
-              <img src="public/img/frecuencia.jpg" alt="Ondas transversales" />
+              <img src="/img/frecuencia.jpg" alt="Ondas transversales" />
               <p>Frecuencia</p>
               <div className="click-indicator">👆 Click para más info</div>
             </div>
             <div className="galeria-item" onClick={() => abrirModal('interferencia')}>
-              <img src="public/img/interferencia.jpg" alt="Interferencia" />
+              <img src="/img/interferencia.jpg" alt="Interferencia" />
               <p>Interferencia</p>
               <div className="click-indicator">👆 Click para más info</div>
             </div>
