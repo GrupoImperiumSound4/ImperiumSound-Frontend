@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import{ useState, useEffect } from 'react';
 import '../../styles/DecibelGame.css'; 
 
 // Definir el tipo de escenario
