@@ -11,8 +11,7 @@ function InicioSesion() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Obtener la ruta de destino (donde quería ir antes de ser redirigido)
-  const from = (location.state as any)?.from || "/";
+  const from = (location.state as any)?.from || "/inicio";
 
   const tokenEffect = async () => {
     const result = await ValidToken();
@@ -32,16 +31,8 @@ function InicioSesion() {
   };
   
   useEffect(() => {
-    const checkToken = async () => {
-    const result = await ValidToken();
-    if (result && !result.error) {
-      console.log(from);
-      navigate(from, { replace: true });
-    }
-  };
-  
-  checkToken();
-}, []); // ← Elimina 'from' de las dependencias para evitar loops
+    tokenEffect();
+  }, []);
   return (
   
     <>
