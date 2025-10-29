@@ -15,7 +15,7 @@ function BarraUser() {
   const [error, setError] = useState<string | null>(null);
   const Microfono = "/microConfig";
   const Soporte = "/soporte";
-  const Info = "/cuenta";
+  const Info = "/cuenta"; 
   const API_URL = "https://imperium-sound-backend.vercel.app";
 
   const obtenerDatosUsuario = async () => {
