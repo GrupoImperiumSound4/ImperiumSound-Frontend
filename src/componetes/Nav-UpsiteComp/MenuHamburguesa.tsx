@@ -34,7 +34,7 @@ const MenuHamburguesa = () => {
             transition={{ duration: 0.5 }}       
           >
             <a className="txt-navbar-mv" onClick={() => navegar("/inicio")}>Inicio</a>
-            <a className="txt-navbar-mv" onClick={() => navegar("/comparador-sonido")}>xd</a>
+            <a className="txt-navbar-mv" onClick={() => navegar("/comparador-sonido")}>Compara Sonidos</a>
             <a className="txt-navbar-mv" onClick={() => navegar("/informacion")}>Conoce</a>
             <a className="txt-navbar-mv" onClick={() => navegar("/colegio")}>Colegio</a>
         
