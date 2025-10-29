@@ -10,24 +10,37 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const location = useLocation();
 
+  console.log("🛡️ [PROTECTED_ROUTE] Verificando acceso a:", location.pathname);
+
   useEffect(() => {
     const checkAuth = async () => {
-      const result = await ValidToken();
+      console.log("🔐 [PROTECTED_ROUTE] Iniciando verificación...");
       
-      if (result === null) {
-        // Si hay error, no está autenticado
+      try {
+        const result = await ValidToken();
+        console.log("📊 [PROTECTED_ROUTE] Resultado de ValidToken:", result);
+        
+        if (result === null) {
+          // No hay token válido
+          console.log("❌ [PROTECTED_ROUTE] Token inválido o no existe");
+          setIsAuthenticated(false);
+        } else {
+          // Token válido
+          console.log("✅ [PROTECTED_ROUTE] Token válido. Usuario:", result);
+          setIsAuthenticated(true);
+        }
+      } catch (error) {
+        console.error("❌ [PROTECTED_ROUTE] Error al verificar:", error);
         setIsAuthenticated(false);
-      } else{
-        // Si hay resultado válido, está autenticado
-        setIsAuthenticated(true);
-      } 
+      }
     };
 
     checkAuth();
-  }, []);
+  }, [location.pathname]); // Se ejecuta cada vez que cambia la ruta
 
   // Mostrar loading mientras verifica
   if (isAuthenticated === null) {
+    console.log("⏳ [PROTECTED_ROUTE] Verificando autenticación...");
     return (
       <div style={{
         display: 'flex',
@@ -48,6 +61,9 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
           animation: 'spin 1s linear infinite'
         }}></div>
         <p>Verificando sesión...</p>
+        <p style={{ fontSize: '14px', color: '#999' }}>
+          Ruta: {location.pathname}
+        </p>
         <style>{`
           @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -60,9 +76,12 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   // Si no está autenticado, redirigir a login
   if (!isAuthenticated) {
-    return <Navigate to="/inicio-sesion" state={{ from: location.pathname}} replace />;
+    console.log("🚫 [PROTECTED_ROUTE] Acceso denegado. Redirigiendo a /inicio-sesion");
+    console.log("📍 [PROTECTED_ROUTE] Guardando ruta de origen:", location.pathname);
+    return <Navigate to="/inicio-sesion" state={{ from: location.pathname }} replace />;
   }
 
   // Si está autenticado, mostrar el contenido
+  console.log("✅ [PROTECTED_ROUTE] Acceso permitido. Mostrando contenido");
   return <>{children}</>;
 }

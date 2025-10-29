@@ -13,7 +13,7 @@ export function Formulario() {
   const location = useLocation();
   const registroURL = "/Registro";
 
-  const from = (location.state as any)?.from || "/inicio" 
+  const from = (location.state as any)?.from || "/" 
   console.log(from);
   
   const [formData, setFormData] = useState<FormData>({
@@ -63,6 +63,16 @@ export function Formulario() {
 
       if (!response.ok) {
         throw new Error(data.detail || "Error al iniciar sesión");
+      }
+
+      if (data.access_token) {
+        localStorage.setItem("access_token", data.access_token);
+        console.log("✅ Token guardado en localStorage");
+      }
+
+      if (data.user) {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        console.log("✅ Usuario guardado:", data.user);
       }
       console.log(from);
       navigate(from,{replace: true} );
