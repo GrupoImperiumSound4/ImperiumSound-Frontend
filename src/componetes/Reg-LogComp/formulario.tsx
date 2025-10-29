@@ -24,7 +24,7 @@ export function Formulario() {
   const [loading, setLoading] = useState<boolean>(false);
 
 
-  const ApiURL = "https://imperium-sound-backend.vercel.app/";
+  const ApiURL = "https://imperium-sound-backend.vercel.app";
 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
