@@ -13,7 +13,7 @@ export function Formulario() {
   const location = useLocation();
   const registroURL = "/Registro";
 
-  const from = (location.state as any)?.from || "/" 
+  const from = (location.state as any)?.from || "/inicio" 
   console.log(from);
   
   const [formData, setFormData] = useState<FormData>({

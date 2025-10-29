@@ -32,8 +32,16 @@ function InicioSesion() {
   };
   
   useEffect(() => {
-    tokenEffect();
-  }, []);
+    const checkToken = async () => {
+    const result = await ValidToken();
+    if (result && !result.error) {
+      console.log(from);
+      navigate(from, { replace: true });
+    }
+  };
+  
+  checkToken();
+}, []); // ← Elimina 'from' de las dependencias para evitar loops
   return (
   
     <>
