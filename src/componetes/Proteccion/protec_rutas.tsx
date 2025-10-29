@@ -14,7 +14,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
     const checkAuth = async () => {
       const result = await ValidToken();
       
-      if (result?.error ||  !result) {
+      if (result === null) {
         // Si hay error, no está autenticado
         setIsAuthenticated(false);
       } else{

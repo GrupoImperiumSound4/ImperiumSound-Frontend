@@ -17,10 +17,10 @@ export const ValidToken = async () => {
 
     const data = await response.json();
     console.log("✅ Token válido. Datos del usuario:", data);
-    return { ...data };
+    return data ;
     
   } catch (error) {
     console.error("❌ Error validando token:", error);
-    return { error };
+    return null;
   }
 };
