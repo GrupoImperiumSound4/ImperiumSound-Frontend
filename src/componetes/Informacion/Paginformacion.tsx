@@ -112,12 +112,6 @@ export const PagInfo = () => {
           </div>
         </section>
 
-                {/* CAMBIARRRRRRRRRRRRRRRRRRR */}
-                                {/* CAMBIARRRRRRRRRRRRRRRRRRR */}
-                                                {/* CAMBIARRRRRRRRRRRRRRRRRRR */}
-                                                                {/* CAMBIARRRRRRRRRRRRRRRRRRR */}
-
-
         <section className="seccion-galeria">
           <p className="subtitulo-galeria">Haz click en cada imagen para más información</p>
           <div className="galeria-grid">

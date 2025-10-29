@@ -154,6 +154,7 @@ const DecibelGame = () => {
   if (!currentScenario) return <div className="cargando">Cargando...</div>;
 
   return (
+    <div className="page-wrapper">
     <div className="juego-decibeles">
       <div className="cabecera-juego">
         <div className="tablero-puntos">
@@ -235,6 +236,7 @@ const DecibelGame = () => {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 };
