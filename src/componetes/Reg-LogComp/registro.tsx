@@ -12,7 +12,8 @@ export function Registrarse() {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const apiUrl = "http://localhost:8000";
+
+  const apiUrl =  "http://localhost:8000";
 
   const manejarSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
