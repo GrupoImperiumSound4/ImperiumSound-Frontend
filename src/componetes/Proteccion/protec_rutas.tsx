@@ -76,7 +76,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   // Si no está autenticado, redirigir a login
   if (!isAuthenticated) {
-    console.log("🚫 [PROTECTED_ROUTE] Acceso denegado. Redirigiendo a /inicio-sesion");
+    console.log("🚫 [PROTECTED_ROUTE] Acceso denegado.");
     console.log("📍 [PROTECTED_ROUTE] Guardando ruta de origen:", location.pathname);
     return <Navigate to="/inicio-sesion" state={{ from: location.pathname }} replace />;
   }
