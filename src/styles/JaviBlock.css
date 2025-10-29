@@ -32,11 +32,14 @@
 
 .game-page {
   max-height: 100vh;
+  margin-top: -29px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
   font-family: Arial, sans-serif;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .game-card {
@@ -196,7 +199,9 @@
   font-size: clamp(14px, 2vw, 16px);
 }
 
-/* Responsive para tablets y móviles */
+
+
+
 @media (max-width: 768px) {
   .game-card {
     padding: 20px;
@@ -213,7 +218,6 @@
   }
 }
 
-/* Responsive para pantallas pequeñas */
 @media (max-width: 480px) {
   .game-page {
     padding: 10px;
