@@ -1,5 +1,5 @@
 export const ValidToken = async () => {
-  const apiUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+  const apiUrl = "https://imperium-sound-backend.vercel.app";
 
   try {
     const response = await fetch(`${apiUrl}/valid`, {
@@ -17,10 +17,10 @@ export const ValidToken = async () => {
 
     const data = await response.json();
     console.log("✅ Token válido. Datos del usuario:", data);
-    return { ...data };
+    return data ;
     
   } catch (error) {
     console.error("❌ Error validando token:", error);
-    return { error };
+    return null;
   }
 };

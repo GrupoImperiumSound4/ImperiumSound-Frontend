@@ -12,7 +12,8 @@ export function Registrarse() {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const apiUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+
+  const apiUrl =  "https://imperium-sound-backend.vercel.app";
 
   const manejarSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

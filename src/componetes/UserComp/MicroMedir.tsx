@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Select, { SingleValue } from 'react-select';
 
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+const API_URL = "https://imperium-sound-backend.vercel.app";
 const AudioAnalyzer: React.FC = () => {
   const [currentDb, setCurrentDb] = useState<number>(0); // Nivel actual de dB
   const [highestDb, setHighestDb] = useState<number>(0);  // Nivel más alto registrado

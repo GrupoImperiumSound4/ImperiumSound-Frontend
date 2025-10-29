@@ -6,9 +6,7 @@ export function User() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cuenta = "/cuenta";
-  const apiUrl =
-    import.meta.env.VITE_API_URL ??
-    "https://imperiumsound-backend-production.up.railway.app";
+  const apiUrl = "https://imperium-sound-backend.vercel.app";
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
