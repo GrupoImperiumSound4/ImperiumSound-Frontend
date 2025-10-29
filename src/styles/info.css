@@ -42,7 +42,25 @@
   width: 15em;
   text-align: center; 
   color: black;                  
-  background-color: #661ec4;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  z-index: 999999;              
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+}
+
+@media (max-width: 576px) { 
+  .menu-desplegable-info{
+  position: fixed;             
+  top: 464px;                   
+  right:40px;
+  width: 15em;
+  text-align: center; 
+  color: black;                  
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   padding: 10px;

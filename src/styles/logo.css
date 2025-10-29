@@ -7,3 +7,16 @@
   margin-right: 2em;
   margin-left: 1em;
 }
+
+
+@media (max-width: 576px) {
+  .logo{
+    margin-left: -2px;
+    margin-right: 6px;
+  }
+
+  .logoIMG{
+    width: 40px;
+    
+  }
+}
