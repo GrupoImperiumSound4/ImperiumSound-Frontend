@@ -1,5 +1,5 @@
 export const ValidToken = async () => {
-  const apiUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+  const apiUrl = "http://localhost:8000";
 
   try {
     const response = await fetch(`${apiUrl}/valid`, {
