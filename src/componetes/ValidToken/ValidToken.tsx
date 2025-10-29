@@ -1,5 +1,5 @@
 export const ValidToken = async () => {
-  const apiUrl = "http://localhost:8000";
+  const apiUrl = "https://imperium-sound-backend.vercel.app";
 
   try {
     const response = await fetch(`${apiUrl}/valid`, {
