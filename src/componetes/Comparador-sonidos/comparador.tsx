@@ -291,7 +291,7 @@ export const Comparador = () => {
             <div className="scale-container">
               <div className="scale-labels">
                 <span>Silencio</span>
-                <span>Límite Humano.</span>
+                <span>Límite Humano</span>
               </div>
               <div className="scale-bar">
                 <div
