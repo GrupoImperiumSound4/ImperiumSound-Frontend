@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../../styles/PagInfo.css";
 
 export const PagInfo = () => {
@@ -80,12 +81,12 @@ export const PagInfo = () => {
               <li>🔴 Peligroso (+100 dB)</li>
             </ul>
             <button className="boton-comparador">
-              <a href="/comparador-sonido">
-              <cite>
-              (Dale click aqui para ir al comparador de decibeles con situaciones cotidianas)  
+            <Link to="/comparador-sonido">
+            <cite>
+              (Dale click aquí para ir al comparador de decibeles con situaciones cotidianas)
             </cite>
-            </a>
-            </button>
+          </Link>
+          </button>
           </div>
           <div className="contenido-imagen">
             <img src="/img/oido.jpg" alt="Aplicaciones" className="imagen"/>
