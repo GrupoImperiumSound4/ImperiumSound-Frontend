@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Select, { SingleValue } from 'react-select';
 
+const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
 const AudioAnalyzer: React.FC = () => {
   const [currentDb, setCurrentDb] = useState<number>(0); // Nivel actual de dB
   const [highestDb, setHighestDb] = useState<number>(0);  // Nivel más alto registrado
@@ -14,7 +15,7 @@ const AudioAnalyzer: React.FC = () => {
   // Función para obtener las ciudades desde el API
   const city = async () => {
     try {
-      const response = await fetch('https://api-colombia.com/api/v1/City', {
+        const response = await fetch(`${API_URL}/api/v1/City`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",
