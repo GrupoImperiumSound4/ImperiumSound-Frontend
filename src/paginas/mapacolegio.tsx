@@ -31,33 +31,33 @@ const zonasToPointId: Record<string, number> = {
 
 const zonasColegio: Record<string, { nombre: string; imagen: string }[]> = {
   sotano: [
-    { nombre: "Cafeteria", imagen: "/img/entrada.png" },
-    { nombre: "Patio salon", imagen: "/img/entrada.png" },
-    { nombre: "Mesas", imagen: "/img/entrada.png" }
+    { nombre: "Cafeteria", imagen: "/img/cafeteria.jpeg" },
+    { nombre: "Patio salon", imagen: "/img/patiosalon.jpeg" },  
+    { nombre: "Mesas", imagen: "/img/mesas.jpeg" }
   ],
   piso1: [
-    { nombre: "Porteria", imagen: "/img/entrada.png" },
-    { nombre: "Papeleria", imagen: "/img/....jpg" },
-    { nombre: "Restaurante", imagen: "/img/....jpg" },
-    { nombre: "Tienda", imagen: "/img/....jpg" },
-    { nombre: "Baños Sexto", imagen: "/img/....jpg" }
+    { nombre: "Porteria", imagen: "/img/porteria.jpeg" },
+    { nombre: "Papeleria", imagen: "/img/papeleria.jpeg" },
+    { nombre: "Restaurante", imagen: "/img/restaurante.jpeg" },
+    { nombre: "Tienda", imagen: "/img/tienda.jpeg" },
+    { nombre: "Baños Sexto", imagen: "/img/bañossextos.jpeg" }
   ],
   piso2: [
-    { nombre: "Aulas de informatica", imagen: "/img/laboratorio.jpg" },
-    { nombre: "Pasillo docentes de español", imagen: "/img/aula201.jpg" },
-    { nombre: "Baños Septimo", imagen: "/img/pasillo.jpg" },
-    { nombre: "Pasillo Artistica", imagen: "/img/pasillo.jpg" },
-    { nombre: "Pasillo de Sugey", imagen: "/img/pasillo.jpg" }
+    { nombre: "Aulas de informatica", imagen: "/img/informatica.jpeg" },
+    { nombre: "Pasillo docentes de español", imagen: "/img/español.jpeg" },
+    { nombre: "Baños Septimo", imagen: "/img/bañosseptimo.jpeg" },
+    { nombre: "Pasillo Artistica", imagen: "/img/artistica.jpeg" },
+    { nombre: "Pasillo de Sugey", imagen: "/img/sugey.jpeg" }
   ],
   piso3: [
-    { nombre: "Pasillo de pacho", imagen: "/img/musica.jpg" },
-    { nombre: "Pasillo Zoilo", imagen: "/img/aula301.jpg" },
-    { nombre: "Pasillo de catalina", imagen: "/img/oficinas.jpg" },
-    { nombre: "Pasillo de Mónica", imagen: "/img/mate.jpg"},
-    { nombre: "Pasillo de Santa", imagen: "/img/mate.jpg"}
+    { nombre: "Pasillo de pacho", imagen: "/img/pacho.jpeg" },
+    { nombre: "Pasillo Zoilo", imagen: "/img/zoilo.jpeg" },
+    { nombre: "Pasillo de catalina", imagen: "/img/catalina.jpeg" },
+    { nombre: "Pasillo de Mónica", imagen: "/img/monica.jpeg"},
+    { nombre: "Pasillo de Santa", imagen: "/img/santa.jpeg"}
   ],
   piso4: [
-    { nombre: "Auditorio", imagen: "/img/entrada.png" }
+    { nombre: "Auditorio", imagen: "/img/auditorio.jpeg" }
   ]
 };
 
@@ -298,7 +298,10 @@ const MapaColegio = () => {
 
         <div className={`pisos ${piso ? "arriba" : ""}`}>
           <div className={`sotano ${piso === "sotano" ? "activo" : ""}`}>
-          <button onClick={() => setPiso("sotano")}>Sótano</button>
+          <button onClick={() => setPiso("sotano")} >
+          
+          Sótano
+          </button>
         </div>
 
       <div className={`piso1 ${piso === "piso1" ? "activo" : ""}`}>
@@ -355,7 +358,7 @@ const MapaColegio = () => {
             
             src={imagenZona}
             alt={zona || ""}
-            style={{ width: "50%", borderRadius: "10px", marginBottom: "15px" }}
+            className="imagen-zona"
           />
         )}
 
@@ -366,7 +369,7 @@ const MapaColegio = () => {
             background: "#f0f0f0", 
             borderRadius: "8px" 
           }}>
-            <p style={{ margin: "5px 0", fontWeight: "bold", fontSize: "18px" }}>
+            <p style={{ margin: "5px 0", fontWeight: "bold", fontSize: "18px", }} className="txt-pene">
               🔊 {currentDb.toFixed(1)} dB
             </p>
             <div className="barra-db">
