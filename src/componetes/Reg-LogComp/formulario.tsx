@@ -23,7 +23,7 @@ export function Formulario() {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const ApiURL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+  const ApiURL ="http://localhost:8000";
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
