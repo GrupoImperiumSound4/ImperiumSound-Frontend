@@ -60,3 +60,24 @@
   margin-bottom: 0.3em;
   border-bottom: 1px solid #b4b1b1;
 }
+
+@media (max-width: 576px) {
+ .menu-desplegable-xd {
+  
+  top: 68px;
+  right: 35px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 14em;
+  color: rgba(82, 82, 82, 0.76);
+  text-align: center;
+  opacity: 0;
+  transform: translateX(50px);
+  pointer-events: none;
+  transition: all 0.8s ease;
+} 
+  
+}

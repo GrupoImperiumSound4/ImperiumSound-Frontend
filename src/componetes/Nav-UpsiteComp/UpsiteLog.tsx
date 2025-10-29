@@ -28,7 +28,9 @@ useEffect(()=>{
   return (
     <>
       <div className="upsite">
+        <div className="cel-xd">
         <Logo />
+        </div>
         <div className="contenido">
           <NavbarLog />
           <IconGame />

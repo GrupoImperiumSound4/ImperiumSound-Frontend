@@ -24,3 +24,11 @@
     margin-left: 10px;
 }
 
+@media (max-width: 576px){ 
+  .jarra{
+             
+  top: 84px;
+  right: 10px;
+  
+}
+}
