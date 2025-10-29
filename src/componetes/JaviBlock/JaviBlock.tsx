@@ -343,6 +343,7 @@ export default function JaviBlock() {
   }, []);
 
   return (
+    <div className="page-wrapper">
       <div className="game-page">
         <div className="game-card">
           <h1 className="game-title">🎤 JaviBlock</h1>
@@ -409,6 +410,7 @@ export default function JaviBlock() {
             )}
           </div>
         </div>
+      </div>
       </div>
   );
 }
