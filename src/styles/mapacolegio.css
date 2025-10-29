@@ -32,7 +32,7 @@
 
 .mensaje-animacion.oculto {
   opacity: 0;
-  transform: translateY(-50px);
+  transform: translateY(-200px);
   pointer-events: none;
   
 }
@@ -42,7 +42,7 @@
 
 .pisos {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
   transition: transform 0.8s ease,
   opacity 0.8s ease;
@@ -59,11 +59,14 @@
     width: 20em;
     display: flex;
     
+    
 }
+
+
 .piso1{
     height: 20em;
     width: 20em;
-    padding-left: 10px;
+    padding-left: 13px;
     display: flex;
     
 
@@ -72,21 +75,21 @@
 .piso2{
     height: 20em;
     width: 20em;
-    padding-left: 10px;
+    padding-left: 13px;
     display: flex;
     
 }
   .piso3{
     height: 20em;
     width: 20em;
-    padding-left: 10px;
+    padding-left: 13px;
     display: flex;
     
 }
     .piso4{
     height: 20em;
     width: 20em;
-    padding-left: 10px;
+    padding-left: 13px;
     display: flex;
     
 }
@@ -224,13 +227,21 @@
       height: 2em;
       padding: 8px;
       
+      
     }
 
     .iniciar-loro{
       height: 3em;
       border-radius: 5px;
       background-color: royalblue;
+      display: flex;
+      align-items: center;
+      margin-left: 38%;
+      margin-right: 35%;
+      
     }
+    
+    
 
     .iniciar-loro button :hover{
       background-color: aqua;
@@ -241,9 +252,17 @@
       font-size: 1.5em;
       
     }
+
+    .txt-pene{
+      color: grey;
+    }
+
     
 
-
+    .imagen-zona{
+      height: 60%;
+      padding-bottom: 1em;
+    }
 
 
 @media(max-width: 1366px){
