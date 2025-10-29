@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export function Registrarse() {
   const navegar = useNavigate();
-  const loginURL = "/inicio-sesion";
+  const loginURL = "/";
 
   const [usuario, setUsuario] = useState<string>("");
   const [correo, setCorreo] = useState<string>("");
@@ -12,7 +12,7 @@ export function Registrarse() {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const apiUrl = 'http://localhost:8000';
+  const apiUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
 
   const manejarSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

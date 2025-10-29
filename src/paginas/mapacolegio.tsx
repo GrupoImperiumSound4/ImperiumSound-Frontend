@@ -86,8 +86,7 @@ const MapaColegio = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState("");
 
-  const API_URL = "http://localhost:8000";
-
+  const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
   const seleccionarZona = (zonaSeleccionada: { nombre: string; imagen: string }) => {
     setZona(zonaSeleccionada.nombre);
     setImagenZona(zonaSeleccionada.imagen);
