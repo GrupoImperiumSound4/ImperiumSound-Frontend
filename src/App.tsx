@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import { ProtectedRoute } from "./componetes/Proteccion/protec_rutas";
+import { ProtectedAdminRoute } from "./componetes/Proteccion/ProtectedAdminRoute";
 import "./App.css";
 import InicioSesion from "./paginas/InicioSesion";
 import Registro from "./paginas/Registro";
@@ -44,7 +45,7 @@ function App() {
           <Route path="/javiblock" element= {<JaviBlock/>}></Route>
           <Route path="/colegio" element= {<ProtectedRoute><Colegio/></ProtectedRoute>}></Route>
           <Route path="/Juegodb" element= {<DecibelGame/>}></Route>
-          <Route path="/PanelAdmin" element= {<AdminPanel/>}></Route>
+          <Route path="/PanelAdmin" element={<ProtectedAdminRoute><AdminPanel/></ProtectedAdminRoute>}></Route>
         </Routes>
       </Router>
     </>

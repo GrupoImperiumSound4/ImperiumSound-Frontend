@@ -13,7 +13,7 @@ export function Registrarse() {
   const [loading, setLoading] = useState<boolean>(false);
 
 
-  const apiUrl =  "http://localhost:8000";
+  const apiUrl = "https://imperium-sound-backend.vercel.app";
 
   const manejarSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

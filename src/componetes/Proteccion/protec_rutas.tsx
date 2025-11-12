@@ -10,27 +10,27 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const location = useLocation();
 
-  console.log("🛡️ [PROTECTED_ROUTE] Verificando acceso a:", location.pathname);
+  console.log(" [PROTECTED_ROUTE] Verificando acceso a:", location.pathname);
 
   useEffect(() => {
     const checkAuth = async () => {
-      console.log("🔐 [PROTECTED_ROUTE] Iniciando verificación...");
+      console.log(" [PROTECTED_ROUTE] Iniciando verificación...");
       
       try {
         const result = await ValidToken();
-        console.log("📊 [PROTECTED_ROUTE] Resultado de ValidToken:", result);
+        console.log(" [PROTECTED_ROUTE] Resultado de ValidToken:", result);
         
         if (result === null) {
           // No hay token válido
-          console.log("❌ [PROTECTED_ROUTE] Token inválido o no existe");
+          console.log("[PROTECTED_ROUTE] Token inválido o no existe");
           setIsAuthenticated(false);
         } else {
           // Token válido
-          console.log("✅ [PROTECTED_ROUTE] Token válido. Usuario:", result);
+          console.log(" [PROTECTED_ROUTE] Token válido. Usuario:", result);
           setIsAuthenticated(true);
         }
       } catch (error) {
-        console.error("❌ [PROTECTED_ROUTE] Error al verificar:", error);
+        console.error("[PROTECTED_ROUTE] Error al verificar:", error);
         setIsAuthenticated(false);
       }
     };
@@ -76,12 +76,12 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   // Si no está autenticado, redirigir a login
   if (!isAuthenticated) {
-    console.log("🚫 [PROTECTED_ROUTE] Acceso denegado.");
-    console.log("📍 [PROTECTED_ROUTE] Guardando ruta de origen:", location.pathname);
+    console.log("Acceso denegado.");
+    console.log(location.pathname);
     return <Navigate to="/inicio-sesion" state={{ from: location.pathname }} replace />;
   }
 
   // Si está autenticado, mostrar el contenido
-  console.log("✅ [PROTECTED_ROUTE] Acceso permitido. Mostrando contenido");
+  console.log("Acceso permitido. ");
   return <>{children}</>;
 }

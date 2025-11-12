@@ -41,25 +41,27 @@ export default function PanelAdmin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+  const API_URL = "https://imperium-sound-backend.vercel.app";
 
   // Cargar estadísticas
   const loadStats = async () => {
     try {
       setLoading(true);
+      setError('');
       const response = await fetch(`${API_URL}/admin/stats`, {
-
         credentials: 'include'
       });
       
       if (response.ok) {
         const data = await response.json();
         setStats(data);
+      } else if (response.status === 403) {
+        setError('No tienes permisos de administrador');
       } else {
         setError('Error al cargar estadísticas');
       }
     } catch (err) {
-      setError('Error de conexión');
+      setError('Error de conexión con el servidor');
     } finally {
       setLoading(false);
     }
@@ -69,19 +71,21 @@ export default function PanelAdmin() {
   const loadUsers = async () => {
     try {
       setLoading(true);
+      setError('');
       const response = await fetch(`${API_URL}/admin/users?limit=100`, {
-
         credentials: 'include'
       });
       
       if (response.ok) {
         const data = await response.json();
         setUsers(data.users);
+      } else if (response.status === 403) {
+        setError('No tienes permisos de administrador');
       } else {
         setError('Error al cargar usuarios');
       }
     } catch (err) {
-      setError('Error de conexión');
+      setError('Error de conexión con el servidor');
     } finally {
       setLoading(false);
     }
@@ -91,19 +95,21 @@ export default function PanelAdmin() {
   const loadSounds = async () => {
     try {
       setLoading(true);
+      setError('');
       const response = await fetch(`${API_URL}/admin/sounds?limit=100`, {
-
         credentials: 'include'
       });
       
       if (response.ok) {
         const data = await response.json();
         setSounds(data.sounds);
+      } else if (response.status === 403) {
+        setError('No tienes permisos de administrador');
       } else {
         setError('Error al cargar sonidos');
       }
     } catch (err) {
-      setError('Error de conexión');
+      setError('Error de conexión con el servidor');
     } finally {
       setLoading(false);
     }
@@ -115,7 +121,6 @@ export default function PanelAdmin() {
     
     try {
       const response = await fetch(`${API_URL}/admin/users/${userId}`, {
-
         method: 'DELETE',
         credentials: 'include'
       });
@@ -136,7 +141,6 @@ export default function PanelAdmin() {
   const changeRole = async (userId: number, newRole: string) => {
     try {
       const response = await fetch(`${API_URL}/admin/users/${userId}/role?role=${newRole}`, {
-
         method: 'PUT',
         credentials: 'include'
       });
@@ -159,7 +163,6 @@ export default function PanelAdmin() {
     
     try {
       const response = await fetch(`${API_URL}/admin/sounds/${soundId}`, {
-
         method: 'DELETE',
         credentials: 'include'
       });
@@ -182,189 +185,200 @@ export default function PanelAdmin() {
   }, [activeTab]);
 
   return (
-<div className="ContainerUser-sp">
-    <div style={{ minHeight: '100vh', background: '#f3f4f6' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 'bold', marginBottom: '30px', color: '#333' }}>
-          🛡 Panel de Administrador
-        </h1>
+    <div className="ContainerUser-sp">
+      <div className='cuadro-ad'>
+        <div className='panel'>
+          <h1 className='titulo'>
+             Panel de Administrador
+          </h1>
 
-        {/* Tabs */}
-        <div style={{ display: 'flex', gap: '10px', marginBottom: '30px', borderBottom: '2px solid #e5e7eb' }}>
-          {['stats', 'users', 'sounds'].map(tab => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab as any)}
-              style={{
-                padding: '12px 24px',
-                background: activeTab === tab ? 'white' : 'transparent',
-                border: 'none',
-                borderBottom: activeTab === tab ? '3px solid #667eea' : '3px solid transparent',
-                cursor: 'pointer',
-                fontWeight: activeTab === tab ? 'bold' : 'normal',
-                color: activeTab === tab ? '#667eea' : '#666',
-                fontSize: '16px'
-              }}
-            >
-              {tab === 'stats' && '📊 Estadísticas'}
-              {tab === 'users' && '👥 Usuarios'}
-              {tab === 'sounds' && '🔊 Sonidos'}
-            </button>
-          ))}
-        </div>
-
-        {error && (
-          <div style={{ background: '#fee2e2', color: '#dc2626', padding: '15px', borderRadius: '8px', marginBottom: '20px' }}>
-            {error}
+          <div className='cont-botones-pestana'>
+            {['stats', 'users', 'sounds'].map(tab => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab as any)}
+                className={`boton-pestana ${activeTab === tab ? 'activo' : ''}`}
+              >
+                {tab === 'stats' && ' Estadísticas'}
+                {tab === 'users' && ' Usuarios'}
+                {tab === 'sounds' && ' Sonidos'}
+              </button>
+            ))}
           </div>
-        )}
 
-        {loading && <p>Cargando...</p>}
-
-        {/* ESTADÍSTICAS */}
-        {activeTab === 'stats' && stats && (
-          <div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '30px' }}>
-              <div style={{ background: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#667eea' }}>{stats.total_users}</div>
-                <div style={{ color: '#666', marginTop: '5px' }}>Total Usuarios</div>
-              </div>
-              <div style={{ background: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#10b981' }}>{stats.total_sounds}</div>
-                <div style={{ color: '#666', marginTop: '5px' }}>Total Sonidos</div>
-              </div>
-              <div style={{ background: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#f59e0b' }}>{stats.avg_decibels} dB</div>
-                <div style={{ color: '#666', marginTop: '5px' }}>Promedio dB</div>
-              </div>
-              <div style={{ background: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#ef4444' }}>{stats.sounds_today}</div>
-                <div style={{ color: '#666', marginTop: '5px' }}>Hoy</div>
-              </div>
+          {error && (
+            <div className='mensaje-error'>
+              ⚠️ {error}
             </div>
+          )}
 
-            <div style={{ background: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-              <h3 style={{ marginBottom: '15px', fontSize: '18px', fontWeight: 'bold' }}>🔥 Top 5 Áreas Más Ruidosas</h3>
-              {stats.top_noisy_areas.map((area, i) => (
-                <div key={i} style={{ padding: '10px', borderBottom: '1px solid #e5e7eb', display: 'flex', justifyContent: 'space-between' }}>
-                  <span>{area.area}</span>
-                  <span style={{ fontWeight: 'bold', color: '#ef4444' }}>{area.avg_decibels} dB ({area.count} registros)</span>
+          {loading && (
+            <div className='mensaje-carga'>
+              ⏳ Cargando datos...
+            </div>
+          )}
+
+          {/* ESTADÍSTICAS */}
+          {activeTab === 'stats' && stats && !loading && (
+            <div>
+              <div className='cont-tarjetas-stats'>
+                <div className='tarjeta-stat azul'>
+                  <div className='valor-stat'>{stats.total_users}</div>
+                  <div className='etiqueta-stat'>Total Usuarios</div>
                 </div>
-              ))}
+                <div className='tarjeta-stat verde'>
+                  <div className='valor-stat'>{stats.total_sounds}</div>
+                  <div className='etiqueta-stat'>Total Sonidos</div>
+                </div>
+                <div className='tarjeta-stat amarillo'>
+                  <div className='valor-stat'>{stats.avg_decibels} dB</div>
+                  <div className='etiqueta-stat'>Promedio dB</div>
+                </div>
+                <div className='tarjeta-stat rojo'>
+                  <div className='valor-stat'>{stats.sounds_today}</div>
+                  <div className='etiqueta-stat'>Registros Hoy</div>
+                </div>
+              </div>
+
+              <div className='tarjeta-top-ruidos'>
+                <h3 className='titulo-top-ruidos'>🔥 Top 5 Áreas Más Ruidosas</h3>
+                {stats.top_noisy_areas.length > 0 ? (
+                  stats.top_noisy_areas.map((area, i) => (
+                    <div key={i} className='item-area-ruidosa'>
+                      <div className='cont-nombre-area'>
+                        <span className='posicion-area'>#{i + 1}</span>
+                        <span className='nombre-area'>{area.area}</span>
+                      </div>
+                      <div className='cont-datos-area'>
+                        <div className='valor-db-area'>{area.avg_decibels} dB</div>
+                        <div className='contador-registros-area'>{area.count} registros</div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p className='mensaje-no-datos'>No hay datos disponibles</p>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* USUARIOS */}
-        {activeTab === 'users' && (
-          <div style={{ background: 'white', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead style={{ background: '#f9fafb' }}>
-                <tr>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>ID</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Nombre</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Email</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Rol</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map(user => (
-                  <tr key={user.id} style={{ borderBottom: '1px solid #e5e7eb' }}>
-                    <td style={{ padding: '15px' }}>{user.id}</td>
-                    <td style={{ padding: '15px' }}>{user.name}</td>
-                    <td style={{ padding: '15px' }}>{user.email}</td>
-                    <td style={{ padding: '15px' }}>
-                      <span style={{
-                        padding: '4px 12px',
-                        borderRadius: '20px',
-                        fontSize: '12px',
-                        fontWeight: 'bold',
-                        background: user.role === 'admin' ? '#fef3c7' : '#e0e7ff',
-                        color: user.role === 'admin' ? '#92400e' : '#3730a3'
-                      }}>
-                        {user.role}
-                      </span>
-                    </td>
-                    <td style={{ padding: '15px' }}>
-                      <select
-                        onChange={(e) => changeRole(user.id, e.target.value)}
-                        defaultValue={user.role}
-                        style={{ marginRight: '10px', padding: '5px', borderRadius: '5px', border: '1px solid #d1d5db' }}
-                      >
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                      </select>
-                      <button
-                        onClick={() => deleteUser(user.id)}
-                        style={{
-                          padding: '5px 15px',
-                          background: '#ef4444',
-                          color: 'white',
-                          border: 'none',
-                          borderRadius: '5px',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        Eliminar
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+          {/* USUARIOS */}
+          {activeTab === 'users' && !loading && (
+            <div className='cont-tabla-principal'>
+              <div className='cont-tabla-scroll'>
+                <table className='tabla-datos'>
+                  <thead className='encabezado-tabla azul-degradado'>
+                    <tr>
+                      <th className='celda-encabezado-tabla'>ID</th>
+                      <th className='celda-encabezado-tabla'>Nombre</th>
+                      <th className='celda-encabezado-tabla'>Email</th>
+                      <th className='celda-encabezado-tabla'>Rol</th>
+                      <th className='celda-encabezado-tabla centrado'>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.length > 0 ? (
+                      users.map(user => (
+                        <tr key={user.id} className='fila-tabla' onMouseEnter={(e) => e.currentTarget.classList.add('hover')} onMouseLeave={(e) => e.currentTarget.classList.remove('hover')}>
+                          <td className='celda-tabla-id'>{user.id}</td>
+                          <td className='celda-tabla'>{user.name}</td>
+                          <td className='celda-tabla email'>{user.email}</td>
+                          <td className='celda-tabla'>
+                            <span className={`etiqueta-rol ${user.role === 'admin' ? 'admin' : 'user'}`}>
+                              {user.role === 'admin' ? '👑 Admin' : '👤 User'}
+                            </span>
+                          </td>
+                          <td className='celda-tabla centrado'>
+                            <select
+                              onChange={(e) => changeRole(user.id, e.target.value)}
+                              value={user.role}
+                              className='selector-rol'
+                            >
+                              <option value="user">User</option>
+                              <option value="admin">Admin</option>
+                            </select>
+                            <button
+                              onClick={() => deleteUser(user.id)}
+                              className='boton-eliminar'
+                            >
+                              🗑️ Eliminar
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={5} className='celda-no-datos'>
+                          No hay usuarios registrados
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
 
-        {/* SONIDOS */}
-        {activeTab === 'sounds' && (
-          <div style={{ background: 'white', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead style={{ background: '#f9fafb' }}>
-                <tr>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>ID</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Decibeles</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Área</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Piso</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Fecha</th>
-                  <th style={{ padding: '15px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sounds.map(sound => (
-                  <tr key={sound.id} style={{ borderBottom: '1px solid #e5e7eb' }}>
-                    <td style={{ padding: '15px' }}>{sound.id}</td>
-                    <td style={{ padding: '15px', fontWeight: 'bold', color: sound.decibels > 80 ? '#ef4444' : '#10b981' }}>
-                      {sound.decibels} dB
-                    </td>
-                    <td style={{ padding: '15px' }}>{sound.point?.area || 'N/A'}</td>
-                    <td style={{ padding: '15px' }}>{sound.point?.floor || 'N/A'}</td>
-                    <td style={{ padding: '15px', fontSize: '14px', color: '#666' }}>
-                      {new Date(sound.date).toLocaleString('es-CO')}
-                    </td>
-                    <td style={{ padding: '15px' }}>
-                      <button
-                        onClick={() => deleteSound(sound.id)}
-                        style={{
-                          padding: '5px 15px',
-                          background: '#ef4444',
-                          color: 'white',
-                          border: 'none',
-                          borderRadius: '5px',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        Eliminar
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+          {/* SONIDOS */}
+          {activeTab === 'sounds' && !loading && (
+            <div className='cont-tabla-principal'>
+              <div className='cont-tabla-scroll'>
+                <table className='tabla-datos'>
+                  <thead className='encabezado-tabla azul-degradado'>
+                    <tr>
+                      <th className='celda-encabezado-tabla'>ID</th>
+                      <th className='celda-encabezado-tabla'>Decibeles</th>
+                      <th className='celda-encabezado-tabla'>Ubicación</th>
+                      <th className='celda-encabezado-tabla'>Piso</th>
+                      <th className='celda-encabezado-tabla'>Fecha</th>
+                      <th className='celda-encabezado-tabla centrado'>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sounds.length > 0 ? (
+                      sounds.map(sound => (
+                        <tr key={sound.id} className='fila-tabla' onMouseEnter={(e) => e.currentTarget.classList.add('hover')} onMouseLeave={(e) => e.currentTarget.classList.remove('hover')}>
+                          <td className='celda-tabla-id'>{sound.id}</td>
+                          <td className='celda-tabla'>
+                            <span className={`valor-decibel ${sound.decibels > 80 ? 'rojo' : sound.decibels > 60 ? 'amarillo' : 'verde'}`}>
+                              {sound.decibels} dB
+                            </span>
+                          </td>
+                          <td className='celda-tabla'>{sound.point?.area || 'Sin ubicación'}</td>
+                          <td className='celda-tabla'>{sound.point?.floor || 'N/A'}</td>
+                          <td className='celda-tabla fecha-hora'>
+                            {new Date(sound.date).toLocaleString('es-CO', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })}
+                          </td>
+                          <td className='celda-tabla centrado'>
+                            <button
+                              onClick={() => deleteSound(sound.id)}
+                              className='boton-eliminar'
+                            >
+                              🗑️ Eliminar
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={6} className='celda-no-datos'>
+                          No hay sonidos registrados
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
- </div>
-  );
+    </div>
+  );
 }
