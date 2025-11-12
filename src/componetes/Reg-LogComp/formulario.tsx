@@ -50,7 +50,7 @@ export function Formulario() {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // 🔑 Permite que el navegador guarde la cookie
+        credentials: "include", 
         body: JSON.stringify(formData),
       });
 
@@ -63,14 +63,10 @@ export function Formulario() {
         throw new Error(data.detail || "Error al iniciar sesión");
       }
 
-      // ✅ Solo guardar datos del usuario (NO el token)
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
         console.log("✅ Usuario guardado:", data.user);
       }
-
-      // ❌ NO guardar el token en localStorage
-      // El token ya está en la cookie httponly (más seguro)
       
       console.log("🔄 Redirigiendo a:", from);
       navigate(from, { replace: true });

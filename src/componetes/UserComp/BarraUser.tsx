@@ -52,7 +52,7 @@ function BarraUser() {
       
       setError(null);
     } catch (err) {
-      console.error('❌ Error:', err);
+      console.error('Error:', err);
       setError('Error al cargar los datos del usuario');
       localStorage.removeItem("user");
       navegar("/inicio-sesion");
@@ -67,8 +67,8 @@ function BarraUser() {
 
   const cerrarSesion = async () => {
     try {
-      console.log("🚪 Cerrando sesión...");
-      
+      console.log("Cerrando sesión...");
+
       const response = await fetch(`${API_URL}/auth/logout`, {
         method: 'POST',
         credentials: 'include',
@@ -77,16 +77,17 @@ function BarraUser() {
         },
       });
 
+      localStorage.removeItem("user");
+
       if (response.ok) {
-        localStorage.removeItem("user");
         console.log("✅ Sesión cerrada correctamente");
-        navegar("/inicio-sesion");
       } else {
-        throw new Error('Error al cerrar sesión');
+        console.warn("⚠️ Error en el servidor, pero limpiando sesión local");
       }
+      navegar("/inicio-sesion");
+
     } catch (err) {
-      console.error('❌ Error al cerrar sesión:', err);
-      // Aún así limpiar y redirigir
+      console.error('Error al cerrar sesión:', err);
       localStorage.removeItem("user");
       navegar("/inicio-sesion");
     }

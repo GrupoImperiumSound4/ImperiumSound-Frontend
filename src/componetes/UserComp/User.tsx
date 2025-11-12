@@ -6,23 +6,9 @@ export function User() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cuenta = "/cuenta";
-  const apiUrl = "https://imperium-sound-backend.vercel.app";
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const logout = () => {
-    fetch(`${apiUrl}/auth/logout`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => console.error("Error al cerrar sesión:", error));
   };
 
   return (
@@ -36,9 +22,6 @@ export function User() {
           <p id="UserBienvenida">¡Hola!</p>
           <a onClick={() => navigate(cuenta)}>
             <li>Cuenta</li>
-          </a>
-          <a onClick={logout}>
-            <li>Cerrar Sesión</li>
           </a>
         </ul>
       </div>
