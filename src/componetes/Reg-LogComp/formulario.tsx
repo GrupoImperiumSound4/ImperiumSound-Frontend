@@ -65,14 +65,8 @@ export function Formulario() {
         throw new Error(data.detail || "Error al iniciar sesión");
       }
 
-      if (data.access_token) {
-        localStorage.setItem("access_token", data.access_token);
-        console.log("✅ Token guardado en localStorage");
-      }
-
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
-        console.log("✅ Usuario guardado:", data.user);
       }
       console.log(from);
       navigate(from,{replace: true} );
