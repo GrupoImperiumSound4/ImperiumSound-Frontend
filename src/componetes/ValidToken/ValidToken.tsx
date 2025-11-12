@@ -2,42 +2,36 @@ export const ValidToken = async () => {
   const apiUrl = "https://imperium-sound-backend.vercel.app";
 
   try {
-    // ✅ PASO 1: Obtener token de localStorage
-    const token = localStorage.getItem("access_token");
-    
-    if (!token) {
-      console.log("❌ [VALID_TOKEN] No hay token en localStorage");
-      return null;
-    }
+    console.log(" [VALID_TOKEN] Verificando token con el servidor...");
 
-    console.log("🎫 [VALID_TOKEN] Token encontrado, validando con el servidor...");
-
-    // ✅ PASO 2: Enviar token al backend en el header Authorization
-    const response = await fetch(`${apiUrl}/user/valid`, {
+    const response = await fetch(`${apiUrl}/auth/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`, // ← IMPORTANTE: Enviar token aquí
       },
-      credentials: "include",
+      credentials: "include", // 🔑 CRÍTICO: Esto envía la cookie automáticamente
     });
 
-    // ✅ PASO 3: Verificar respuesta
+    console.log(` [VALID_TOKEN] Respuesta del servidor: ${response.status}`);
+
+    // ✅ Verificar respuesta
     if (!response.ok) {
-      console.log(`❌ [VALID_TOKEN] Token inválido. Status: ${response.status}`);
-      // Limpiar localStorage si el token no es válido
-      localStorage.removeItem("access_token");
+      console.log(`[VALID_TOKEN] Token inválido. Status: ${response.status}`);
+      // Limpiar datos locales si el token no es válido
       localStorage.removeItem("user");
       return null;
     }
 
     const data = await response.json();
     console.log("✅ [VALID_TOKEN] Token válido. Usuario:", data);
+    
+    // Guardar datos del usuario en localStorage (opcional)
+    localStorage.setItem("user", JSON.stringify(data));
+    
     return data;
     
   } catch (error) {
     console.error("❌ [VALID_TOKEN] Error de red:", error);
-    // No limpiar localStorage aquí, puede ser un error temporal de red
     return null;
   }
 };

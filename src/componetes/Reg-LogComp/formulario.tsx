@@ -23,9 +23,7 @@ export function Formulario() {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-
   const ApiURL = "https://imperium-sound-backend.vercel.app";
-
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -52,7 +50,7 @@ export function Formulario() {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "include", // 🔑 Permite que el navegador guarde la cookie
         body: JSON.stringify(formData),
       });
 
@@ -65,11 +63,17 @@ export function Formulario() {
         throw new Error(data.detail || "Error al iniciar sesión");
       }
 
+      // ✅ Solo guardar datos del usuario (NO el token)
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
+        console.log("✅ Usuario guardado:", data.user);
       }
-      console.log(from);
-      navigate(from,{replace: true} );
+
+      // ❌ NO guardar el token en localStorage
+      // El token ya está en la cookie httponly (más seguro)
+      
+      console.log("🔄 Redirigiendo a:", from);
+      navigate(from, { replace: true });
       
     } catch (error) {
       console.error('Error completo:', error);
