@@ -9,7 +9,7 @@ export const ValidToken = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include", // 🔑 CRÍTICO: Esto envía la cookie automáticamente
+      credentials: "include", 
     });
 
     console.log(` [VALID_TOKEN] Respuesta del servidor: ${response.status}`);
