@@ -85,7 +85,7 @@ const MapaColegio = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState("");
 
-  const API_URL = "https://imperium-sound-backend.vercel.app";
+  const API_URL = "http://localhost:8000";
   const seleccionarZona = (zonaSeleccionada: { nombre: string; imagen: string }) => {
     setZona(zonaSeleccionada.nombre);
     setImagenZona(zonaSeleccionada.imagen);
@@ -228,7 +228,7 @@ const MapaColegio = () => {
 
     setIsUploading(true);
     setUploadStatus("Subiendo...");
-
+    
     try {
       // Debug: Ver el tipo de blob
       console.log("Tipo de blob:", audioBlob.type);
@@ -241,7 +241,7 @@ const MapaColegio = () => {
       formData.append("decibels", highestDb.toFixed(2));
       formData.append("id_point", id_point.toString());
 
-      const response = await fetch(`${API_URL}/Registro-sonido`, {
+      const response = await fetch(`${API_URL}/sounds/registro`, {
         method: "POST",
         body: formData,
       });

@@ -13,7 +13,7 @@ export function Registrarse() {
   const [loading, setLoading] = useState<boolean>(false);
 
 
-  const apiUrl =  "https://imperium-sound-backend.vercel.app";
+  const apiUrl =  "http://localhost:8000";
 
   const manejarSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ export function Registrarse() {
     };
 
     try {
-      const response = await fetch(`${apiUrl}/crear_usuario`, {
+      const response = await fetch(`${apiUrl}/auth/registro`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

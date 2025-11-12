@@ -1,5 +1,5 @@
 export const ValidToken = async () => {
-  const apiUrl = "https://imperium-sound-backend.vercel.app";
+  const apiUrl = "http://localhost:8000";
 
   try {
     // ✅ PASO 1: Obtener token de localStorage
@@ -13,7 +13,7 @@ export const ValidToken = async () => {
     console.log("🎫 [VALID_TOKEN] Token encontrado, validando con el servidor...");
 
     // ✅ PASO 2: Enviar token al backend en el header Authorization
-    const response = await fetch(`${apiUrl}/valid`, {
+    const response = await fetch(`${apiUrl}/user/valid`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

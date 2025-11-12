@@ -16,7 +16,7 @@ function BarraUser() {
   const Microfono = "/microConfig";
   const Soporte = "/soporte";
   const Info = "/cuenta"; 
-  const API_URL = "https://imperium-sound-backend.vercel.app";
+  const API_URL = "http://localhost:8000";
 
   const obtenerDatosUsuario = async () => {
     try {
@@ -33,7 +33,7 @@ function BarraUser() {
 
       console.log("🔍 Obteniendo datos del usuario...");
 
-      const response = await fetch(`${API_URL}/me`, {
+      const response = await fetch(`${API_URL}/user/me`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -79,7 +79,7 @@ function BarraUser() {
     try {
       const token = localStorage.getItem("access_token");
       
-      const response = await fetch(`${API_URL}/logout`, {
+      const response = await fetch(`${API_URL}/auth/logout`, {
         method: 'POST',
         credentials: 'include',
         headers: {

@@ -6,14 +6,14 @@ export function User() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cuenta = "/cuenta";
-  const apiUrl = "https://imperium-sound-backend.vercel.app";
+  const apiUrl = "http://localhost:8000";
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const logout = () => {
-    fetch(`${apiUrl}/logout`, {
+    fetch(`${apiUrl}/auth/logout`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

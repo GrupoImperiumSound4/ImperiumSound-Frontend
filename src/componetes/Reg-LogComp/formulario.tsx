@@ -24,7 +24,7 @@ export function Formulario() {
   const [loading, setLoading] = useState<boolean>(false);
 
 
-  const ApiURL = "https://imperium-sound-backend.vercel.app";
+  const ApiURL = "http://localhost:8000";
 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +47,7 @@ export function Formulario() {
       console.log("Intentando conectar a:", "login");
       console.log("Datos enviados:", formData);
       
-      const response = await fetch(`${ApiURL}/login`, {
+      const response = await fetch(`${ApiURL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
