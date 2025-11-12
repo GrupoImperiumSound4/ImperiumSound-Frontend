@@ -1,0 +1,25 @@
+.ContainerUser-sp{
+    background-color: #18042c;
+    width: 115em;   
+    height: 56em;
+    position: absolute;
+    top: 29em;
+    left: 60em;
+    transform: translate(-57.5em, -27em);
+    border-radius: 2em;
+}
+
+@media (max-width: 1366px){
+
+    .ContainerUser-sp{
+    background-color: #18042c;
+    width: 80em;   
+    height: 39em;
+    position: absolute;
+    top: 29em;
+    left: 60em;
+    transform: translate(-57.5em, -27em);
+    border-radius: 2em;
+}
+
+}

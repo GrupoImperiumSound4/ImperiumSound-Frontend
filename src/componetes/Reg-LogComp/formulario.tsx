@@ -1,4 +1,3 @@
-// Formulario.tsx
 import { useState, ChangeEvent, FormEvent } from "react";
 import "../../styles/formulario.css";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -13,9 +12,9 @@ export function Formulario() {
   const location = useLocation();
   const registroURL = "/Registro";
 
-  const from = (location.state as any)?.from || "/" 
-  console.log(from);
-  
+  const from = (location.state as any)?.from || "/";
+  console.log("Redirigiendo a:", from);
+
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -23,9 +22,7 @@ export function Formulario() {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-
   const ApiURL = "http://localhost:8000";
-
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -78,9 +75,9 @@ export function Formulario() {
       navigate(from,{replace: true} );
       
     } catch (error) {
-      console.error('Error completo:', error);
-      if (error instanceof TypeError && error.message.includes('fetch')) {
-        setError("No se puede conectar al servidor.");
+      console.error("Error en login:", error);
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        setError("No se puede conectar al servidor. Verifica tu conexión.");
       } else {
         setError((error as Error).message);
       }
@@ -99,13 +96,13 @@ export function Formulario() {
             <a
               className="formulario-texto-2"
               onClick={() => navigate(registroURL)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
               Regístrate
             </a>
           </div>
         </div>
-        
+
         <div>
           <p className="formulario-texto">Correo Electrónico</p>
           <label htmlFor="email"></label>
@@ -119,7 +116,7 @@ export function Formulario() {
             required
           />
         </div>
-      
+
         <div>
           <label htmlFor="password"></label>
           <p className="formulario-texto">Contraseña</p>
@@ -134,15 +131,15 @@ export function Formulario() {
           />
           <p className="formulario-texto-2 hover">¿Olvidaste la contraseña?</p>
         </div>
-        
-        <button 
-          type="submit" 
+
+        <button
+          type="submit"
           className="boton-Registrarte1"
           disabled={loading}
         >
-          {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+          {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
         </button>
-        
+
         {error && <p className="error-message">{error}</p>}
       </form>
     </>
