@@ -15,22 +15,39 @@ function BarraUser() {
   const [error, setError] = useState<string | null>(null);
   const Microfono = "/microConfig";
   const Soporte = "/soporte";
-  const Info = "/cuenta";
+  const Info = "/cuenta"; 
   const API_URL = "https://imperium-sound-backend.vercel.app";
 
   const obtenerDatosUsuario = async () => {
     try {
       setLoading(true);
+      
+      // ✅ Obtener el token de localStorage
+      const token = localStorage.getItem("access_token");
+      
+      if (!token) {
+        console.log("❌ No hay token en localStorage");
+        navegar("/");
+        return;
+      }
+
+      console.log("🔍 Obteniendo datos del usuario...");
+
       const response = await fetch(`${API_URL}/me`, {
         method: 'GET',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // ← ESTO ES LO QUE FALTABA
         },
       });
 
       if (!response.ok) {
+        console.log(`❌ Error ${response.status}`);
         if (response.status === 401) {
+          // Token inválido, limpiar localStorage
+          localStorage.removeItem("access_token");
+          localStorage.removeItem("user");
           navegar("/");
           return;
         }
@@ -38,11 +55,15 @@ function BarraUser() {
       }
 
       const userData = await response.json();
+      console.log("✅ Datos del usuario obtenidos:", userData);
       setUser(userData);
       setError(null);
     } catch (err) {
-      console.error('Error:', err);
+      console.error('❌ Error:', err);
       setError('Error al cargar los datos del usuario');
+      // Limpiar localStorage en caso de error
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("user");
       navegar("/");
     } finally {
       setLoading(false);
@@ -56,19 +77,30 @@ function BarraUser() {
 
   const cerrarSesion = async () => {
     try {
+      const token = localStorage.getItem("access_token");
+      
       const response = await fetch(`${API_URL}/logout`, {
         method: 'POST',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
+          ...(token && { 'Authorization': `Bearer ${token}` }),
         },
       });
 
       if (response.ok) {
+        // Limpiar localStorage
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("user");
+        console.log("✅ Sesión cerrada correctamente");
         navegar("/");
       }
     } catch (err) {
-      console.error('Error al cerrar sesión:', err);
+      console.error('❌ Error al cerrar sesión:', err);
+      // Aún así limpiar y redirigir
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("user");
+      navegar("/");
     }
   };
 
@@ -156,4 +188,4 @@ function BarraUser() {
   );
 }
 
-export default BarraUser;
+export default BarraUser; 

@@ -42,7 +42,7 @@ function App() {
           <Route path="/comparador-sonido" element= {<Comparadorsonidos/>}></Route>
           <Route path="/informacion" element= {<Info/>}></Route>
           <Route path="/javiblock" element= {<JaviBlock/>}></Route>
-          <Route path="/colegio" element= {<Colegio/>}></Route>
+          <Route path="/colegio" element= {<ProtectedRoute><Colegio/></ProtectedRoute>}></Route>
           <Route path="/Juegodb" element= {<DecibelGame/>}></Route>
           <Route path="/PanelAdmin" element= {<AdminPanel/>}></Route>
         </Routes>
