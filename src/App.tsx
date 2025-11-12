@@ -12,13 +12,13 @@ import Caracteristicas from "./paginas/Caracteristicas";
 import PagInicio from "./paginas/Inicio";
 import Cuenta from "./paginas/PanelUsuario";
 import MicroUP from "./paginas/MicroUP";
-import SoporteUp from "./paginas/SoporteUP";
 import Foro from "./paginas/Foro";
 import Comparadorsonidos from "./paginas/comparador";
 import Info from "./paginas/Info";
 import JaviBlock from "./paginas/JaviBlock";
 import Colegio from "./paginas/mapacolegio"
 import DecibelGame from "./paginas/Juegoadivinardb";
+import AdminPanel from "./paginas/paginaadmin"
 
 
 function App() {
@@ -38,13 +38,13 @@ function App() {
           <Route path="/inicio" element={<PagInicio/>} />
           <Route path="/cuenta" element={<ProtectedRoute><Cuenta/></ProtectedRoute>}></Route>
           <Route path="/microConfig" element={<MicroUP/>}></Route>
-          <Route path="/soporte" element={<SoporteUp/>}></Route>
           <Route path="/foro" element={<Foro/>}></Route>
           <Route path="/comparador-sonido" element= {<Comparadorsonidos/>}></Route>
           <Route path="/informacion" element= {<Info/>}></Route>
           <Route path="/javiblock" element= {<JaviBlock/>}></Route>
           <Route path="/colegio" element= {<Colegio/>}></Route>
           <Route path="/Juegodb" element= {<DecibelGame/>}></Route>
+          <Route path="/PanelAdmin" element= {<AdminPanel/>}></Route>
         </Routes>
       </Router>
     </>

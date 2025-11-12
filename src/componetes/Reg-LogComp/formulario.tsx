@@ -13,9 +13,9 @@ export function Formulario() {
   const location = useLocation();
   const registroURL = "/Registro";
 
-  const from = (location.state as any)?.from || "/" 
-  console.log(from);
-  
+  const from = (location.state as any)?.from || "/";
+  console.log("Redirigiendo a:", from);
+
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -23,9 +23,7 @@ export function Formulario() {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-
   const ApiURL = "https://imperium-sound-backend.vercel.app";
-
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -44,43 +42,38 @@ export function Formulario() {
     setError("");
 
     try {
-      console.log("Intentando conectar a:", "login");
-      console.log("Datos enviados:", formData);
-      
+      console.log("Iniciando sesión...");
+
       const response = await fetch(`${ApiURL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "include", // Obligatorio para recibir y enviar cookies
         body: JSON.stringify(formData),
       });
 
-      console.log("Respuesta recibida:", response.status);
-
       const data = await response.json();
-      console.log("Datos de respuesta:", data);
+      console.log("Respuesta del backend:", data);
 
       if (!response.ok) {
         throw new Error(data.detail || "Error al iniciar sesión");
       }
 
-      if (data.access_token) {
-        localStorage.setItem("access_token", data.access_token);
-        console.log("✅ Token guardado en localStorage");
-      }
-
+      // EL TOKEN ESTÁ EN LA COOKIE (HttpOnly) → NO LO GUARDES EN LOCALSTORAGE
+      // Solo guarda el usuario si lo necesitas en el frontend
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
-        console.log("✅ Usuario guardado:", data.user);
+        console.log("Usuario guardado en localStorage:", data.user);
       }
-      console.log(from);
-      navigate(from,{replace: true} );
-      
+
+      console.log("Login exitoso. Token guardado en cookie HttpOnly.");
+      navigate(from, { replace: true });
+
     } catch (error) {
-      console.error('Error completo:', error);
-      if (error instanceof TypeError && error.message.includes('fetch')) {
-        setError("No se puede conectar al servidor.");
+      console.error("Error en login:", error);
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        setError("No se puede conectar al servidor. Verifica tu conexión.");
       } else {
         setError((error as Error).message);
       }
@@ -99,13 +92,13 @@ export function Formulario() {
             <a
               className="formulario-texto-2"
               onClick={() => navigate(registroURL)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
               Regístrate
             </a>
           </div>
         </div>
-        
+
         <div>
           <p className="formulario-texto">Correo Electrónico</p>
           <label htmlFor="email"></label>
@@ -119,7 +112,7 @@ export function Formulario() {
             required
           />
         </div>
-      
+
         <div>
           <label htmlFor="password"></label>
           <p className="formulario-texto">Contraseña</p>
@@ -134,15 +127,15 @@ export function Formulario() {
           />
           <p className="formulario-texto-2 hover">¿Olvidaste la contraseña?</p>
         </div>
-        
-        <button 
-          type="submit" 
+
+        <button
+          type="submit"
           className="boton-Registrarte1"
           disabled={loading}
         >
-          {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+          {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
         </button>
-        
+
         {error && <p className="error-message">{error}</p>}
       </form>
     </>

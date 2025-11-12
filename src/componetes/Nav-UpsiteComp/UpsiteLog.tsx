@@ -28,6 +28,7 @@ export function NavbarLog() {
   const Comparadorsonidos = "/comparador-sonido";
   const Info = "/Informacion";
   const colegio = "/colegio"
+  const Admin = "/PanelAdmin"
 
 
 
@@ -50,6 +51,10 @@ export function NavbarLog() {
         <a className="txt-navbar" onClick={() => navegar(colegio)}>
           {" "}
           Colegio
+        </a>
+        <a className="txt-navbar" onClick={() => navegar(Admin)}>
+          {" "}
+          Admin
         </a>
       </div>
     </div>  
